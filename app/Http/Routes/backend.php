@@ -6,16 +6,16 @@ Route::get('/index', [
 
 
 /* 用户管理模块 */
-Route::resource("user", 'UserController');
-Route::get('user/profile/{id}', [
-    'as'   => 'backend.user.profile',
-    'uses' => 'UserController@profile',
+Route::resource("admin", 'AdminController');
+Route::get('admin/profile/{id}', [
+    'as'   => 'backend.admin.profile',
+    'uses' => 'AdminController@profile',
 ]);
-Route::post('user/update-profile', [
+Route::post('admin/update-profile', [
     'as'   => 'backend.user.update-profile',
-    'uses' => 'UserController@updateProfile',
+    'uses' => 'AdminController@updateProfile',
 ]);
-Route::post('user/upload-avatar', [
+Route::post('admin/upload-avatar', [
     'as'   => 'backend.user.upload-avatar',
-    'uses' => 'UserController@uploadAvatar',
+    'uses' => 'AdminController@uploadAvatar',
 ]);

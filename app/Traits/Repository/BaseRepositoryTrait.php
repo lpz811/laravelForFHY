@@ -12,6 +12,9 @@ trait BaseRepositoryTrait
 
         return $this->validator->make($data, $rules);
     }
+   /* public  function paginate(){
+        dd('d');
+    }*/
 
     public function create(array $input)
     {
