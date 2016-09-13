@@ -72,8 +72,8 @@
     <script type="text/javascript">
         $(function () {
             BJUI.init({
-                JSPATH: 'BJUI/',         //[可选]框架路径
-                PLUGINPATH: 'BJUI/plugins/', //[可选]插件路径
+                JSPATH: "{{ asset('/styles/') }}",         //[可选]框架路径
+                PLUGINPATH: "{{ asset('/styles/plugins/') }}", //[可选]插件路径
                 loginInfo: {url: 'login_timeout.html', title: '登录', width: 400, height: 200}, // 会话超时后弹出登录对话框
                 statusCode: {ok: 200, error: 300, timeout: 301}, //[可选]
                 ajaxTimeout: 50000, //[可选]全局Ajax请求超时时间(毫秒)
@@ -84,7 +84,7 @@
                     orderField: 'orderField',
                     orderDirection: 'orderDirection'
                 }, //[可选]分页参数
-                alertMsg: {displayPosition: 'topcenter', displayMode: 'slide', alertTimeout: 3000}, //[可选]信息提示的显示位置，显隐方式，及[info/correct]方式时自动关闭延时(毫秒)
+                alertMsg: {displayPosition: 'topcenter', displayMode: 'slide', alertTimeout: 100}, //[可选]信息提示的显示位置，显隐方式，及[info/correct]方式时自动关闭延时(毫秒)
                 keys: {statusCode: 'statusCode', message: 'message'}, //[可选]
                 ui: {
                     windowWidth: 0,    //框架可视宽度，0=100%宽，> 600为则居中显示
@@ -583,6 +583,33 @@
                             <li class="divider"></li>
                             <li><a href="#">友情链接</a></li>
                         </ul>
+                    </li>
+
+                    <li ><a href="javascript:;" data-toggle="slidebar"><i
+                                    class="fa fa-check-square-o"></i> 表单元素</a>
+                        <div class="items hide" data-noinit="true">
+                            <ul id="bjui-hnav-tree1" class="ztree ztree_main" data-toggle="ztree"
+                                data-on-click="MainMenuClick" data-expand-all="true" data-faicon="check-square-o">
+                                <li data-id="111" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">
+                                    表单元素1
+                                </li>
+                                <li data-id="112" data-pid="111" data-url="form-button.html" data-tabid="form-button"
+                                    data-faicon="hand-o-up">按钮1
+                                </li>
+                                <li data-id="113" data-pid="111" data-url="form-input.html" data-tabid="form-input"
+                                    data-faicon="terminal">文本框1
+                                </li>
+                                <li data-id="114" data-pid="111" data-url="form-select.html" data-tabid="form-select"
+                                    data-faicon="caret-square-o-down">下拉选择框1
+                                </li>
+                                <li data-id="115" data-pid="111" data-url="form-checkbox.html" data-tabid="table"
+                                    data-faicon="check-square-o">复选、单选框1
+                                </li>
+                                <li data-id="116" data-pid="111" data-url="form.html" data-tabid="form" data-faicon="list">
+                                    表单综合演示1
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
