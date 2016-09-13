@@ -1,5 +1,6 @@
 <div class="bjui-pageHeader">
     <form id="pagerForm" data-toggle="ajaxsearch" action="table-fixed.html" method="post">
+        {{ csrf_field() }}
         <input type="hidden" name="pageSize" value="${model.pageSize}">
         <input type="hidden" name="pageCurrent" value="${model.pageCurrent}">
         <input type="hidden" name="orderField" value="${param.orderField}">
@@ -90,7 +91,7 @@
 </div>
 <div class="bjui-pageFooter">
     <div class="pages">
-       {{-- <span>每页&nbsp;</span>
+         <span>每页&nbsp;</span>
         <div class="selectPagesize">
             <select data-toggle="selectpicker" data-toggle-change="changepagesize">
                 <option value="30">30</option>
@@ -99,9 +100,14 @@
                 <option value="150">150</option>
             </select>
         </div>
-        <span>&nbsp;条，共 600 条</span>--}}
-        {!! $data->render() !!}
+        <span>&nbsp;条，共  {{$data->total()}}  条</span>
+
+        @if($data->render())
+            <div class="box-footer clearfix">
+                {!! $data->render() !!}
+            </div>
+        @endif
     </div>
-    <div class="pagination-box" data-toggle="pagination" data-total="600" data-page-size="30" data-page-current="1">
+    <div class="pagination-box" data-toggle="pagination" data-total="600" data-page-size="30" data-page-current="{{$data->currentPage()}}">
     </div>
 </div>
