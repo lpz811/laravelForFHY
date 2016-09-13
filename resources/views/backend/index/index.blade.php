@@ -586,15 +586,15 @@
                     </li>
 
                     <li ><a href="javascript:;" data-toggle="slidebar"><i
-                                    class="fa fa-check-square-o"></i> 表单元素</a>
+                                    class="fa fa-check-square-o"></i> 系统配置</a>
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-hnav-tree1" class="ztree ztree_main" data-toggle="ztree"
                                 data-on-click="MainMenuClick" data-expand-all="true" data-faicon="check-square-o">
                                 <li data-id="111" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">
-                                    表单元素1
+                                    用户管理
                                 </li>
-                                <li data-id="112" data-pid="111" data-url="form-button.html" data-tabid="form-button"
-                                    data-faicon="hand-o-up">按钮1
+                                <li data-id="112" data-pid="111" data-url="{{url('backend/user')}}" data-tabid="form-button"
+                                    data-faicon="hand-o-up">用户列表
                                 </li>
                                 <li data-id="113" data-pid="111" data-url="form-input.html" data-tabid="form-input"
                                     data-faicon="terminal">文本框1
