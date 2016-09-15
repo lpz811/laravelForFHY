@@ -3,25 +3,35 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Facades\AdminRepository;
+use App\Models\Backend\Admin;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $pageSize = config('repository.pageSize');
+        $data['info'] = AdminRepository::paginate($pageSize);
+        $data['total'] = $data['info']->total();
+        $data['pageCurrent'] = 1;
+        return view("backend.admin.index", compact('data'));
+    }
 
-        $data=AdminRepository::paginate(config('repository.page-limit'));
-      //  $data=AdminRepository::getUserProfileById();
-//dd($data);
-        return view("backend.admin.index",compact('data'));
+    public function search(Request $request)
+    {
+        $model=new Admin;
+        $data=$this->searchInfo($request, $model);
+        $search=$request->input('search');
+        return view("backend.admin.index",compact('data','search'));
+
     }
 
     /**
@@ -37,7 +47,7 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,7 +58,7 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -59,7 +69,7 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -70,8 +80,8 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -82,7 +92,7 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

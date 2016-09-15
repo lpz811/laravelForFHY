@@ -1,22 +1,17 @@
 <div class="bjui-pageHeader">
-    <form id="pagerForm" data-toggle="ajaxsearch" action="table-fixed.html" method="post">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="{{ url('backend/admin/search')}}" method="POST">
         {{ csrf_field() }}
         <input type="hidden" name="pageSize" value="${model.pageSize}">
         <input type="hidden" name="pageCurrent" value="${model.pageCurrent}">
         <input type="hidden" name="orderField" value="${param.orderField}">
         <input type="hidden" name="orderDirection" value="${param.orderDirection}">
         <div class="bjui-searchBar">
-            <label>护照号：</label><input type="text" id="customNo" value="" name="code" class="form-control" size="10">&nbsp;
-            <label>客户姓名：</label><input type="text" value="" name="name" class="form-control" size="8">&nbsp;
-            <label>所属业务:</label>
-            <select name="type" data-toggle="selectpicker">
-                <option value="">全部</option>
-                <option value="1">联络</option>
-                <option value="2">住宿</option>
-                <option value="3">餐饮</option>
-                <option value="4">交通</option>
-            </select>&nbsp;
-            <input type="checkbox" id="j_table_chk" value="true" data-toggle="icheck" data-label="我的客户">&nbsp;
+            <label>姓名：</label>
+            <input type="text" id="customNo" value="{{isset($search['name'])?$search['name']:''}}" name="search[name]"   class="form-control" size="10">&nbsp;
+            <label>邮箱：</label>
+            <input type="text" id="customNo" value="{{isset($search['email'])?$search['email']:''}}" name="search[email]"    class="form-control" size="10">&nbsp;
+
+
             <button type="button" class="showMoreSearch" data-toggle="moresearch" data-name="custom2"><i
                         class="fa fa-angle-double-down"></i></button>
             <button type="submit" class="btn-default" data-icon="search">查询</button>
@@ -39,17 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="bjui-moreSearch">
-            <label>职业：</label><input type="text" value="" name="profession" size="15"/>
-            <label>&nbsp;性别:</label>
-            <select name="sex" data-toggle="selectpicker">
-                <option value="">全部</option>
-                <option value="true">男</option>
-                <option value="false">女</option>
-            </select>
-            <label>&nbsp;手机:</label>
-            <input type="text" value="" name="mobile" size="10">
-        </div>
+
     </form>
 </div>
 <div class="bjui-pageContent tableContent">
@@ -65,7 +50,7 @@
         </thead>
 
         <tbody>
-                @foreach($data as $item)
+                @foreach($data['info'] as $item)
 
                     <tr data-id="{{$item->id}}">
                         <td><input type="checkbox" name="ids" data-toggle="icheck" value="{{$item->id}}"></td>
@@ -80,9 +65,6 @@
                                 <a href="ajaxDone2.html" class="btn btn-red" data-toggle="doajax"
                                    data-confirm-msg="确定要删除该行信息吗？">删除</a>
                             @endif
-
-
-
                         </td>
                     </tr>
                 @endforeach
@@ -100,14 +82,10 @@
                 <option value="150">150</option>
             </select>
         </div>
-        <span>&nbsp;条，共  {{$data->total()}}  条</span>
+        <span>&nbsp;条，共  {{ $data['total'] }}  条</span>
 
-        @if($data->render())
-            <div class="box-footer clearfix">
-                {!! $data->render() !!}
-            </div>
-        @endif
+
     </div>
-    <div class="pagination-box" data-toggle="pagination" data-total="600" data-page-size="30" data-page-current="{{$data->currentPage()}}">
+    <div class="pagination-box" data-toggle="pagination" data-total="{{ $data['total']}}" data-page-size="10" data-page-current="{{ $data['pageCurrent'] }}">
     </div>
 </div>

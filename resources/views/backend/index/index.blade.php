@@ -593,7 +593,7 @@
                                 <li data-id="111" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">
                                     用户管理
                                 </li>
-                                <li data-id="112" data-pid="111" data-url="{{url('backend/admin')}}" data-tabid="form-button"
+                                <li data-id="112" data-pid="111" data-url="{{url('backend/admin')}}" data-fresh="true" data-tabid="form-button"
                                     data-faicon="hand-o-up">用户列表
                                 </li>
                                 <li data-id="113" data-pid="111" data-url="form-input.html" data-tabid="form-input"

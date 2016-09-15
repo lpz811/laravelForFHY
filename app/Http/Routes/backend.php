@@ -7,6 +7,15 @@ Route::get('/index', [
 
 /* 用户管理模块 */
 Route::resource("admin", 'AdminController');
+Route::post("admin/search", [
+    'as'=>'backend.admin.search',
+    'uses'=>'AdminController@search'
+]);
+
+
+
+
+
 Route::get('admin/profile/{id}', [
     'as'   => 'backend.admin.profile',
     'uses' => 'AdminController@profile',
