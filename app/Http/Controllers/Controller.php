@@ -19,15 +19,36 @@ abstract class Controller extends BaseController
      */
     public  function searchInfo($request,$model)
     {
-        $requests = $request->all();
-        $orderField= substr($requests['orderField'], 0, 1 )=='$' ? 'id':$requests['orderField'];
-        $orderDirection=substr($requests['orderDirection'],0,1)=='$'?'asc':$requests['orderDirection'];
+        try {
+            $requests = $request->all();
 
-        $data['info'] = $model::multiwhere($requests['search'],'like')->orderBy($orderField,$orderDirection)->skip(($requests['pageCurrent'] - 1) * $requests['pageSize'])->take($requests['pageSize'])->get();
-        $data['pageSize']=$requests['pageSize'];
-        $data['pageCurrent']=1;
-        $data['total']=$data['info']->count();
-        return $data;
+            $orderField = substr($requests['orderField'], 0, 1) == '$' ? 'id' : $requests['orderField'];
+
+            $orderDirection = substr($requests['orderDirection'], 0, 1) == '$' ? 'asc' : $requests['orderDirection'];
+            $data['info'] = $model::multiwhere($requests['search'], 'like')->orderBy($orderField, $orderDirection)->skip(($requests['pageCurrent'] - 1) * $requests['pageSize'])->take($requests['pageSize'])->get();
+            $data['pageSize'] = $requests['pageSize'];
+            $data['pageCurrent'] = $requests['pageCurrent'];
+            $data['total'] = $model::multiwhere($requests['search'], 'like')->count();
+            return $data;
+        } catch (\Exception $e) {
+              return $this->responseJson($e->getMessage(),300);
+        }
     }
+
+
+    /**
+     * JSON 响应
+     *
+     * @param     $data
+     * @param int $code
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function responseJson($data, $code = 200)
+    {
+        return response()->json($data, $code);
+    }
+
+
 
 }

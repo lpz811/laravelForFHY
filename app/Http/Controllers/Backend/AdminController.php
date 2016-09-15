@@ -31,7 +31,6 @@ class AdminController extends Controller
         $data=$this->searchInfo($request, $model);
         $search=$request->input('search');
         return view("backend.admin.index",compact('data','search'));
-
     }
 
     /**

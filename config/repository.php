@@ -3,6 +3,6 @@ return [
       'models'=>[
           'admin'=>'App\Models\Backend\Admin',
       ],
-    'pageSize'=>10,
+    'pageSize'=>30,
 
 ];

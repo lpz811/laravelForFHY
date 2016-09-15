@@ -16,25 +16,20 @@
                         class="fa fa-angle-double-down"></i></button>
             <button type="submit" class="btn-default" data-icon="search">查询</button>
             &nbsp;
-            <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('reloadForm', true);"
+            <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('adminslist', true);"
                data-icon="undo">清空查询</a>
             <div class="pull-right">
                 <div class="btn-group">
                     <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">
                         复选框-批量操作<span class="caret"></span></button>
                     <ul class="dropdown-menu right" role="menu">
-                        <li><a href="book1.xlsx" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span
-                                        style="color: green;">全部</span></a></li>
-                        <li><a href="book1.xlsx" data-toggle="doexportchecked" data-confirm-msg="确定要导出选中项吗？"
-                               data-idname="expids" data-group="ids">导出<span style="color: red;">选中</span></a></li>
-                        <li class="divider"></li>
+
                         <li><a href="ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？"
                                data-idname="delids" data-group="ids">删除选中</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-
     </form>
 </div>
 <div class="bjui-pageContent tableContent">
@@ -86,6 +81,6 @@
 
 
     </div>
-    <div class="pagination-box" data-toggle="pagination" data-total="{{ $data['total']}}" data-page-size="10" data-page-current="{{ $data['pageCurrent'] }}">
+    <div class="pagination-box" data-toggle="pagination" data-total="{{ $data['total']}}" data-page-size="30" data-page-current="{{ $data['pageCurrent'] }}">
     </div>
 </div>
