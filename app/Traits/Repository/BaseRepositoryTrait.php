@@ -23,6 +23,18 @@ trait BaseRepositoryTrait
         return $model::create($input);
     }
 
+    public function searchInfo($request){
+            $model=$this->model;
+            $requests = $request->all();
+            $orderField = substr($requests['orderField'], 0, 1) == '$' ? 'id' : $requests['orderField'];
+            $orderDirection = substr($requests['orderDirection'], 0, 1) == '$' ? 'asc' : $requests['orderDirection'];
+            $data['info'] = $model::multiwhere($requests['search'], 'like')->orderBy($orderField, $orderDirection)->skip(($requests['pageCurrent'] - 1) * $requests['pageSize'])->take($requests['pageSize'])->get();
+            $data['pageSize'] = $requests['pageSize'];
+            $data['pageCurrent'] = $requests['pageCurrent'];
+            $data['total'] = $model::multiwhere($requests['search'], 'like')->count();
+            return $data;
+    }
+
     public function saveById($id, array $data)
     {
         $item = self::find($id);

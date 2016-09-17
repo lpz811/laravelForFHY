@@ -33,8 +33,6 @@ class RepositoryServiceProvider extends ServiceProvider
             $model=config('repository.models.admin');
             $admin=new $model;
             $validator=$app['validator'];
-
-          //  return new AdminRepository($admin,$validator);
             return new AdminRepository($admin,$validator);
         });
     }

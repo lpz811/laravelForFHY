@@ -12,12 +12,8 @@ abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    /**
-     * @param Request $request   提交搜索请求
-     * @param $model             传递数据库模型
-     * @return mixed
-     */
-    public  function searchInfo($request,$model)
+
+   /* public  function searchInfo($request,$model)
     {
         try {
             $requests = $request->all();
@@ -33,7 +29,7 @@ abstract class Controller extends BaseController
         } catch (\Exception $e) {
               return $this->responseJson($e->getMessage(),300);
         }
-    }
+    }*/
 
 
     /**

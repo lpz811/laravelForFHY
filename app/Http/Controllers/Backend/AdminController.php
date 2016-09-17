@@ -27,9 +27,7 @@ class AdminController extends Controller
 
     public function search(Request $request)
     {
-
-        $model=new Admin;
-        $data=$this->searchInfo($request, $model);
+        $data=AdminRepository::searchInfo($request);
         $search=$request->input('search');
         return view("backend.admin.index",compact('data','search'));
     }
