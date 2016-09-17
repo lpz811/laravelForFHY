@@ -18,6 +18,7 @@
     <link href="{{ asset('/styles/plugins/niceValidator/jquery.validator.css') }}  " rel="stylesheet">
     <link href="{{ asset('/styles/plugins/bootstrapSelect/bootstrap-select.css') }}  " rel="stylesheet">
     <link href="{{ asset('/styles/themes/css/FA/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/styles/base.css') }}" rel="stylesheet">
     <!--[if lte IE 7]>
     <link href="{{ asset('/styles/themes/css/ie7.css') }}" rel="stylesheet">
     <![endif]-->

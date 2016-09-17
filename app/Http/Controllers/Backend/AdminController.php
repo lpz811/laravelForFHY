@@ -27,6 +27,7 @@ class AdminController extends Controller
 
     public function search(Request $request)
     {
+
         $model=new Admin;
         $data=$this->searchInfo($request, $model);
         $search=$request->input('search');

@@ -73,6 +73,21 @@ trait BaseRepositoryTrait
         return $model::where('id', '>=', 1)->count();
     }
 
+    public function scopeMultiwhere($query, $arr,$like='=')
+    {
+        if (!is_array($arr)) {
+            return $query;
+        }
+        foreach ($arr as $key => $value) {
+            if(!empty($value)){
+                if($like!='='){
+                    $value='%'.$value.'%';
+                }
+                $query = $query->where($key,$like,$value);
+            }
+        }
+        return $query;
+    }
     public function paginate($limit, array $columns = ['*'])
     {
         $model = $this->model;
