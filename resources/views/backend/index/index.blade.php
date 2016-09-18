@@ -371,50 +371,27 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-file-word-o"></i> 在线文档</a>
+                    <li><a href="javascript:;" data-toggle="slidebar"><i class="fa fa-file-word-o"></i> 系统配置</a>
                         <div class="items hide" data-noinit="true">
                             <ul id="bjui-doc-tree-base" class="ztree ztree_main" data-toggle="ztree"
                                 data-on-click="MainMenuClick" data-expand-all="true" data-faicon="star-o"
-                                data-tit="框架介绍">
+                                data-tit="系统配置">
                                 <li data-id="99" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">
-                                    文件列表
+                                    用户管理
                                 </li>
-                                <li data-id="100" data-pid="99" data-url="doc/base/filelist.html" data-tabid="doc-file"
-                                    data-faicon="caret-right">文件详解
+                                <li data-id="100" data-pid="99" data-url="{{url('backend/admin')}}" data-fresh="true" data-tabid="adminslist"
+                                    data-faicon="caret-right">用户列表
                                 </li>
-                                <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o"
-                                    data-faicon="caret-right">框架介绍
+                                <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-url='#' data-fresh="true" data-faicon-close="folder-o"
+                                    data-faicon="caret-right">角色管理
                                 </li>
-                                <li data-id="10" data-pid="1" data-url="doc/base/structure.html" data-tabid="doc-base"
-                                    data-faicon="caret-right">页面结构
+                                <li data-id="10" data-pid="1" data-url="{{url('backend/role')}}" data-fresh="true" data-tabid="roleslist"
+                                    data-faicon="caret-right">角色列表
                                 </li>
                                 <li data-id="11" data-pid="1" data-url="doc/base/init.html" data-tabid="doc-base"
                                     data-faicon="caret-right">框架初始化
                                 </li>
-                                <li data-id="12" data-pid="1" data-url="doc/base/hnav.html" data-tabid="doc-base"
-                                    data-faicon="caret-right">横向导航菜单
-                                </li>
-                                <li data-id="13" data-pid="1" data-url="doc/base/navtab.html" data-tabid="doc-base"
-                                    data-faicon="caret-right">标签工作区(navtab)
-                                </li>
-                                <li data-id="14" data-pid="1" data-url="doc/base/dialog.html" data-tabid="doc-base"
-                                    data-faicon="caret-right">弹窗工作区(dialog)
-                                </li>
-                                <li data-id="15" data-pid="1" data-url="doc/base/idname.html" data-tabid="doc-base"
-                                    data-faicon="caret-right">元素ID命名规范
-                                </li>
-                                <li data-id="16" data-pid="1" data-url="doc/base/data.html" data-tabid="doc-base"
-                                    data-faicon="caret-right">data属性
-                                </li>
-                                <li data-id="17" data-pid="1" data-url="doc/base/api.html" data-tabid="doc-base"
-                                    data-faicon="caret-right">jQuery API调用
-                                </li>
-                                <li data-id="18" data-pid="1" data-url="doc/base/event.html" data-tabid="doc-base"
-                                    data-faicon="caret-right">事件
-                                </li>
-                                <li data-id="19" data-pid="1" data-url="doc/base/url.html" data-tabid="doc-base"
-                                    data-update="true" data-faicon="caret-right">URL动态赋值
-                                </li>
+
                                 <li data-id="9" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o"
                                     data-faicon="caret-right">框架皮肤
                                 </li>
@@ -422,7 +399,7 @@
                                     data-faicon="caret-right">颜色值
                                 </li>
                             </ul>
-                            <ul id="bjui-doc-tree-module" class="ztree ztree_main" data-toggle="ztree"
+                            {{--<ul id="bjui-doc-tree-module" class="ztree ztree_main" data-toggle="ztree"
                                 data-on-click="MainMenuClick" data-expand-all="true" data-faicon="th" data-tit="框架组件">
                                 <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">
                                     标签navtab
@@ -570,7 +547,7 @@
                                 <li data-id="ajaxdownload" data-pid="other" data-url="doc/plugin/ajaxdownload.html"
                                     data-tabid="doc-ajaxdownload" data-faicon="caret-right">Ajax Download
                                 </li>
-                            </ul>
+                            </ul>--}}
                         </div>
                     </li>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -585,32 +562,7 @@
                         </ul>
                     </li>
 
-                    <li ><a href="javascript:;" data-toggle="slidebar"><i
-                                    class="fa fa-check-square-o"></i> 系统配置</a>
-                        <div class="items hide" data-noinit="true">
-                            <ul id="bjui-hnav-tree1" class="ztree ztree_main" data-toggle="ztree"
-                                data-on-click="MainMenuClick" data-expand-all="true" data-faicon="check-square-o">
-                                <li data-id="111" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">
-                                    用户管理
-                                </li>
-                                <li data-id="112" data-pid="111" data-url="{{url('backend/admin')}}" data-fresh="true" data-tabid="adminslist"
-                                    data-faicon="hand-o-up">用户列表
-                                </li>
-                                <li data-id="113" data-pid="111" data-url="form-input.html" data-tabid="form-input"
-                                    data-faicon="terminal">文本框1
-                                </li>
-                                <li data-id="114" data-pid="111" data-url="form-select.html" data-tabid="form-select"
-                                    data-faicon="caret-square-o-down">下拉选择框1
-                                </li>
-                                <li data-id="115" data-pid="111" data-url="form-checkbox.html" data-tabid="table"
-                                    data-faicon="check-square-o">复选、单选框1
-                                </li>
-                                <li data-id="116" data-pid="111" data-url="form.html" data-tabid="form" data-faicon="list">
-                                    表单综合演示1
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
             <button type="button" class="btn-default bjui-hnav-more-right" title="导航菜单右移"><i

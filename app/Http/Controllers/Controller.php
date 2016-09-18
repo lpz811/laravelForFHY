@@ -13,25 +13,6 @@ abstract class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-   /* public  function searchInfo($request,$model)
-    {
-        try {
-            $requests = $request->all();
-
-            $orderField = substr($requests['orderField'], 0, 1) == '$' ? 'id' : $requests['orderField'];
-
-            $orderDirection = substr($requests['orderDirection'], 0, 1) == '$' ? 'asc' : $requests['orderDirection'];
-            $data['info'] = $model::multiwhere($requests['search'], 'like')->orderBy($orderField, $orderDirection)->skip(($requests['pageCurrent'] - 1) * $requests['pageSize'])->take($requests['pageSize'])->get();
-            $data['pageSize'] = $requests['pageSize'];
-            $data['pageCurrent'] = $requests['pageCurrent'];
-            $data['total'] = $model::multiwhere($requests['search'], 'like')->count();
-            return $data;
-        } catch (\Exception $e) {
-              return $this->responseJson($e->getMessage(),300);
-        }
-    }*/
-
-
     /**
      * JSON 响应
      *
@@ -40,9 +21,10 @@ abstract class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function responseJson($data, $code = 200)
+    public function responseJson($info)
     {
-        return response()->json($data, $code);
+         // json_decode('佳佳',200);
+        die(json_decode($info));
     }
 
 

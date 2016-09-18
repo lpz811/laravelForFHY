@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Traits\Model;
 
-use Illuminate\Database\Eloquent\Model;
-
-class BaseModel extends Model
+trait ModelsExtendsTrait
 {
-    // 多where
-    public function scopeMultiwhere($query, $arr,$like='=')
+// 多where
+    public function  scopeMultiwhere($query, $arr,$like='=')
     {
         if (!is_array($arr)) {
             return $query;

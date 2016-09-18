@@ -3,6 +3,8 @@
 namespace App\Models\Backend;
 
 use App\Models\BaseModel;
+use App\Traits\Model\ModelsExtendsTrait;
+use App\Traits\Model\MultiWhereTrait;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -11,11 +13,11 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class Admin extends BaseModel implements AuthenticatableContract,
+class Admin extends Model implements AuthenticatableContract,
     AuthorizableContract,
     CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use ModelsExtendsTrait,Authenticatable, Authorizable, CanResetPassword;
 
     /**
      * The database table used by the model.

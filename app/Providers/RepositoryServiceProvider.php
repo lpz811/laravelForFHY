@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Repositories\AdminRepository;
+use App\Repositories\RoleRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -26,6 +27,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerAdminRepository();
+        $this->registerRoleRepository();
     }
 
     public  function registerAdminRepository(){
@@ -34,6 +36,14 @@ class RepositoryServiceProvider extends ServiceProvider
             $admin=new $model;
             $validator=$app['validator'];
             return new AdminRepository($admin,$validator);
+        });
+    }
+    public  function registerRoleRepository(){
+        $this->app->singleton('rolerepository',function($app){
+            $model=config('repository.models.role');
+            $admin=new $model;
+            $validator=$app['validator'];
+            return new RoleRepository($admin,$validator);
         });
     }
 

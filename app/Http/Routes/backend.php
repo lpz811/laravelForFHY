@@ -13,10 +13,7 @@ Route::post("admin/search", [
 ]);
 
 
-
-
-
-Route::get('admin/profile/{id}', [
+/*Route::get('admin/profile/{id}', [
     'as'   => 'backend.admin.profile',
     'uses' => 'AdminController@profile',
 ]);
@@ -27,4 +24,21 @@ Route::post('admin/update-profile', [
 Route::post('admin/upload-avatar', [
     'as'   => 'backend.user.upload-avatar',
     'uses' => 'AdminController@uploadAvatar',
+]);*/
+
+
+
+/* 角色管理模块 */
+Route::resource("role", 'RoleController');
+Route::get('role/permission/{id}', [
+    'as'   => 'backend.role.permission',
+    'uses' => 'RoleController@permission',
+]);
+Route::post('role/associatePermission', [
+    'as'   => 'backend.role.associate.permission',
+    'uses' => 'RoleController@associatePermission',
+]);
+Route::post("role/search", [
+    'as'=>'backend.role.search',
+    'uses'=>'RoleController@search'
 ]);
