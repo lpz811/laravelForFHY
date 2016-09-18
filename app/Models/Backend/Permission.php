@@ -4,7 +4,7 @@ namespace App\Models\Backend;
 
 use App\Traits\Model\ActionBelongsToManyTrait;
 use App\Traits\Model\MenuBelongsToManyTrait;
-use Zizaco\Entrust\Middleware\EntrustPermission;
+use Zizaco\Entrust\EntrustPermission;
 
 class Permission extends EntrustPermission
 {

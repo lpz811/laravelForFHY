@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActionPermissionsTable extends Migration
+class CreateActionPermissionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,6 @@ class CreateActionPermissionsTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('permission_id')->references('id')->on('permissions')
                 ->onUpdate('cascade')->onDelete('cascade');
-
             $table->primary(['permission_id', 'action_id']);
         });
     }
@@ -32,6 +31,6 @@ class CreateActionPermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('action_permissions');
+        Schema::drop('action_permission');
     }
 }

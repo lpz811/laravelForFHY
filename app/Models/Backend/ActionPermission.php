@@ -18,5 +18,5 @@ class ActionPermission extends Model
      *
      * @var string
      */
-    protected $table = "action_permissions";
+    protected $table = "action_permission";
 }
