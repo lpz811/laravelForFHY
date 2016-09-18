@@ -23,8 +23,8 @@ abstract class Controller extends BaseController
      */
     public function responseJson($info)
     {
-         // json_decode('佳佳',200);
-        die(json_decode($info));
+
+        return response()->json($info);
     }
 
 
