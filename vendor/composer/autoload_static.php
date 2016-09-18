@@ -25,6 +25,10 @@ class ComposerStaticInitf5caf9df7a8b09ab04a65dfdd6b56327
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'Z' => 
+        array (
+            'Zizaco\\Entrust\\' => 15,
+        ),
         'X' => 
         array (
             'XdgBaseDir\\' => 11,
@@ -105,6 +109,10 @@ class ComposerStaticInitf5caf9df7a8b09ab04a65dfdd6b56327
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+        ),
+        'Zizaco\\Entrust\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zizaco/entrust/src/Entrust',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -334,10 +342,15 @@ class ComposerStaticInitf5caf9df7a8b09ab04a65dfdd6b56327
     );
 
     public static $classMap = array (
+        'CreateActionPermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_18_081733_create_action_permission_table.php',
+        'CreateActionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_18_081530_create_actions_table.php',
         'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_09_065517_create_admins_table.php',
+        'CreateMenuPermissionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_18_082441_create_menu_permissions_table.php',
+        'CreateMenusTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_18_080114_create_menus_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
+        'EntrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2016_09_18_074344_entrust_setup_tables.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
@@ -844,6 +857,7 @@ class ComposerStaticInitf5caf9df7a8b09ab04a65dfdd6b56327
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'Zizaco\\Entrust\\MigrationCommand' => __DIR__ . '/..' . '/zizaco/entrust/src/commands/MigrationCommand.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

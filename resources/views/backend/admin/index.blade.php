@@ -78,8 +78,6 @@
             </select>
         </div>
         <span>&nbsp;条，共  {{ $data['total'] }}  条</span>
-
-
     </div>
     <div class="pagination-box" data-toggle="pagination" data-total="{{ $data['total']}}" data-page-size="30" data-page-current="{{ $data['pageCurrent'] }}">
     </div>

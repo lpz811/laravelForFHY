@@ -211,7 +211,6 @@
                     </ul>
                 </li>
                 <li></li>
-               {{-- <li><a href="index.html" title="切换为列表导航(窄版)" style="background-color:#ff7b61;">列表导航栏(窄版)</a></li>--}}
                 <li class="dropdown"><a href="#" class="dropdown-toggle theme blue" data-toggle="dropdown" title="切换皮肤"><i
                                 class="fa fa-tree"></i></a>
                     <ul class="dropdown-menu" role="menu" id="bjui-themes">
