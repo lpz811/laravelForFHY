@@ -33,4 +33,9 @@ abstract class CommonRepository
     {
 
     }
+    public function ajaxReturn($data){
+        header('Content-Type:application/json; charset=utf-8');
+        exit(json_encode($data));
+    }
+
 }

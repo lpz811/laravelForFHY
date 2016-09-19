@@ -6,15 +6,14 @@ trait BaseRepositoryTrait
 {
     public function validate(array $data, $rules = null, $custom = false)
     {
-        if( ! $custom){
+        if (!$custom) {
             $rules = $this->rules($rules);
         }
 
         return $this->validator->make($data, $rules);
     }
-   /* public  function paginate(){
-        dd('d');
-    }*/
+
+
 
     public function create(array $input)
     {
@@ -23,8 +22,10 @@ trait BaseRepositoryTrait
         return $model::create($input);
     }
 
-    public function searchInfo($request){
-            $model=$this->model;
+    public function searchInfo($request)
+    {
+        try {
+            $model = $this->model;
             $requests = $request->all();
             $orderField = substr($requests['orderField'], 0, 1) == '$' ? 'id' : $requests['orderField'];
             $orderDirection = substr($requests['orderDirection'], 0, 1) == '$' ? 'asc' : $requests['orderDirection'];
@@ -33,6 +34,9 @@ trait BaseRepositoryTrait
             $data['pageCurrent'] = $requests['pageCurrent'];
             $data['total'] = $model::multiwhere($requests['search'], 'like')->count();
             return $data;
+        } catch (\Exception $e) {
+            $this->ajaxReturn(['message' => $e->getMessage(), 'statusCode' => 300]);
+        }
     }
 
     public function saveById($id, array $data)
@@ -71,7 +75,7 @@ trait BaseRepositoryTrait
     {
         $model = $this->model;
 
-        if(property_exists($model, 'order')){
+        if (property_exists($model, 'order')) {
             return $model::orderBy($model::$order, $model::$sort)->get($model::$index);
         }
 
@@ -85,21 +89,7 @@ trait BaseRepositoryTrait
         return $model::where('id', '>=', 1)->count();
     }
 
-   /* public function scopeMultiwhere($query, $arr,$like='=')
-    {
-        if (!is_array($arr)) {
-            return $query;
-        }
-        foreach ($arr as $key => $value) {
-            if(!empty($value)){
-                if($like!='='){
-                    $value='%'.$value.'%';
-                }
-                $query = $query->where($key,$like,$value);
-            }
-        }
-        return $query;
-    }*/
+
     public function paginate($limit, array $columns = ['*'])
     {
         $model = $this->model;
@@ -111,34 +101,34 @@ trait BaseRepositoryTrait
     {
         $model = $this->model;
         try {
-            if( ! empty($where)){
+            if (!empty($where)) {
                 foreach ($where as $field => $value) {
-                    if(is_array($value)){
+                    if (is_array($value)) {
 
-                        if(count($value) == 3){
+                        if (count($value) == 3) {
                             list($field, $condition, $val) = $value;
                         } else {
                             list($condition, $val) = $value;
                         }
 
-                        if(in_array($condition, ['=', '>', '<', '>=', '<=', '<>', '!=', 'like'])){
+                        if (in_array($condition, ['=', '>', '<', '>=', '<=', '<>', '!=', 'like'])) {
                             $model = $model->where($field, $condition, $val);
-                        } elseif($condition == 'null') {
+                        } elseif ($condition == 'null') {
                             $condition = 'where' . ucfirst($condition);
                             $model = $model->$condition($field);
-                        } elseif($condition == 'not null') {
+                        } elseif ($condition == 'not null') {
                             $map = explode(' ', $condition);
                             $condition = 'where' . ucfirst($map[0]) . ucfirst($map[1]);
                             $model = $model->$condition($field);
-                        } elseif(in_array($condition, ['between', 'in'])) {
+                        } elseif (in_array($condition, ['between', 'in'])) {
                             $condition = 'where' . ucfirst($condition);
                             $model = $model->$condition($field, $val);
-                        } elseif(in_array($condition, ['not between', 'not in'])) {
+                        } elseif (in_array($condition, ['not between', 'not in'])) {
                             $map = explode(' ', $condition);
                             $condition = 'where' . ucfirst($map[0]) . ucfirst($map[1]);
                             $model = $model->$condition($field, $value);
                         } else {
-                            throw new Exception("请输入正确的查询条件");
+                            $this->ajaxReturn(['message'=>'请输入正确的查询条件！','statusCode'=>300]);
                         }
                     } else {
                         $model = $model->where($field, '=', $value);
@@ -147,10 +137,8 @@ trait BaseRepositoryTrait
             }
 
             return $model->update($data);
-        }
-        catch (\Exception $e) {
-            dump($e->getMessage());
-            exit;
+        } catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
     }
 
@@ -158,34 +146,34 @@ trait BaseRepositoryTrait
     {
         $model = $this->model;
         try {
-            if( ! empty($where)){
+            if (!empty($where)) {
                 foreach ($where as $field => $value) {
-                    if(is_array($value)){
+                    if (is_array($value)) {
 
-                        if(count($value) == 3){
+                        if (count($value) == 3) {
                             list($field, $condition, $val) = $value;
                         } else {
                             list($condition, $val) = $value;
                         }
 
-                        if(in_array($condition, ['=', '>', '<', '>=', '<=', '<>', '!=', 'like'])){
+                        if (in_array($condition, ['=', '>', '<', '>=', '<=', '<>', '!=', 'like'])) {
                             $model = $model->where($field, $condition, $val);
-                        } elseif($condition == 'null') {
+                        } elseif ($condition == 'null') {
                             $condition = 'where' . ucfirst($condition);
                             $model = $model->$condition($field);
-                        } elseif($condition == 'not null') {
+                        } elseif ($condition == 'not null') {
                             $map = explode(' ', $condition);
                             $condition = 'where' . ucfirst($map[0]) . ucfirst($map[1]);
                             $model = $model->$condition($field);
-                        } elseif(in_array($condition, ['between', 'in'])) {
+                        } elseif (in_array($condition, ['between', 'in'])) {
                             $condition = 'where' . ucfirst($condition);
                             $model = $model->$condition($field, $val);
-                        } elseif(in_array($condition, ['not between', 'not in'])) {
+                        } elseif (in_array($condition, ['not between', 'not in'])) {
                             $map = explode(' ', $condition);
                             $condition = 'where' . ucfirst($map[0]) . ucfirst($map[1]);
                             $model = $model->$condition($field, $value);
                         } else {
-                            throw new Exception("请输入正确的查询条件");
+                            $this->ajaxReturn(['message'=>'请输入正确的查询条件！','statusCode'=>300]);
                         }
                     } else {
                         $model = $model->where($field, '=', $value);
@@ -194,10 +182,8 @@ trait BaseRepositoryTrait
             }
 
             return $model->first($columns);
-        }
-        catch (\Exception $e) {
-            dump($e->getMessage());
-            exit;
+        } catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
     }
 
@@ -205,34 +191,34 @@ trait BaseRepositoryTrait
     {
         $model = $this->model;
         try {
-            if( ! empty($where)){
+            if (!empty($where)) {
                 foreach ($where as $field => $value) {
-                    if(is_array($value)){
+                    if (is_array($value)) {
 
-                        if(count($value) == 3){
+                        if (count($value) == 3) {
                             list($field, $condition, $val) = $value;
                         } else {
                             list($condition, $val) = $value;
                         }
 
-                        if(in_array($condition, ['=', '>', '<', '>=', '<=', '<>', '!=', 'like'])){
+                        if (in_array($condition, ['=', '>', '<', '>=', '<=', '<>', '!=', 'like'])) {
                             $model = $model->where($field, $condition, $val);
-                        } elseif($condition == 'null') {
+                        } elseif ($condition == 'null') {
                             $condition = 'where' . ucfirst($condition);
                             $model = $model->$condition($field);
-                        } elseif($condition == 'not null') {
+                        } elseif ($condition == 'not null') {
                             $map = explode(' ', $condition);
                             $condition = 'where' . ucfirst($map[0]) . ucfirst($map[1]);
                             $model = $model->$condition($field);
-                        } elseif(in_array($condition, ['between', 'in'])) {
+                        } elseif (in_array($condition, ['between', 'in'])) {
                             $condition = 'where' . ucfirst($condition);
                             $model = $model->$condition($field, $val);
-                        } elseif(in_array($condition, ['not between', 'not in'])) {
+                        } elseif (in_array($condition, ['not between', 'not in'])) {
                             $map = explode(' ', $condition);
                             $condition = 'where' . ucfirst($map[0]) . ucfirst($map[1]);
                             $model = $model->$condition($field, $value);
                         } else {
-                            throw new Exception("请输入正确的查询条件");
+                            $this->ajaxReturn(['message'=>'请输入正确的查询条件！','statusCode'=>300]);
                         }
                     } else {
                         $model = $model->where($field, '=', $value);
@@ -241,10 +227,8 @@ trait BaseRepositoryTrait
             }
 
             return $model->get($columns);
-        }
-        catch (\Exception $e) {
-            dump($e->getMessage());
-            exit;
+        } catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
     }
 
@@ -266,34 +250,35 @@ trait BaseRepositoryTrait
     {
         $model = $this->model;
         try {
-            if( ! empty($where)){
+            if (!empty($where)) {
                 foreach ($where as $field => $value) {
-                    if(is_array($value)){
+                    if (is_array($value)) {
 
-                        if(count($value) == 3){
+                        if (count($value) == 3) {
                             list($field, $condition, $val) = $value;
                         } else {
                             list($condition, $val) = $value;
                         }
 
-                        if(in_array($condition, ['=', '>', '<', '>=', '<=', '<>', '!=', 'like'])){
+                        if (in_array($condition, ['=', '>', '<', '>=', '<=', '<>', '!=', 'like'])) {
                             $model = $model->where($field, $condition, $val);
-                        } elseif($condition == 'null') {
+                        } elseif ($condition == 'null') {
                             $condition = 'where' . ucfirst($condition);
                             $model = $model->$condition($field);
-                        } elseif($condition == 'not null') {
+                        } elseif ($condition == 'not null') {
                             $map = explode(' ', $condition);
                             $condition = 'where' . ucfirst($map[0]) . ucfirst($map[1]);
                             $model = $model->$condition($field);
-                        } elseif(in_array($condition, ['between', 'in'])) {
+                        } elseif (in_array($condition, ['between', 'in'])) {
                             $condition = 'where' . ucfirst($condition);
                             $model = $model->$condition($field, $val);
-                        } elseif(in_array($condition, ['not between', 'not in'])) {
+                        } elseif (in_array($condition, ['not between', 'not in'])) {
                             $map = explode(' ', $condition);
                             $condition = 'where' . ucfirst($map[0]) . ucfirst($map[1]);
                             $model = $model->$condition($field, $value);
                         } else {
-                            throw new Exception("请输入正确的查询条件");
+                           /* throw new Exception("请输入正确的查询条件");*/
+                            $this->ajaxReturn(['message'=>'请输入正确的查询条件！','statusCode'=>300]);
                         }
                     } else {
                         $model = $model->where($field, '=', $value);
@@ -302,10 +287,10 @@ trait BaseRepositoryTrait
             }
 
             return $model->paginate($limit, $columns);
-        }
-        catch (\Exception $e) {
-            dump($e->getMessage());
-            exit;
+        } catch (\Exception $e) {
+           /* dump($e->getMessage());
+            exit;*/
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
     }
 

@@ -41,7 +41,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.role.create');
     }
 
     /**
@@ -52,7 +52,15 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $data=$request->all();
+            if (RoleRepository::create($data['data'])) {
+                $this->ajaxReturn(['message'=>'角色添加成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'roleslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
     }
 
     /**
@@ -75,7 +83,6 @@ class RoleController extends Controller
     public function edit($id)
     {
         $data = RoleRepository::find($id)->toArray();
-
         return view('backend.role.edit', compact('data'));
     }
 
@@ -89,37 +96,18 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
 
-
-
-
-        $info=array();
-        $role = RoleRepository::find($id);
-            if($role->update($request->input('data'))){
-
-                $info['message']='编辑角色成功';
-                $info['statusCode']=200;
-                $info['closeCurrent']=true;
-                $info['tabid']='roleslist';
-
-
-                return ['message'=>$info['message'],'statusCode'=>$info['statusCode'],'closeCurrent'=>true];
-            }else{
-
-               /* $info['content']='编辑角色失败';
-                $info['status']=300;
-                 //return ['content'=>'编辑角色失败','status'=>300];*/
-
-                $info['message']='编辑角色失败';
-                $info['statusCode']=300;
-
+        try{
+            $data=$request->input('data');
+            if($post = RoleRepository::firstByWhere([['name','=',$data['name']]])){
+               $this->ajaxReturn(['message'=>'角色标识已存在！','statusCode'=>300]);
             }
-
-        $this->ajaxReturn($info);
-
-
-
-
-
+            $role = RoleRepository::find($id);
+            if($role->update($data)){
+               $this->ajaxReturn(['message'=>'编辑角色成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'roleslist']);
+            }
+        }catch (\Exception $e){
+            $this->ajaxReturn(['message'=>'编辑角色失败','statusCode'=>300]);
+        }
     }
 
 
