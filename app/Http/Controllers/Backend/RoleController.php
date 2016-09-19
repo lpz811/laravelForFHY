@@ -89,24 +89,39 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
 
-        $role = RoleRepository::find($id);
+
+
 
         $info=array();
+        $role = RoleRepository::find($id);
             if($role->update($request->input('data'))){
+
                 $info['message']='编辑角色成功';
                 $info['statusCode']=200;
+                $info['closeCurrent']=true;
+                $info['tabid']='roleslist';
 
+
+                return ['message'=>$info['message'],'statusCode'=>$info['statusCode'],'closeCurrent'=>true];
             }else{
+
+               /* $info['content']='编辑角色失败';
+                $info['status']=300;
+                 //return ['content'=>'编辑角色失败','status'=>300];*/
+
                 $info['message']='编辑角色失败';
                 $info['statusCode']=300;
 
             }
-            echo json_decode($info);
+
+        $this->ajaxReturn($info);
 
 
-        return $this->responseJson($info);
+
+
 
     }
+
 
     /**
      * Remove the specified resource from storage.

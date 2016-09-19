@@ -30,6 +30,12 @@ Route::post('admin/upload-avatar', [
 
 /* 角色管理模块 */
 Route::resource("role", 'RoleController');
+Route::post("role/search", [
+    'as'=>'backend.role.search',
+    'uses'=>'RoleController@search'
+]);
+
+
 Route::get('role/permission/{id}', [
     'as'   => 'backend.role.permission',
     'uses' => 'RoleController@permission',
@@ -38,7 +44,4 @@ Route::post('role/associatePermission', [
     'as'   => 'backend.role.associate.permission',
     'uses' => 'RoleController@associatePermission',
 ]);
-Route::post("role/search", [
-    'as'=>'backend.role.search',
-    'uses'=>'RoleController@search'
-]);
+

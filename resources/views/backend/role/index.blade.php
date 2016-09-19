@@ -7,7 +7,7 @@
             <label>角色名称：</label>
             <input type="text" id="customNo" value="{{isset($search['display_name'])?$search['display_name']:''}}" name="search[display_name]"   class="form-control" size="15">
             <label>角色描述：</label>
-            <input type="text" id="customNo" value="{{isset($search['description'])?$search['description']:''}}" name="search[description]"    class="form-control" size="20">&nbsp;
+            <input type="text" id="customNo" value="{{isset($search['description'])?$search['description']:''}}" name="search[description]"    class="form-control" size="15">&nbsp;
             <button type="button" class="showMoreSearch" data-toggle="moresearch" data-name="custom2"><i
                         class="fa fa-angle-double-down"></i></button>
             <button type="submit" class="btn-default" data-icon="search">模糊查询</button>
@@ -43,7 +43,6 @@
 
         <tbody>
         @foreach($data['info'] as $item)
-
             <tr data-id="{{$item->id}}">
                 <td><input type="checkbox" name="ids" data-toggle="icheck" value="{{$item->id}}"></td>
                 <td>{{$item->id}}</td>

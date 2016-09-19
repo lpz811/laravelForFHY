@@ -85,7 +85,7 @@
                     orderField: 'orderField',
                     orderDirection: 'orderDirection'
                 }, //[可选]分页参数
-                alertMsg: {displayPosition: 'topcenter', displayMode: 'slide', alertTimeout: 100}, //[可选]信息提示的显示位置，显隐方式，及[info/correct]方式时自动关闭延时(毫秒)
+                alertMsg: {displayPosition: 'topcenter', displayMode: 'slide', alertTimeout: 2000}, //[可选]信息提示的显示位置，显隐方式，及[info/correct]方式时自动关闭延时(毫秒)
                 keys: {statusCode: 'statusCode', message: 'message'}, //[可选]
                 ui: {
                     windowWidth: 0,    //框架可视宽度，0=100%宽，> 600为则居中显示

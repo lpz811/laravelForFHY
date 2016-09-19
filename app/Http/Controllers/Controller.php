@@ -21,10 +21,18 @@ abstract class Controller extends BaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function responseJson($info)
+    public function responseJson($data, $code = 200)
     {
+        return response()->json($data, $code);
+    }
 
-        return response()->json($info);
+    protected function ajaxReturn($data) {
+        header('Content-Type:application/json; charset=utf-8');
+        exit(json_encode($data));
+    }
+    public function successBackTo($message)
+    {
+        return redirect()->back()->withSuccess($message);
     }
 
 
