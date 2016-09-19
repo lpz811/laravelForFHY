@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Facades\AdminRepository;
+use App\Facades\RoleRepository;
 use App\Models\Backend\Admin;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Requests\Form\AdminCreateForm;
 class AdminController extends Controller
 {
     /**
@@ -39,7 +40,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.create');
+        $roles = RoleRepository::all();
+        return view('backend.admin.create',compact('roles'));
     }
 
     /**
@@ -48,9 +50,45 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminCreateForm $request)
     {
-        //
+
+        $data = [
+            'name'     => $request['name'],
+            'email'    => $request['email'],
+            'password' => bcrypt($request['password']),
+        ];
+        try {
+            $roles = RoleRepository::getByWhereIn('id', $request['role_id']);
+
+            if(empty($roles->toArray())){
+                $this->ajaxReturn(['message'=>'1111','statusCode'=>300]);
+            }
+
+            $user = AdminRepository::create($data);
+            if($user){
+
+                foreach ($roles as $role) {
+                    $user->attachRole($role);
+                }
+                $this->ajaxReturn(['message'=>'用户添加成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'adminslist']);
+
+            }
+
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>'22','statusCode'=>300]);
+        }
+        /*$validator = Validator::make($request->all(), [
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('post/create')
+                ->withErrors($validator)
+                ->withInput();
+        }*/
     }
 
     /**
