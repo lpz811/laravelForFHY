@@ -7,7 +7,7 @@
 
             <tr>
                 <th>角色标识:</th>
-                <td><input type="text" class="input-nm" data-rule="标识:required"   name="data[name]" id="name" value="{{$data['name']}}" placeholder="角色标识" size="20"> 不能与已有的标识重复</td>
+                <td><input type="text" class="input-nm" data-rule="标识:required" data-tip="不能与已有的标识重复"  name="data[name]" id="name" value="{{$data['name']}}" placeholder="角色标识"  size="20"> </td>
             </tr>
             <tr>
                 <th>角色名称:</th>
