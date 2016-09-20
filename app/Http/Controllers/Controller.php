@@ -35,6 +35,12 @@ abstract class Controller extends BaseController
         return redirect()->back()->withSuccess($message);
     }
 
-
+    protected function checkForm($requestForm,$request){
+        $validator = \Validator::make($request->all(),$requestForm->rules(),$requestForm->messages());
+        $errors=$validator->errors();
+        if ($validator->fails()) {
+            $this->ajaxReturn(['message'=> multil_array_to_string($errors->getMessages()),'statusCode'=>300]);
+        }
+    }
 
 }

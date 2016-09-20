@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Facades\AdminRepository;
 use App\Facades\RoleRepository;
-use App\Models\Backend\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AdminCreateForm;
@@ -27,7 +26,6 @@ class AdminController extends Controller
 
     public function search(Request $request)
     {
-
         $data=AdminRepository::searchInfo($request);
         $search=$request->input('search');
         return view("backend.admin.index",compact('data','search'));

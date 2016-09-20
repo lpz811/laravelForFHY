@@ -2,8 +2,7 @@
 
 namespace App\Models\Backend;
 
-use App\Traits\Model\ModelsExtendsTrait;
-use App\Traits\Model\MultiWhereTrait;
+use App\Traits\Model\Backend\ModelsExtendsTrait;
 use Zizaco\Entrust\EntrustRole;
 
 class Role extends EntrustRole

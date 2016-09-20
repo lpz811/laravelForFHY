@@ -3,11 +3,11 @@
         @include('backend.common.formHeader')
         <div class="bjui-searchBar">
             <label>姓名：</label>
-            <input type="text" id="customNo" value="{{isset($search['name'])?$search['name']:''}}" name="search[name]"   class="form-control" size="10">&nbsp;
+            <input type="text" id="search_name" value="{{isset($search['name'])?$search['name']:''}}" name="search[name]"   class="form-control" size="10">&nbsp;
             <label>邮箱：</label>
-            <input type="text" id="customNo" value="{{isset($search['email'])?$search['email']:''}}" name="search[email]"    class="form-control" size="10">&nbsp;
+            <input type="text" id="search_email" value="{{isset($search['email'])?$search['email']:''}}" name="search[email]"  data-rule="email"  class="form-control" size="10">&nbsp;
 
-            <button type="submit" class="btn-default" data-icon="search">模糊查询</button>
+            <button type="submit" class="btn-default" onclick="checkSearch();" data-icon="search">模糊查询</button>
             &nbsp;
             <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('adminslist', true);"
                data-icon="undo">清空查询</a>
@@ -63,3 +63,14 @@
 </div>
 
 @include('backend.common.formFooter')
+<script type="text/javascript">
+    function checkSearch() {
+         var searName = $('#search_name').val();
+         var searEmail = $('#search_email').val();
+        if (searName==''&&searEmail=='') {
+            $(this).alertmsg('error', '用户名或邮箱不能为空')
+            return false;
+        }
+        return true;
+    }
+</script>

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Facades\RoleRepository;
+use App\Http\Requests\Backend\RoleCreateForm;
+use App\Http\Requests\Backend\RoleForm;
+use App\Http\Requests\Backend\RoleUpdateForm;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
@@ -54,9 +56,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        $roleCreateForm =new RoleCreateForm();
+        $this->checkForm($roleCreateForm,$request);
         try {
-            $data=$request->all();
-            if (RoleRepository::create($data['data'])) {
+            if (RoleRepository::create($request->all())) {
                 $this->ajaxReturn(['message'=>'角色添加成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'roleslist']);
             }
         }
@@ -97,18 +100,20 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $roleUpdateForm =new RoleUpdateForm();
+        $this->checkForm($roleUpdateForm,$request);
         try{
-            $data=$request->input('data');
-            if($post = RoleRepository::firstByWhere([['name','=',$data['name']]])){
-               $this->ajaxReturn(['message'=>'角色标识已存在！','statusCode'=>300]);
+
+            if($post = RoleRepository::firstByWhere([['name','=',$request->input('name')]])->count()){
+                dd($post);
+                $this->ajaxReturn(['message'=>'角色标识已存在！','statusCode'=>300]);
             }
             $role = RoleRepository::find($id);
-            if($role->update($data)){
-               $this->ajaxReturn(['message'=>'编辑角色成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'roleslist']);
+            if($role->update($request->all())){
+               $this->ajaxReturn(['message'=>'角色编辑成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'roleslist']);
             }
         }catch (\Exception $e){
-            $this->ajaxReturn(['message'=>'编辑角色失败','statusCode'=>300]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
     }
 

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\AdminRepository;
-use App\Repositories\RoleRepository;
+use App\Repositories\Backend\AdminRepository;
+use App\Repositories\Backend\RoleRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -15,7 +15,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         $configuration=realpath(__DIR__.'/../../Config/repository.php');
+         $configuration=realpath(__DIR__ . '/../../Config/repository.php');
          $this->mergeConfigFrom($configuration,'repository');
     }
 

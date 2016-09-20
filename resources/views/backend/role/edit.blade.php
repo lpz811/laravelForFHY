@@ -7,15 +7,15 @@
 
             <tr>
                 <th>角色标识:</th>
-                <td><input type="text" class="input-nm" data-rule="标识:required" data-tip="不能与已有的标识重复"  name="data[name]" id="name" value="{{$data['name']}}" placeholder="角色标识"  size="20"> </td>
+                <td><input type="text" class="input-nm" data-rule="标识:required" data-tip="不能与已有的标识重复"  name="name" id="name" value="{{$data['name']}}" placeholder="角色标识"  size="20"> </td>
             </tr>
             <tr>
                 <th>角色名称:</th>
-                <td><input type="text" class="input-nm" data-rule="名称:required"   name="data[display_name]" id="name" value="{{$data['display_name']}}" placeholder="角色名称" size="20"></td>
+                <td><input type="text" class="input-nm" data-rule="名称:required"   name="display_name" id="name" value="{{$data['display_name']}}" placeholder="角色名称" size="20"></td>
             </tr>
             <tr>
                 <th>角色描述:</th>
-                <td><input type="text" class="input-nm" data-rule="描述:required"   name="data[description]" id="name" value="{{$data['description']}}" placeholder="角色描述" size="30"></td>
+                <td><input type="text" class="input-nm" data-rule="描述:required"   name="description" id="name" value="{{$data['description']}}" placeholder="角色描述" size="30"></td>
             </tr>
         </table>
     </form>

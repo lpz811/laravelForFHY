@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits\Model;
+namespace App\Traits\Model\Backend;
 
 trait MenuBelongsToManyTrait
 {

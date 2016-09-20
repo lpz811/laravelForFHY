@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories;
+namespace App\Repositories\Backend;
 
 use App\Traits\Repository\BaseRepositoryTrait;
 use Illuminate\Database\Eloquent\Model;

@@ -2,8 +2,8 @@
 
 namespace App\Models\Backend;
 
-use App\Traits\Model\ActionBelongsToManyTrait;
-use App\Traits\Model\MenuBelongsToManyTrait;
+use App\Traits\Model\Backend\ActionBelongsToManyTrait;
+use App\Traits\Model\Backend\MenuBelongsToManyTrait;
 use Zizaco\Entrust\EntrustPermission;
 
 class Permission extends EntrustPermission

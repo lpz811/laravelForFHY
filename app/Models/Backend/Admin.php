@@ -2,9 +2,7 @@
 
 namespace App\Models\Backend;
 
-use App\Models\BaseModel;
-use App\Traits\Model\ModelsExtendsTrait;
-use App\Traits\Model\MultiWhereTrait;
+use App\Traits\Model\Backend\ModelsExtendsTrait;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
