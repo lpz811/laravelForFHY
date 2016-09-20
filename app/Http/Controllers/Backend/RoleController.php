@@ -17,9 +17,11 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $pageSize = config('repository.pageSize');
         $data['info'] = RoleRepository::paginate(config('repository.pageSize'));
         $data['total'] = $data['info']->total();
         $data['pageCurrent'] = 1;
+        $data['pageSize'] = $pageSize;
         return view('backend.role.index', compact("data"));
     }
 
