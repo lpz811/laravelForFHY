@@ -21,13 +21,16 @@ class AdminController extends Controller
     {
         $pageSize = config('repository.pageSize');
         $data['info'] = AdminRepository::paginate($pageSize);
+
         $data['total'] = $data['info']->total();
-        $data['pageCurrent'] = 1;
+        $data['pageCurrent']=1;
+        $data['pageSize'] = $pageSize;
         return view("backend.admin.index", compact('data'));
     }
 
     public function search(Request $request)
     {
+
         $data=AdminRepository::searchInfo($request);
         $search=$request->input('search');
         return view("backend.admin.index",compact('data','search'));
@@ -50,9 +53,14 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AdminCreateForm $request)
+    public function store(Request $request)
     {
-
+        $adminCreateForm =new AdminCreateForm();
+        $validator = \Validator::make($request->all(),$adminCreateForm->rules(),$adminCreateForm->messages());
+        $errors=$validator->errors();
+        if ($validator->fails()) {
+            $this->ajaxReturn(['message'=> multil_array_to_string($errors->getMessages()),'statusCode'=>300]);
+        }
         $data = [
             'name'     => $request['name'],
             'email'    => $request['email'],
@@ -62,33 +70,20 @@ class AdminController extends Controller
             $roles = RoleRepository::getByWhereIn('id', $request['role_id']);
 
             if(empty($roles->toArray())){
-                $this->ajaxReturn(['message'=>'1111','statusCode'=>300]);
+                $this->ajaxReturn(['message'=>'用户角色已不存在,请重新打开此页面选择其他用户角色','statusCode'=>300]);
             }
-
-            $user = AdminRepository::create($data);
-            if($user){
-
+            $admin = AdminRepository::create($data);
+            if($admin){
                 foreach ($roles as $role) {
-                    $user->attachRole($role);
+                    $admin->attachRole($role);
                 }
                 $this->ajaxReturn(['message'=>'用户添加成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'adminslist']);
-
             }
-
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>'22','statusCode'=>300]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
-        /*$validator = Validator::make($request->all(), [
-            'title' => 'required|unique:posts|max:255',
-            'body' => 'required',
-        ]);
 
-        if ($validator->fails()) {
-            return redirect('post/create')
-                ->withErrors($validator)
-                ->withInput();
-        }*/
     }
 
     /**

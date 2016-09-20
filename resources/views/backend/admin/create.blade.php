@@ -5,7 +5,7 @@
         <table class="table table-bordered table-hover  table-striped table-top table-condensed"   >
 
             <tr>
-                <th><label class="x85">用户身份：</label></th>
+                <th><label class="x85">用户角色：</label></th>
                 <td>
                     <select name="role_id[]" data-rule="required" data-width="200" data-size="5"  multiple data-max-options="2" data-toggle="selectpicker">
                         <option value="" >请选择角色</option>

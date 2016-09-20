@@ -24,8 +24,8 @@ class AdminCreateForm extends Request
     public function rules()
     {
         return [
-            'name'                  => 'required|unique:users,name,' . $this->get('id'),
-            'email'                 => 'required|unique:users,email,' . $this->get('id'),
+            'name'                  => 'required|unique:admins,name,' . $this->get('id'),
+            'email'                 => 'required|unique:admins,email,' . $this->get('id'),
             'password'              => 'required|confirmed',
             'password_confirmation' => 'required',
             'role_id'               => 'required',

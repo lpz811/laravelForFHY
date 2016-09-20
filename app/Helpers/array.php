@@ -205,3 +205,25 @@ if( ! function_exists('list_to_tree')){
 }
 
 
+if( ! function_exists('multil_array_to_string')) {
+    /**
+     * 将多维数组转化为字符串
+     * @param $array
+     * @return array
+     */
+
+    function multil_array_to_string($array)
+    {
+        static $result_array = array();
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                multil_array_to_string($value);
+            } else{
+                $result_array[$key] = $value;
+            }
+        }
+        return $result_array;
+    }
+}
+
+

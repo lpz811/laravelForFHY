@@ -11,6 +11,11 @@
         </div>
         <span>&nbsp;条，共  {{ $data['total'] }}  条</span>
     </div>
-    <div class="pagination-box" data-toggle="pagination" data-total="{{ $data['total']}}" data-page-size="30" data-page-current="{{ $data['pageCurrent'] }}">
-    </div>
+       @if($data['pageCurrent']==1)
+            <div class="pagination-box" data-toggle="pagination" data-total="{{ $data['total']}}" data-page-size="{{ $data['pageSize']}}" data-page-current="1">
+            </div>
+        @else
+             <div class="pagination-box" data-toggle="pagination" data-total="{{ $data['total']}}" data-page-size="{{ $data['pageSize']}}" data-page-current="{{ $data['pageCurrent'] }}"></div>
+        @endif
+
 </div>

@@ -6,8 +6,7 @@
             <input type="text" id="customNo" value="{{isset($search['name'])?$search['name']:''}}" name="search[name]"   class="form-control" size="10">&nbsp;
             <label>邮箱：</label>
             <input type="text" id="customNo" value="{{isset($search['email'])?$search['email']:''}}" name="search[email]"    class="form-control" size="10">&nbsp;
-            <button type="button" class="showMoreSearch" data-toggle="moresearch" data-name="custom2"><i
-                        class="fa fa-angle-double-down"></i></button>
+
             <button type="submit" class="btn-default" data-icon="search">模糊查询</button>
             &nbsp;
             <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('adminslist', true);"
@@ -43,7 +42,6 @@
 
         <tbody>
                 @foreach($data['info'] as $item)
-
                     <tr data-id="{{$item->id}}">
                         <td><input type="checkbox" name="ids" data-toggle="icheck" value="{{$item->id}}"></td>
                         <td>{{$item->id}}</td>
@@ -63,4 +61,5 @@
         </tbody>
     </table>
 </div>
+
 @include('backend.common.formFooter')
