@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Facades\AdminRepository;
 use App\Facades\RoleRepository;
+use App\Http\Requests\Backend\AdminUpdateForm;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AdminCreateForm;
@@ -51,11 +52,8 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $adminCreateForm =new AdminCreateForm();
-        $validator = \Validator::make($request->all(),$adminCreateForm->rules(),$adminCreateForm->messages());
-        $errors=$validator->errors();
-        if ($validator->fails()) {
-            $this->ajaxReturn(['message'=> multil_array_to_string($errors->getMessages()),'statusCode'=>300]);
-        }
+        $this->checkForm($adminCreateForm,$request);
+
         $data = [
             'name'     => $request['name'],
             'email'    => $request['email'],
@@ -100,7 +98,18 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin = AdminRepository::find($id);
+        $roles = RoleRepository::all();
+        $adminRoles = $admin->roles->toArray();
+
+        $displayNames = array_map(function ($value) {
+            return $value['display_name'];
+        }, $adminRoles);
+
+        return view('backend.admin.edit', compact('admin', 'roles', 'adminRoles', 'displayNames'));
+
+
+
     }
 
     /**
@@ -112,7 +121,35 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $adminUpdateForm =new AdminUpdateForm();
+        $this->checkForm($adminUpdateForm,$request);
+        $admin = AdminRepository::find($id);
+        $admin->name = $request['name'];
+        $admin->email = $request['email'];
+
+        if($request['password']){
+            $admin->password = bcrypt($request['password']);
+        }
+
+        try {
+            $roles = RoleRepository::getByWhereIn('id', $request['role_id']);
+
+            if(empty($roles->toArray())){
+                $this->ajaxReturn(['message'=>"用户角色不存在,请重新打开此页面选择其他用户角色",'statusCode'=>300]);
+            }
+
+            if($admin->save()){
+                $admin->roles()->sync([]);
+                foreach ($roles as $role) {
+                    $admin->attachRole($role);
+                }
+                $this->ajaxReturn(['message'=>'编辑用户成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'adminslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
     }
 
     /**
@@ -123,6 +160,6 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 }

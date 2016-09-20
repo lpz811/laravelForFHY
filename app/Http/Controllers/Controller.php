@@ -39,7 +39,7 @@ abstract class Controller extends BaseController
         $validator = \Validator::make($request->all(),$requestForm->rules(),$requestForm->messages());
         $errors=$validator->errors();
         if ($validator->fails()) {
-            $this->ajaxReturn(['message'=> multil_array_to_string($errors->getMessages()),'statusCode'=>300]);
+           $this->ajaxReturn(['message'=> multil_array_to_string($errors->getMessages()),'statusCode'=>300]);
         }
     }
 

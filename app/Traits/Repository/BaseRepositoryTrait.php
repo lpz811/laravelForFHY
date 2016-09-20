@@ -54,7 +54,6 @@ trait BaseRepositoryTrait
     public function find($id, array $columns = ['*'])
     {
         $model = $this->model;
-
         return $model::find($id, $columns);
     }
 

@@ -48,13 +48,12 @@
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
                         <td>
-                            @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
+
                                 <a href="{{route('backend.admin.edit',['id'=>$item->id])}}" class="btn btn-green"
-                                   data-toggle="navtab" data-id="form" data-reload-warn="本页已有打开的内容，确定将刷新本页内容，是否继续？"
-                                   data-title="编辑-孙悟空">编辑</a>
-                                <a href="ajaxDone2.html" class="btn btn-red" data-toggle="doajax"
-                                   data-confirm-msg="确定要删除该行信息吗？">删除</a>
-                            @endif
+                                   data-toggle="dialog" data-id="editadmin"  data-width="530" data-title="编辑-{{$item->name}}用户">编辑</a>
+                                <a href="{{URL::to('backend/admin/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
+                                   data-confirm-msg="确定要删除该行信息吗？" data-type="delete">删除</a>
+
                         </td>
                     </tr>
                 @endforeach

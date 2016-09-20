@@ -54,8 +54,9 @@
                 <td>
                         <a href="{{route('backend.role.edit',['id'=>$item->id])}}" class="btn btn-green"
                            data-toggle="dialog" data-id="editrole" data-fresh="true"  data-title="编辑-{{$item->display_name}}角色">编辑</a>
-                        <a href="ajaxDone2.html" class="btn btn-red" data-toggle="doajax"
-                           data-confirm-msg="确定要删除该行信息吗？">删除</a>
+
+                        <a href="{{URL::to('backend/role/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
+                           data-confirm-msg="确定要删除该行信息吗？" data-type="delete">删除</a>
 
                 </td>
             </tr>
