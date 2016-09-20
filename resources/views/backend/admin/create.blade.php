@@ -18,19 +18,19 @@
             </tr>
             <tr>
                 <th>用户姓名:</th>
-                <td><input type="text" class="input-nm"     name="name" data-tip="用户名不能重复" id="name" value="" placeholder="用户姓名" size="20"></td>
+                <td><input type="text" class="input-nm"  data-rule="用户名:required"   name="name" data-tip="用户名不能重复" id="name" value="" placeholder="用户姓名" size="20"></td>
             </tr>
             <tr>
                 <th>用户邮箱:</th>
-                <td><input type="text" class="input-nm"     name="email" id="name" value="" placeholder="用户邮箱" size="20"></td>
+                <td><input type="text" class="input-nm"  data-rule="邮箱:required;email"    name="email" id="name" value="" placeholder="用户邮箱" size="20"></td>
             </tr>
             <tr>
                 <th>用户密码:</th>
-                <td><input type="password" class="input-nm"     name="password" id="name" value="" placeholder="用户密码" size="20"></td>
+                <td><input type="password" class="input-nm"  data-rule="密码:required"   name="password" id="name" value="" placeholder="用户密码" size="20"></td>
             </tr>
             <tr>
                 <th>确认密码:</th>
-                <td><input type="password" class="input-nm"     name="password_confirmation" id="name" value="" placeholder="确认密码" size="20"></td>
+                <td><input type="password" class="input-nm"   data-rule="确认密码:required;match(password)"  name="password_confirmation" id="name" value="" placeholder="确认密码" size="20"></td>
             </tr>
         </table>
     </form>

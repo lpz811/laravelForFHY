@@ -22,7 +22,7 @@ trait BaseRepositoryTrait
         return $model::create($input);
     }
 
-    public function searchInfo($request)
+    public function searchInfo($request,$like='like')
     {
         try {
             $model = $this->model;
@@ -33,7 +33,7 @@ trait BaseRepositoryTrait
 
             $data['pageSize'] = $requests['pageSize'];
             $data['pageCurrent'] =$requests['pageCurrent'];
-            $data['total'] = $model::multiwhere($requests['search'], 'like')->count();
+            $data['total'] = $model::multiwhere($requests['search'], $like)->count();
             return $data;
         } catch (\Exception $e) {
             $this->ajaxReturn(['message' => $e->getMessage(), 'statusCode' => 300]);
