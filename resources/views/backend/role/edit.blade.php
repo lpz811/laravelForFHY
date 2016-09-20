@@ -4,10 +4,9 @@
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="put">
         <table class="table table-bordered table-hover  table-striped table-top table-condensed"   >
-
             <tr>
                 <th>角色标识:</th>
-                <td><input type="text" class="input-nm" data-rule="标识:required" data-tip="不能与已有的标识重复"  name="name" id="name" value="{{$data['name']}}" placeholder="角色标识"  size="20"> </td>
+                <td><input type="text" class="input-nm" data-rule="标识:required"  readonly  name="name" id="name" value="{{$data['name']}}" placeholder="角色标识"  size="20"> </td>
             </tr>
             <tr>
                 <th>角色名称:</th>
@@ -19,8 +18,6 @@
             </tr>
         </table>
     </form>
-
-
 </div>
 
 <div class="bjui-pageFooter">

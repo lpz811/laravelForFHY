@@ -18,8 +18,6 @@
             </tr>
         </table>
     </form>
-
-
 </div>
 
 <div class="bjui-pageFooter">
