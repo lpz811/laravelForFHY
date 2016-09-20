@@ -363,7 +363,7 @@ class ComposerStaticInitf5caf9df7a8b09ab04a65dfdd6b56327
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Http\\Requests\\Form\\AdminCreateForm' => __DIR__ . '/../..' . '/app/Http/Requests/Form/AdminCreateForm.php',
+        'App\\Http\\Requests\\Form\\AdminCreateForm' => __DIR__ . '/../..',
         'App\\Http\\Requests\\Request' => __DIR__ . '/../..' . '/app/Http/Requests/Request.php',
         'App\\Jobs\\Job' => __DIR__ . '/../..' . '/app/Jobs/Job.php',
         'App\\Models\\Backend\\Action' => __DIR__ . '/../..' . '/app/Models/Backend/Action.php',

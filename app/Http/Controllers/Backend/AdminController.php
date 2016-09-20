@@ -6,11 +6,8 @@ use App\Facades\AdminRepository;
 use App\Facades\RoleRepository;
 use App\Models\Backend\Admin;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\Form\AdminCreateForm;
+use App\Http\Requests\Backend\AdminCreateForm;
 class AdminController extends Controller
 {
     /**
