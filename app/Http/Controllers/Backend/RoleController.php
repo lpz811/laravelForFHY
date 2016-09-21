@@ -121,11 +121,32 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        dd($id);
+      /*  try {
+            if (RoleRepository::destroy($id)) {
+                $this->ajaxReturn(['message'=>'删除用户成功','statusCode'=>200,'tabid'=>'adminslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>'删除用户失败','statusCode'=>200]);
+        }*/
+    }
+
+    /**删除所选用户
+     * @param Request $request
+     */
+    public function selectdelete(Request $request){
+     /*   try {
+            if (RoleRepository::destroy($request->input('ids'))) {
+                $this->ajaxReturn(['message'=>'所选删除成功','statusCode'=>200,'tabid'=>'adminslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>'所选用户删除失败','statusCode'=>200]);
+        }*/
     }
 }

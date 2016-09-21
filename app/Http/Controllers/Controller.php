@@ -38,8 +38,10 @@ abstract class Controller extends BaseController
     protected function checkForm($requestForm,$request){
         $validator = \Validator::make($request->all(),$requestForm->rules(),$requestForm->messages());
         $errors=$validator->errors();
+        $value = array_first($errors->getMessages(), function ($key, $value) {
+            return $value;});
         if ($validator->fails()) {
-           $this->ajaxReturn(['message'=> multil_array_to_string($errors->getMessages()),'statusCode'=>300]);
+            $this->ajaxReturn(['message'=>$value,'statusCode'=>300]);
         }
     }
 

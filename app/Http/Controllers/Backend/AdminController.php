@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Facades\AdminRepository;
 use App\Facades\RoleRepository;
 use App\Http\Requests\Backend\AdminUpdateForm;
+use App\Models\Backend\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AdminCreateForm;
@@ -70,7 +71,7 @@ class AdminController extends Controller
                 foreach ($roles as $role) {
                     $admin->attachRole($role);
                 }
-                $this->ajaxReturn(['message'=>'用户添加成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'adminslist']);
+                $this->ajaxReturn(['message'=>'添加用户成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'adminslist']);
             }
         }
         catch (\Exception $e) {
@@ -105,11 +106,7 @@ class AdminController extends Controller
         $displayNames = array_map(function ($value) {
             return $value['display_name'];
         }, $adminRoles);
-
         return view('backend.admin.edit', compact('admin', 'roles', 'adminRoles', 'displayNames'));
-
-
-
     }
 
     /**
@@ -160,6 +157,27 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        try {
+            if (AdminRepository::destroy($id)) {
+                $this->ajaxReturn(['message'=>'删除用户成功','statusCode'=>200,'tabid'=>'adminslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>'删除用户失败','statusCode'=>200]);
+        }
+    }
+
+    /**删除所选用户
+     * @param Request $request
+     */
+    public function selectdelete(Request $request){
+        try {
+            if (AdminRepository::destroy($request->input('ids'))) {
+                $this->ajaxReturn(['message'=>'所选用户删除成功','statusCode'=>200,'tabid'=>'adminslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>'所选用户删除失败','statusCode'=>200]);
+        }
     }
 }

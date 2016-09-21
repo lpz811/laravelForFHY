@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <th>用户姓名:</th>
-                <td><input type="text" class="input-nm"  data-rule="用户名:required"   name="name" data-tip="用户名不能重复" id="name" value="" placeholder="用户姓名" size="20"></td>
+                <td><input type="text" class="input-nm"  data-rule="用户名:required"   name="name"  id="name" value="" placeholder="用户姓名" size="20"></td>
             </tr>
             <tr>
                 <th>用户邮箱:</th>

@@ -1,3 +1,4 @@
+<meta name="_token" content="{!! csrf_token() !!}"/>
 <div class="bjui-pageHeader">
     <form id="pagerForm" data-toggle="ajaxsearch" action="{{ url('backend/admin/search')}}" method="POST">
         @include('backend.common.formHeader')
@@ -16,12 +17,12 @@
 
             <div class="pull-right">
                 <div class="btn-group">
-                    <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">
+                    <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="glyphicon-star">
                         复选框-批量操作<span class="caret"></span></button>
                     <ul class="dropdown-menu right" role="menu">
 
-                        <li><a href="ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？"
-                               data-idname="delids" data-group="ids">删除选中</a></li>
+                        <li><a href="{{URL::to('backend/admin/selectdelete')}}" data-toggle="doajaxchecked" data-type='post'data-confirm-msg="确定要删除选中项吗？"
+                               data-idname="ids" data-group="ids">删除选中</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,12 +49,12 @@
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
                         <td>
-
+                            @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
                                 <a href="{{route('backend.admin.edit',['id'=>$item->id])}}" class="btn btn-green"
-                                   data-toggle="dialog" data-id="editadmin"  data-width="530" data-title="编辑-{{$item->name}}用户">编辑</a>
+                                   data-toggle="dialog" data-id="editadmin"     data-title="编辑-{{$item->name}} 用户">编辑</a>
                                 <a href="{{URL::to('backend/admin/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
-                                   data-confirm-msg="确定要删除该行信息吗？" data-type="delete">删除</a>
-
+                                   data-confirm-msg="确定要删除{{$item->email}}用户？"  data-type="delete">删除</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -62,7 +63,11 @@
 </div>
 
 @include('backend.common.formFooter')
+
 <script type="text/javascript">
+    $.ajaxSetup({
+        headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+    });
     function checkSearch() {
          var searName = $('#search_name').val();
          var searEmail = $('#search_email').val();

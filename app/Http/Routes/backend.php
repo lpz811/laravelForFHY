@@ -11,6 +11,10 @@ Route::post("admin/search", [
     'as'=>'backend.admin.search',
     'uses'=>'AdminController@search'
 ]);
+Route::post("admin/selectdelete", [
+    'as'=>'backend.admin.selectdelete',
+    'uses'=>'AdminController@selectdelete'
+]);
 
 
 /*Route::get('admin/profile/{id}', [
