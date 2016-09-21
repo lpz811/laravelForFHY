@@ -126,14 +126,14 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-      /*  try {
+         try {
             if (RoleRepository::destroy($id)) {
-                $this->ajaxReturn(['message'=>'删除用户成功','statusCode'=>200,'tabid'=>'adminslist']);
+                $this->ajaxReturn(['message'=>'删除角色成功','statusCode'=>200,'tabid'=>'roleslist']);
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>'删除用户失败','statusCode'=>200]);
-        }*/
+            $this->ajaxReturn(['message'=>'删除角色失败','statusCode'=>200]);
+        }
     }
 
     /**删除所选用户

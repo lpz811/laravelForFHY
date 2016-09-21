@@ -20,7 +20,6 @@
                     <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="glyphicon-star">
                         复选框-批量操作<span class="caret"></span></button>
                     <ul class="dropdown-menu right" role="menu">
-
                         <li><a href="{{URL::to('backend/admin/selectdelete')}}" data-toggle="doajaxchecked" data-type='post'data-confirm-msg="确定要删除选中项吗？"
                                data-idname="ids" data-group="ids">删除选中</a></li>
                     </ul>
@@ -48,6 +47,7 @@
                         <td>{{$item->id}}</td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
+                      {{--  <td>{{$item->roles}}</td>--}}
                         <td>
                             @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
                                 <a href="{{route('backend.admin.edit',['id'=>$item->id])}}" class="btn btn-green"

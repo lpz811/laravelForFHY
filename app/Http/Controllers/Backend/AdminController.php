@@ -19,7 +19,8 @@ class AdminController extends Controller
     {
         $pageSize = config('repository.pageSize');
         $data['info'] = AdminRepository::paginate($pageSize);
-
+      //  $roles = RoleRepository::all();
+        //dd($data['info']->roles->toArray());
         $data['total'] = $data['info']->total();
         $data['pageCurrent']=1;
         $data['pageSize'] = $pageSize;

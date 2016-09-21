@@ -1,13 +1,14 @@
+<meta name="_token" content="{!! csrf_token() !!}"/>
 <div class="bjui-pageHeader">
     <form id="pagerForm" data-toggle="ajaxsearch" action="{{ url('backend/role/search')}}" method="POST">
         @include('backend.common.formHeader')
         <div class="bjui-searchBar">
             <label>角色标识：</label>
-            <input type="text" id="customNo" value="{{isset($search['name'])?$search['name']:''}}" name="search[name]"   class="form-control" size="10">&nbsp;
+            <input type="text" id="rolename" value="{{isset($search['name'])?$search['name']:''}}" name="search[name]"   class="form-control" size="10">&nbsp;
             <label>角色名称：</label>
-            <input type="text" id="customNo" value="{{isset($search['display_name'])?$search['display_name']:''}}" name="search[display_name]"   class="form-control" size="15">
+            <input type="text" id="roledisplay" value="{{isset($search['display_name'])?$search['display_name']:''}}" name="search[display_name]"   class="form-control" size="15">
             <label>角色描述：</label>
-            <input type="text" id="customNo" value="{{isset($search['description'])?$search['description']:''}}" name="search[description]"    class="form-control" size="15">&nbsp;
+            <input type="text" id="roledesc" value="{{isset($search['description'])?$search['description']:''}}" name="search[description]"    class="form-control" size="15">&nbsp;
             <button type="button" class="showMoreSearch" data-toggle="moresearch" data-name="custom2"></button>
             <button type="submit" class="btn-default" data-icon="search">模糊查询</button>
             &nbsp;
@@ -56,8 +57,7 @@
                            data-toggle="dialog" data-id="editrole" data-fresh="true"  data-title="编辑-{{$item->display_name}}角色">编辑</a>
 
                         <a href="{{URL::to('backend/role/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
-                           data-confirm-msg="确定要删除该行信息吗？" data-type="delete">删除</a>
-
+                           data-confirm-msg="确定要删除{{$item->name}}用户？"  data-type="delete">删除</a>
                 </td>
             </tr>
         @endforeach
@@ -65,3 +65,19 @@
     </table>
 </div>
 @include('backend.common.formFooter')
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+    });
+    function checkSearch() {
+        var roleName = $('#rolename').val();
+        var roleDisplay = $('#roledisplay').val();
+        var roleDesc = $('#roledesc').val();
+        if (roleName==''&&roleDisplay==''&&roleDesc=='') {
+            $(this).alertmsg('error', '角色标识、角色名称或角色描述不能为空')
+            return false;
+        }
+        return true;
+    }
+</script>
