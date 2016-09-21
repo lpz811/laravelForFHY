@@ -18,7 +18,7 @@
             <div class="pull-right">
                 <div class="btn-group">
                     <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="glyphicon-star">
-                        复选框-批量操作<span class="caret"></span></button>
+                        批量操作<span class="caret"></span></button>
                     <ul class="dropdown-menu right" role="menu">
                         <li><a href="{{URL::to('backend/admin/selectdelete')}}" data-toggle="doajaxchecked" data-type='post'data-confirm-msg="确定要删除选中项吗？"
                                data-idname="ids" data-group="ids">删除选中</a></li>
