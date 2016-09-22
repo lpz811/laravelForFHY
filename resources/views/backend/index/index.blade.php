@@ -382,11 +382,11 @@
                                     <li data-id="11" data-pid="1" data-url="{{url('backend/menu')}}" data-fresh="true" data-tabid="menuslist"
                                         data-faicon="caret-right">菜单列表
                                     </li>
-                                <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">
+                                <li data-id="2" data-pid="0" data-faicon="fa fa-user" data-faicon-close="folder-o">
                                     用户管理
                                 </li>
                                     <li data-id="21" data-pid="2" data-url="{{url('backend/admin')}}" data-fresh="true" data-tabid="adminslist"
-                                        data-faicon="caret-right">用户列表
+                                        data-faicon="fa fa-list">用户列表
                                     </li>
                                <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-url='#' data-fresh="true" data-faicon-close="folder-o"
                                    data-faicon="caret-right">角色管理

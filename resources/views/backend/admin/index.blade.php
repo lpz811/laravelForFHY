@@ -13,7 +13,7 @@
             <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('adminslist', true);"
                data-icon="undo">清空查询</a>
 
-            <button type="button" class="btn-blue btn" data-width='530' data-toggle="dialog" data-id="addrole"  data-fresh="true" data-url="{{route('backend.admin.create')}}" data-title="添加新用户">添加新用户</button>
+            <button type="button" class="btn-blue btn" data-icon="fa-plus" data-width='530' data-toggle="dialog" data-id="addrole"  data-fresh="true" data-url="{{route('backend.admin.create')}}" data-title="添加新用户">添加新用户</button>
 
             <div class="pull-right">
                 <div class="btn-group">
