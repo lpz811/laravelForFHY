@@ -48,25 +48,25 @@
         </thead>
 
         <tbody>
-        @foreach($data['info'] as $item)
-            <tr data-id="{{$item->id}}">
-                <td><input type="checkbox" name="ids" data-toggle="icheck" value="{{$item->id}}"></td>
-                <td>{{$item->id}}</td>
-                <td>{{$item->name}}</td>
-                <td>{{$item->type}}</td>
-                <td>{{$item->display_name}}</td>
-                <td>{{$item->description}}</td>
+            @foreach($data['info'] as $item)
+                <tr data-id="{{$item->id}}">
+                    <td><input type="checkbox" name="ids" data-toggle="icheck" value="{{$item->id}}"></td>
+                    <td>{{$item->id}}</td>
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->type}}</td>
+                    <td>{{$item->display_name}}</td>
+                    <td>{{$item->description}}</td>
 
-                <td>
-                    @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
-                        <a href="{{route('backend.admin.edit',['id'=>$item->id])}}" class="btn btn-green"
-                           data-toggle="dialog" data-id="editadmin"     data-title="编辑-{{$item->name}} 用户">编辑</a>
-                        <a href="{{URL::to('backend/admin/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
-                           data-confirm-msg="确定要删除{{$item->email}}用户？"  data-type="delete">删除</a>
-                    @endif
-                </td>
-            </tr>
-        @endforeach
+                    <td>
+                        @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
+                            <a href="{{route('backend.admin.edit',['id'=>$item->id])}}" class="btn btn-green"
+                               data-toggle="dialog" data-id="editadmin"     data-title="编辑-{{$item->name}} 用户">编辑</a>
+                            <a href="{{URL::to('backend/admin/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
+                               data-confirm-msg="确定要删除{{$item->email}}用户？"  data-type="delete">删除</a>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
