@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Providers;
+namespace App\Providers\Backend;
 
 use App\Repositories\Backend\AdminRepository;
+use App\Repositories\Backend\PermissionRepository;
 use App\Repositories\Backend\RoleRepository;
+use App\Repositories\Backend\MenuRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -15,7 +17,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         $configuration=realpath(__DIR__ . '/../../Config/repository.php');
+         $configuration=realpath(__DIR__ . '/../../../Config/repository.php');
          $this->mergeConfigFrom($configuration,'repository');
     }
 
@@ -26,8 +28,20 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerMenuRepository();
         $this->registerAdminRepository();
         $this->registerRoleRepository();
+        $this->registerPermissionRepository();
+    }
+    public function registerMenuRepository()
+    {
+        $this->app->singleton('menurepository', function ($app) {
+            $model = config('repository.models.menu');
+            $menu = new $model();
+            $validator = $app['validator'];
+
+            return new MenuRepository($menu, $validator);
+        });
     }
 
     public  function registerAdminRepository(){
@@ -46,7 +60,16 @@ class RepositoryServiceProvider extends ServiceProvider
             return new RoleRepository($admin,$validator);
         });
     }
+    public function registerPermissionRepository()
+    {
+            $this->app->singleton('permissionrepository', function ($app) {
+            $model = config('repository.models.permission');
+            $permission = new $model();
+            $validator = $app['validator'];
 
+            return new PermissionRepository($permission, $validator);
+        });
+    }
 
     public function dd()
     {

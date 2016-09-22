@@ -147,8 +147,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-
-        App\Providers\RepositoryServiceProvider::class,
+        /**
+         * Backend  Service Providers...
+         */
+        App\Providers\Backend\RepositoryServiceProvider::class,
+        App\Providers\Backend\ModelEventServiceProvider::class,
 
     ],
 

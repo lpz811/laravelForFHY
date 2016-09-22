@@ -72,7 +72,7 @@
          var searName = $('#search_name').val();
          var searEmail = $('#search_email').val();
         if (searName==''&&searEmail=='') {
-            $(this).alertmsg('error', '用户名或邮箱不能为空')
+            $(this).alertmsg('error', '搜索字段不能为空')
             return false;
         }
         return true;

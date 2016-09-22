@@ -376,28 +376,34 @@
                             <ul id="bjui-doc-tree-base" class="ztree ztree_main" data-toggle="ztree"
                                 data-on-click="MainMenuClick" data-expand-all="true" data-faicon="star-o"
                                 data-tit="系统配置">
-                                <li data-id="99" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">
+                                <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">
+                                    菜单管理
+                                </li>
+                                    <li data-id="11" data-pid="1" data-url="{{url('backend/menu')}}" data-fresh="true" data-tabid="menuslist"
+                                        data-faicon="caret-right">菜单列表
+                                    </li>
+                                <li data-id="2" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o">
                                     用户管理
                                 </li>
-                                <li data-id="100" data-pid="99" data-url="{{url('backend/admin')}}" data-fresh="true" data-tabid="adminslist"
-                                    data-faicon="caret-right">用户列表
-                                </li>
-                                <li data-id="1" data-pid="0" data-faicon="folder-open-o" data-url='#' data-fresh="true" data-faicon-close="folder-o"
-                                    data-faicon="caret-right">角色管理
-                                </li>
-                                <li data-id="10" data-pid="1" data-url="{{url('backend/role')}}" data-fresh="true" data-tabid="roleslist"
-                                    data-faicon="caret-right">角色列表
-                                </li>
-                                <li data-id="11" data-pid="1" data-url="doc/base/init.html" data-tabid="doc-base"
-                                    data-faicon="caret-right">框架初始化
-                                </li>
+                                    <li data-id="21" data-pid="2" data-url="{{url('backend/admin')}}" data-fresh="true" data-tabid="adminslist"
+                                        data-faicon="caret-right">用户列表
+                                    </li>
+                               <li data-id="3" data-pid="0" data-faicon="folder-open-o" data-url='#' data-fresh="true" data-faicon-close="folder-o"
+                                   data-faicon="caret-right">角色管理
+                               </li>
+                                       <li data-id="31" data-pid="3" data-url="{{url('backend/role')}}" data-fresh="true" data-tabid="roleslist"
+                                           data-faicon="caret-right">角色列表
+                                       </li>
+                                       <li data-id="32" data-pid="3" data-url="doc/base/init.html" data-tabid="doc-base"
+                                           data-faicon="caret-right">框架初始化
+                                       </li>
 
-                                <li data-id="9" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o"
-                                    data-faicon="caret-right">框架皮肤
-                                </li>
-                                <li data-id="90" data-pid="9" data-url="doc/theme/color.html" data-tabid="doc-theme"
-                                    data-faicon="caret-right">颜色值
-                                </li>
+                                <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o"
+                                        data-faicon="caret-right">权限管理
+                                    </li>
+                                        <li data-id="41" data-pid="4" data-url="{{url('backend/permission')}}" data-fresh="true" data-tabid="permissionslist"
+                                            data-faicon="caret-right">权限列表
+                                        </li>
                             </ul>
                             {{--<ul id="bjui-doc-tree-module" class="ztree ztree_main" data-toggle="ztree"
                                 data-on-click="MainMenuClick" data-expand-all="true" data-faicon="th" data-tit="框架组件">

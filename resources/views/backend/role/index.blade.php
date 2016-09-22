@@ -75,7 +75,7 @@
         var roleDisplay = $('#roledisplay').val();
         var roleDesc = $('#roledesc').val();
         if (roleName==''&&roleDisplay==''&&roleDesc=='') {
-            $(this).alertmsg('error', '角色标识、角色名称或角色描述不能为空')
+            $(this).alertmsg('error', '搜索字段不能为空')
             return false;
         }
         return true;

@@ -5,6 +5,17 @@ Route::get('/index', [
 ]);
 
 
+
+
+/* 菜单管理模块 */
+Route::resource('menu', 'MenuController');
+Route::get('menu/search', [
+    'as'         => 'backend.menu.search',
+    'uses'       => 'MenuController@search',
+]);
+
+
+
 /* 用户管理模块 */
 Route::resource("admin", 'AdminController');
 Route::post("admin/search", [
@@ -49,3 +60,27 @@ Route::post('role/associatePermission', [
     'uses' => 'RoleController@associatePermission',
 ]);
 
+
+
+
+
+/* 权限管理模块 */
+Route::resource("permission", 'PermissionController');
+Route::post("permission/search", [
+    'as'=>'backend.permission.search',
+    'uses'=>'PermissionController@search'
+]);
+
+
+Route::get('permission/associate/{id}', [
+    'as'   => 'backend.permission.associate',
+    'uses' => 'PermissionController@associate',
+]);
+Route::post('permission/associateMenus', [
+    'as'   => 'backend.permission.associate.menus',
+    'uses' => 'PermissionController@associateMenus',
+]);
+Route::post('permission/associateActions', [
+    'as'   => 'backend.permission.associate.actions',
+    'uses' => 'PermissionController@associateActions',
+]);

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Facades\AdminRepository;
-use App\Facades\RoleRepository;
+use App\Facades\Backend\AdminRepository;
+use App\Facades\Backend\RoleRepository;
 use App\Http\Requests\Backend\AdminUpdateForm;
 use App\Models\Backend\Admin;
 use Illuminate\Http\Request;
@@ -19,8 +19,6 @@ class AdminController extends Controller
     {
         $pageSize = config('repository.pageSize');
         $data['info'] = AdminRepository::paginate($pageSize);
-      //  $roles = RoleRepository::all();
-        //dd($data['info']->roles->toArray());
         $data['total'] = $data['info']->total();
         $data['pageCurrent']=1;
         $data['pageSize'] = $pageSize;
@@ -103,7 +101,6 @@ class AdminController extends Controller
         $admin = AdminRepository::find($id);
         $roles = RoleRepository::all();
         $adminRoles = $admin->roles->toArray();
-
         $displayNames = array_map(function ($value) {
             return $value['display_name'];
         }, $adminRoles);

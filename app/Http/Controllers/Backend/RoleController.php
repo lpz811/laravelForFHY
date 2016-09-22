@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Facades\RoleRepository;
+use App\Facades\Backend\RoleRepository;
 use App\Http\Requests\Backend\RoleCreateForm;
-use App\Http\Requests\Backend\RoleForm;
 use App\Http\Requests\Backend\RoleUpdateForm;
 use Illuminate\Http\Request;
 
