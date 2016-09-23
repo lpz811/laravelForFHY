@@ -4,11 +4,11 @@
     <form id="pagerForm" data-toggle="ajaxsearch" action="{{ url('backend/permission/search')}}" method="POST">
         @include('backend.common.formHeader')
         <div class="bjui-searchBar">
-            <label>权限标识：</label>
+            <label>菜单名称：</label>
             <input type="text" id="pername" value="{{isset($search['name'])?$search['name']:''}}" name="search[name]"   class="form-control" size="10">&nbsp;
-            <label>权限类型：</label>
+            <label>菜单路由：</label>
             <input type="text" id="pertype" value="{{isset($search['type'])?$search['type']:''}}" name="search[type]"     class="form-control" size="10">&nbsp;
-            <label>权限名称：</label>
+            <label>是否显示：</label>
             <input type="text" id="perdisplay" value="{{isset($search['display_name'])?$search['display_name']:''}}" name="search[display_name]"     class="form-control" size="10">&nbsp;
             <label>权限描述：</label>
             <input type="text" id="perdes" value="{{isset($search['description'])?$search['description']:''}}" name="search[description]"    class="form-control" size="10">&nbsp;
@@ -39,10 +39,17 @@
         <tr>
             <th width="26"><input type="checkbox" class="checkboxCtrl" data-group="ids" data-toggle="icheck"></th>
             <th data-order-field="id">ID</th>
-            <th data-order-field="name">权限标识</th>
-            <th data-order-field="type">权限类型</th>
-            <th data-order-field="display_name">权限名称</th>
-            <th data-order-field="description">权限描述</th>
+            <th data-order-field="data_id">DATA_ID</th>
+            <th data-order-field="parent_id">PARAENT_ID</th>
+            <th data-order-field="tab_id">TAB_ID</th>
+            <th data-order-field="icon">菜单打开时图标</th>
+            <th data-order-field="icon_close">菜单关闭时图标</th>
+            <th data-order-field="data_fresh">菜单打开时是否刷新页面</th>
+            <th data-order-field="name">菜单名称</th>
+            <th data-order-field="route">菜单地址</th>
+            <th data-order-field="description">菜单描述</th>
+            <th data-order-field="sort">菜单排序</th>
+            <th data-order-field="hide">是否显示</th>
             <th width="100">操作</th>
         </tr>
         </thead>
@@ -52,10 +59,18 @@
                 <tr data-id="{{$item->id}}">
                     <td><input type="checkbox" name="ids" data-toggle="icheck" value="{{$item->id}}"></td>
                     <td>{{$item->id}}</td>
+                    <td>{{$item->data_id}}</td>
+                    <td>{{$item->parent_id}}</td>
+                    <td>{{$item->tab_id}}</td>
+                    <td>{{$item->icon}}</td>
+                    <td>{{$item->icon_close}}</td>
+                    <td>{{$item->data_fresh}}</td>
                     <td>{{$item->name}}</td>
-                    <td>{{$item->type}}</td>
-                    <td>{{$item->display_name}}</td>
+                    <td>{{$item->route}}</td>
                     <td>{{$item->description}}</td>
+                    <td>{{$item->type}}</td>
+                    <td>{{$item->sort}}</td>
+                    <td>{{$item->hide}}</td>
 
                     <td>
                         @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
