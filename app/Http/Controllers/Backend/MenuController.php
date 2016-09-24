@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Backend\MenuCreateForm;
 use App\Facades\Backend\MenuRepository;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,8 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        $tree = create_level_tree(MenuRepository::getAllDisplayMenus());
+        return view('backend.menu.create', compact('tree'));
     }
 
     /**
@@ -50,7 +52,16 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $menuCreateForm =new MenuCreateForm();
+        $this->checkForm($menuCreateForm,$request);
+        try {
+            if(MenuRepository::create($request->all())){
+                $this->ajaxReturn(['message'=>'添加菜单成功！','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'menuslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>'添加菜单失败！','statusCode'=>300]);
+        }
     }
 
     /**

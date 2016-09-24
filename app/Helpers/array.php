@@ -103,6 +103,7 @@ if( ! function_exists('create_level_tree')){
     function create_level_tree($data, $parent_id = 0, $level = 0, $html = '-')
     {
         $tree = [];
+
         foreach ($data as $item) {
             $item['html'] = str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;', $level);
             $item['html'] .= $level === 0 ? "" : '|';

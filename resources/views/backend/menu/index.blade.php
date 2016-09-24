@@ -19,7 +19,7 @@
             <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('permissionslist', true);"
                data-icon="undo">清空查询</a>
 
-            <button type="button" class="btn-blue btn" data-icon="fa-plus" data-width='530' data-toggle="dialog" data-id="addrole"  data-fresh="true" data-url="{{route('backend.permission.create')}}" data-title="添加新用户">添加新权限</button>
+            <button type="button" class="btn-blue btn" data-width="570" data-height="580" data-icon="fa-plus" data-width='530' data-toggle="dialog" data-id="addmenu"  data-fresh="true" data-url="{{route('backend.menu.create')}}" data-title="添加新菜单">添加新菜单</button>
 
             <div class="pull-right">
                 <div class="btn-group">
@@ -40,11 +40,11 @@
         <tr>
             <th width="26"><input type="checkbox" class="checkboxCtrl" data-group="ids" data-toggle="icheck"></th>
             <th data-order-field="id">ID</th>
+            <th data-order-field="parent_id">PARAENT_ID</th>
             <th data-order-field="name">菜单名称</th>
             <th data-order-field="description">菜单描述</th>
             <th data-order-field="route">菜单路由</th>
             <th data-order-field="data_id">DATA_ID</th>
-            <th data-order-field="parent_id">PARAENT_ID</th>
             <th data-order-field="tab_id">TAB_ID</th>
             <th data-order-field="icon">菜单打开时图标</th>
             <th data-order-field="icon_close">菜单关闭时图标</th>
@@ -61,16 +61,15 @@
                 <tr data-id="{{$item->id}}" >
                     <td><input type="checkbox" name="ids" data-toggle="icheck" value="{{$item->id}}"></td>
                     <td>{{$item->id}}</td>
+                    <td>{{$item->parent_id}}</td>
                     <td>{{$item->name}}</td>
                     <td>{{$item->description}}</td>
                     <td>{{$item->route}}</td>
                     <td>{{$item->data_id}}</td>
-                    <td>{{$item->parent_id}}</td>
                     <td>{{$item->tab_id}}</td>
                     <td>{{$item->icon}}</td>
                     <td>{{$item->icon_close}}</td>
                     <td>{{$menuPresenter->tabFresh($item->data_fresh)}}</td>
-
                     <td>{{$item->sort}}</td>
                     <td>{{$menuPresenter->showDisplayFormat($item->hide)}}</td>
 

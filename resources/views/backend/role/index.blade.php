@@ -15,7 +15,7 @@
             <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('roleslist', true);"
                data-icon="undo">清空查询</a>
 
-            <button type="button" class="btn-blue btn" data-icon="fa-plus" data-toggle="dialog" data-id="addrole"  data-fresh="true" data-url="{{route('backend.role.create')}}" data-title="添加新角色">添加新角色</button>
+            <button type="button" class="btn-blue btn" data-width='550' data-icon="fa-plus" data-toggle="dialog" data-id="addrole"  data-fresh="true" data-url="{{route('backend.role.create')}}" data-title="添加新角色">添加新角色</button>
 
             <div class="pull-right">
                 <div class="btn-group">
@@ -54,7 +54,7 @@
                 <td>{{$item->description}}</td>
                 <td>
                         <a href="{{route('backend.role.edit',['id'=>$item->id])}}" class="btn btn-green"
-                           data-toggle="dialog" data-id="editrole" data-fresh="true"  data-title="编辑-{{$item->display_name}}角色">编辑</a>
+                           data-toggle="dialog" data-width='550' data-id="editrole" data-fresh="true"  data-title="编辑-{{$item->display_name}}角色">编辑</a>
 
                         <a href="{{URL::to('backend/role/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
                            data-confirm-msg="确定要删除{{$item->name}}用户？"  data-type="delete">删除</a>

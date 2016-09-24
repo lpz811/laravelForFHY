@@ -10,11 +10,11 @@
             </tr>
             <tr>
                 <th>角色名称:</th>
-                <td><input type="text" class="input-nm" data-rule="名称:required"   name="display_name" id="name" value="{{$data['display_name']}}" placeholder="角色名称" size="20"></td>
+                <td><input type="text" class="input-nm" data-rule="名称:required"   name="display_name" id="display_name" value="{{$data['display_name']}}" placeholder="角色名称" size="20"></td>
             </tr>
             <tr>
                 <th>角色描述:</th>
-                <td><input type="text" class="input-nm" data-rule="描述:required"   name="description" id="name" value="{{$data['description']}}" placeholder="角色描述" size="30"></td>
+                <td><input type="text" class="input-nm" data-rule="描述:required"   name="description" id="description" value="{{$data['description']}}" placeholder="角色描述" size="30"></td>
             </tr>
         </table>
     </form>
