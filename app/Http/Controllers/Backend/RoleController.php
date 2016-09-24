@@ -131,7 +131,7 @@ class RoleController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>'删除角色失败','statusCode'=>200]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>200]);
         }
     }
 

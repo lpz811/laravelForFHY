@@ -161,7 +161,7 @@ class AdminController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>'删除用户失败','statusCode'=>200]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>200]);
         }
     }
 
@@ -175,7 +175,7 @@ class AdminController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>'所选用户删除失败','statusCode'=>200]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>200]);
         }
     }
 }
