@@ -19,7 +19,7 @@
             <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('permissionslist', true);"
                data-icon="undo">清空查询</a>
 
-            <button type="button" class="btn-blue btn" data-width="570" data-height="580" data-icon="fa-plus" data-width='530' data-toggle="dialog" data-id="addmenu"  data-fresh="true" data-url="{{route('backend.menu.create')}}" data-title="添加新菜单">添加新菜单</button>
+            <button type="button" class="btn-blue btn" data-width="600" data-height="480" data-icon="fa-plus" data-width='530' data-toggle="dialog" data-id="addmenu"  data-fresh="true" data-url="{{route('backend.menu.create')}}" data-title="添加新菜单">添加新菜单</button>
 
             <div class="pull-right">
                 <div class="btn-group">
@@ -40,7 +40,7 @@
         <tr>
             <th width="26"><input type="checkbox" class="checkboxCtrl" data-group="ids" data-toggle="icheck"></th>
             <th data-order-field="id">ID</th>
-            <th data-order-field="parent_id">PARAENT_ID</th>
+            <th data-order-field="parent_id">父级ID</th>
             <th data-order-field="name">菜单名称</th>
             <th data-order-field="description">菜单描述</th>
             <th data-order-field="route">菜单路由</th>
@@ -49,7 +49,7 @@
             <th data-order-field="icon">菜单打开时图标</th>
             <th data-order-field="icon_close">菜单关闭时图标</th>
             <th data-order-field="data_fresh">页面打开时是否刷新</th>
-            <th data-order-field="sort">菜单排序</th>
+            <th data-order-field="sort">排序</th>
             <th data-order-field="hide">是否显示</th>
             <th width="100">操作</th>
         </tr>
@@ -76,7 +76,7 @@
                     <td>
                         @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
                             <a href="{{route('backend.menu.edit',['id'=>$item->id])}}" class="btn btn-green"
-                               data-toggle="dialog" data-id="editadmin"  data-width="800" data-height="450"  data-title="编辑- {{$item->description}} -菜单">编辑</a>
+                               data-toggle="dialog" data-id="editadmin"  data-width="600" data-height="480"  data-title="编辑- {{$item->description}} -菜单">编辑</a>
                             <a href="{{URL::to('backend/menu/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
                                data-confirm-msg="确定要删除{{$item->email}}菜单？"  data-type="delete">删除</a>
                         @endif

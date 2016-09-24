@@ -6,7 +6,7 @@
             <tr>
                 <th><label class="x85">父级菜单：</label></th>
                 <td>
-                    <select name="parent_id"   data-width="200" data-size="5"  multiple data-max-options="1" data-toggle="selectpicker">
+                    <select name="parent_id"   data-width="200" data-size="5"    data-max-options="1" data-toggle="selectpicker">
                         <option selected="selected" value="0">顶级分类</option>
                         @foreach($tree as $item)
                             <option   value="{{$item['id']}}">
@@ -14,13 +14,9 @@
                             </option>
                         @endforeach
                     </select>
-
                 </td>
             </tr>
-            <tr>
-                <th>PARENT_ID:</th>
-                <td><input type="text" class="input-nm"  data-rule="父级ID:required;digits"   name="parent_id"  id="parent_id" value="" placeholder="父级ID" size="20"></td>
-            </tr>
+
             <tr>
                 <th>菜单名称:</th>
                 <td><input type="text" class="input-nm"  data-rule="名称:required"    name="name" id="name" value="" placeholder="菜单名称" size="20"></td>
@@ -53,8 +49,8 @@
             <tr>
                 <th>页面打开是否刷新:</th>
                 <td>
-                    <input type="radio" name="data_fresh" id="data_fresh" value="1" data-toggle="icheck" data-label="是">
-                    <input type="radio" name="data_fresh" id="data_fresh" value="0" data-toggle="icheck" data-label="否">
+                    <input type="radio" name="data_fresh" checked id="data_fresh1" value="1" data-toggle="icheck" data-label="刷新">
+                    <input type="radio" name="data_fresh" id="data_fresh2" value="0" data-toggle="icheck" data-label="不刷新">
                 </td>
             </tr>
             <tr>
@@ -64,8 +60,8 @@
             <tr>
                 <th>是否隐藏:</th>
                 <td>
-                    <input type="radio" name="hide" id="hide" value="1" data-toggle="icheck" data-label="是">
-                    <input type="radio" name="hide" id="hide" value="0" data-toggle="icheck" data-label="否">
+                    <input type="radio" name="hide" id="hide1" value="0" checked data-toggle="icheck" data-label="显示">
+                    <input type="radio" name="hide" id="hide2" value="1" data-toggle="icheck" data-label="隐藏">
                 </td>
             </tr>
         </table>

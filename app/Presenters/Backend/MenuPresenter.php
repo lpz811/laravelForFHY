@@ -38,9 +38,9 @@ class MenuPresenter extends CommonPresenter
     public function tabFresh($status)
     {
         if($status){
-            return "是";
+            return "刷新";
         } else {
-            return "否";
+            return "不刷新";
         }
     }
 

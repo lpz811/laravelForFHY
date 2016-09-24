@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\MenuCreateForm;
 use App\Facades\Backend\MenuRepository;
+use App\Http\Requests\Backend\MenuUpdateForm;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class MenuController extends Controller
@@ -52,6 +52,7 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+
         $menuCreateForm =new MenuCreateForm();
         $this->checkForm($menuCreateForm,$request);
         try {
@@ -60,7 +61,7 @@ class MenuController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>'添加菜单失败！','statusCode'=>300]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
     }
 
@@ -83,7 +84,10 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
+        $data = MenuRepository::find($id);
+        $tree = create_level_tree(MenuRepository::getAllDisplayMenus());
+
+        return view('backend.menu.edit', compact('tree', 'data'));
     }
 
     /**
@@ -95,7 +99,18 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $menuUpdateForm =new MenuUpdateForm();
+        $this->checkForm($menuUpdateForm,$request);
+         $data = $request->except(['_token', '_method']);
+        try {
+            if(MenuRepository::saveById($id,$data)){
+
+                $this->ajaxReturn(['message'=>'菜单编辑成功！','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'menuslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
     }
 
     /**
