@@ -9,7 +9,7 @@ Route::get('/index', [
 
 /* 菜单管理模块 */
 Route::resource('menu', 'MenuController');
-Route::get('menu/search', [
+Route::post('menu/search', [
     'as'         => 'backend.menu.search',
     'uses'       => 'MenuController@search',
 ]);

@@ -380,7 +380,7 @@
                                     菜单管理
                                 </li>
                                     <li data-id="11" data-pid="1" data-url="{{url('backend/menu')}}" data-fresh="true" data-tabid="menuslist"
-                                        data-faicon="caret-right">菜单列表
+                                        data-faicon="fa fa-list">菜单列表
                                     </li>
                                 <li data-id="2" data-pid="0" data-faicon="fa fa-user" data-faicon-close="folder-o">
                                     用户管理
@@ -392,7 +392,7 @@
                                    data-faicon="caret-right">角色管理
                                </li>
                                        <li data-id="31" data-pid="3" data-url="{{url('backend/role')}}" data-fresh="true" data-tabid="roleslist"
-                                           data-faicon="caret-right">角色列表
+                                           data-faicon="fa fa-list">角色列表
                                        </li>
                                        <li data-id="32" data-pid="3" data-url="doc/base/init.html" data-tabid="doc-base"
                                            data-faicon="caret-right">框架初始化
@@ -402,7 +402,7 @@
                                         data-faicon="caret-right">权限管理
                                     </li>
                                         <li data-id="41" data-pid="4" data-url="{{url('backend/permission')}}" data-fresh="true" data-tabid="permissionslist"
-                                            data-faicon="caret-right">权限列表
+                                            data-faicon="fa fa-list">权限列表
                                         </li>
                             </ul>
                             {{--<ul id="bjui-doc-tree-module" class="ztree ztree_main" data-toggle="ztree"

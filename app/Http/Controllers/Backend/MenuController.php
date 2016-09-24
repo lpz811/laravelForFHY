@@ -29,7 +29,7 @@ class MenuController extends Controller
     {
         $data=MenuRepository::searchInfo($request);
         $search=$request->input('search');
-        return view("backend.permission.index",compact('data','search'));
+        return view("backend.menu.index",compact('data','search'));
     }
 
     /**
@@ -72,7 +72,7 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd($id);
     }
 
     /**
