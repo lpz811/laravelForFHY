@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\Backend\PermissionUpdateForm;
+use App\Http\Requests\Backend\PermissionCreateForm;
 use App\Facades\Backend\PermissionRepository;
 use Illuminate\Http\Request;
 
@@ -39,7 +41,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        $permissions = PermissionRepository::all();
+
         return view('backend.permission.create',compact('permissions'));
     }
 
@@ -51,7 +53,16 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $permissionCreateForm =new PermissionCreateForm();
+        $this->checkForm($permissionCreateForm,$request);
+        try {
+            if (PermissionRepository::create($request->all())) {
+                $this->ajaxReturn(['message'=>'权限添加成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'permissionslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
     }
 
     /**
@@ -73,7 +84,8 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = PermissionRepository::find($id);
+        return view('backend.permission.edit', compact("data"));
     }
 
     /**
@@ -85,7 +97,16 @@ class PermissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $permissionUpdateForm =new PermissionUpdateForm();
+        $this->checkForm($permissionUpdateForm,$request);
+        try{
+            $permission = PermissionRepository::find($id);
+            if($permission->update($request->all())){
+                $this->ajaxReturn(['message'=>'权限编辑成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'permissionslist']);
+            }
+        }catch (\Exception $e){
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
     }
 
     /**
@@ -96,6 +117,6 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

@@ -102,11 +102,6 @@ class RoleController extends Controller
         $roleUpdateForm =new RoleUpdateForm();
         $this->checkForm($roleUpdateForm,$request);
         try{
-
-           /* if($post = RoleRepository::firstByWhere([['name','=',$request->input('name')]])->count()){
-                dd($post);
-                $this->ajaxReturn(['message'=>'角色标识已存在！','statusCode'=>300]);
-            }*/
             $role = RoleRepository::find($id);
             if($role->update($request->all())){
                $this->ajaxReturn(['message'=>'角色编辑成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'roleslist']);

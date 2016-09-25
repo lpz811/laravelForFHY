@@ -18,7 +18,7 @@
             <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('permissionslist', true);"
                data-icon="undo">清空查询</a>
 
-            <button type="button" class="btn-blue btn" data-icon="fa-plus" data-width='530' data-toggle="dialog" data-id="addrole"  data-fresh="true" data-url="{{route('backend.permission.create')}}" data-title="添加新用户">添加新权限</button>
+            <button type="button" class="btn-blue btn" data-icon="fa-plus" data-width="590" data-toggle="dialog" data-id="addpermission" data-width="630"  data-fresh="true" data-url="{{route('backend.permission.create')}}" data-title="添加新权限">添加新权限</button>
 
             <div class="pull-right">
                 <div class="btn-group">
@@ -58,12 +58,12 @@
                 <td>{{$item->description}}</td>
 
                 <td>
-                    @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
-                        <a href="{{route('backend.admin.edit',['id'=>$item->id])}}" class="btn btn-green"
-                           data-toggle="dialog" data-id="editadmin"     data-title="编辑-{{$item->name}} 用户">编辑</a>
-                        <a href="{{URL::to('backend/admin/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
+
+                        <a href="{{route('backend.permission.edit',['id'=>$item->id])}}" class="btn btn-green"
+                           data-toggle="dialog" data-id="editadmin"  data-width="590"   data-title="编辑- {{$item->name}} -权限">编辑</a>
+                        <a href="{{URL::to('backend/permission/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
                            data-confirm-msg="确定要删除{{$item->email}}用户？"  data-type="delete">删除</a>
-                    @endif
+
                 </td>
             </tr>
         @endforeach
