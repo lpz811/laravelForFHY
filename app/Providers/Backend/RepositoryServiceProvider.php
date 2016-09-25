@@ -2,6 +2,7 @@
 
 namespace App\Providers\Backend;
 
+use App\Repositories\Backend\ActionRepository;
 use App\Repositories\Backend\AdminRepository;
 use App\Repositories\Backend\PermissionRepository;
 use App\Repositories\Backend\RoleRepository;
@@ -32,6 +33,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->registerAdminRepository();
         $this->registerRoleRepository();
         $this->registerPermissionRepository();
+        $this->registerActionRepository();
     }
     public function registerMenuRepository()
     {
@@ -70,9 +72,15 @@ class RepositoryServiceProvider extends ServiceProvider
             return new PermissionRepository($permission, $validator);
         });
     }
-
-    public function dd()
+    public function registerActionRepository()
     {
-        return 'ddd';
+        $this->app->singleton('actionrepository', function ($app) {
+            $model = config('repository.models.action');
+            $action = new $model();
+            $validator = $app['validator'];
+
+            return new ActionRepository($action, $validator);
+        });
     }
+
 }

@@ -5,6 +5,7 @@ return [
           'admin'=>'App\Models\Backend\Admin',
           'role'=>'App\Models\Backend\Role',
           'permission'=>'App\Models\Backend\Permission',
+          'action'=>'App\Models\Backend\Action',
       ],
     'pageSize'=>30,
 

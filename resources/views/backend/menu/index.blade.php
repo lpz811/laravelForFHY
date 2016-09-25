@@ -9,8 +9,8 @@
             <input type="text" id="menuname" value="{{isset($search['name'])?$search['name']:''}}" name="search[name]"   class="form-control" size="10">&nbsp;
             <label>菜单路由：</label>
             <input type="text" id="menuroute" value="{{isset($search['route'])?$search['route']:''}}" name="search[route]"     class="form-control" size="10">&nbsp;
-            <label>是否显示：</label>
-            <input type="text" id="menuhide" value="{{isset($search['hide'])?$search['hide']:''}}" name="search[hide]"     class="form-control" size="10">&nbsp;
+           {{-- <label>是否显示：</label>
+            <input type="text" id="menuhide" value="{{isset($search['hide'])?$search['hide']:''}}" name="search[hide]"     class="form-control" size="10">&nbsp; --}}
             <label>权限描述：</label>
             <input type="text" id="menudesc" value="{{isset($search['description'])?$search['description']:''}}" name="search[description]"    class="form-control" size="10">&nbsp;
 

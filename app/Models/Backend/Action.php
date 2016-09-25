@@ -2,10 +2,12 @@
 
 namespace App\Models\Backend;
 
+use App\Traits\Model\Backend\ModelsExtendsTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Action extends Model
 {
+    use ModelsExtendsTrait;
     /**
      * [$guarded description]
      *

@@ -84,3 +84,11 @@ Route::post('permission/associateActions', [
     'as'   => 'backend.permission.associate.actions',
     'uses' => 'PermissionController@associateActions',
 ]);
+
+
+/* 操作管理模块 */
+Route::resource('action', 'ActionController');
+Route::post("action/search", [
+    'as'=>'backend.action.search',
+    'uses'=>'ActionController@search'
+]);

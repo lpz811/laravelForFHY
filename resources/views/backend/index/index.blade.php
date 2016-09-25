@@ -394,9 +394,6 @@
                                        <li data-id="31" data-pid="3" data-url="{{url('backend/role')}}" data-fresh="true" data-tabid="roleslist"
                                            data-faicon="fa fa-list">角色列表
                                        </li>
-                                      {{-- <li data-id="32" data-pid="3" data-url="doc/base/init.html" data-tabid="doc-base"
-                                           data-faicon="caret-right">框架初始化
-                                       </li>--}}
 
                                 <li data-id="4" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o"
                                         data-faicon="caret-right">权限管理
@@ -404,6 +401,12 @@
                                         <li data-id="41" data-pid="4" data-url="{{url('backend/permission')}}" data-fresh="true" data-tabid="permissionslist"
                                             data-faicon="fa fa-list">权限列表
                                         </li>
+                                <li data-id="5" data-pid="0" data-faicon="folder-open-o" data-faicon-close="folder-o"
+                                    data-faicon="caret-right">操作管理
+                                </li>
+                                <li data-id="51" data-pid="5" data-url="{{url('backend/action')}}" data-fresh="true" data-tabid="actionslist"
+                                    data-faicon="fa fa-list">操作列表
+                                </li>
                             </ul>
                             {{--<ul id="bjui-doc-tree-module" class="ztree ztree_main" data-toggle="ztree"
                                 data-on-click="MainMenuClick" data-expand-all="true" data-faicon="th" data-tit="框架组件">

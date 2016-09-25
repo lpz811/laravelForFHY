@@ -113,7 +113,7 @@ class AdminRepository extends CommonRepository
      */
     public function clearCache()
     {
-        foreach (\App\Facades\AdminRepository::all() as $user) {
+        foreach (\App\Facades\Backend\AdminRepository::all() as $user) {
             Cache::forget(self::ADMIN_MENU_PERMISSIONS_CACHE . $user->id);
             Cache::forget(self::ADMIN_ACTION_PERMISSIONS_CACHE . $user->id);
         }
