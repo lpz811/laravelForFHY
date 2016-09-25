@@ -38,27 +38,28 @@
         <thead>
         <tr>
             <th width="26"><input type="checkbox" class="checkboxCtrl" data-group="ids" data-toggle="icheck"></th>
-            <th data-order-field="id">ID</th>
+            <th  width="26" data-order-field="id"  data-width="20">ID</th>
             <th data-order-field="name">权限标识</th>
             <th data-order-field="type">权限类型</th>
             <th data-order-field="display_name">权限名称</th>
             <th data-order-field="description">权限描述</th>
-            <th width="100">操作</th>
+            <th  >操作</th>
         </tr>
         </thead>
 
         <tbody>
         @foreach($data['info'] as $item)
             <tr data-id="{{$item->id}}">
-                <td><input type="checkbox" name="ids" data-toggle="icheck" value="{{$item->id}}"></td>
-                <td>{{$item->id}}</td>
+                <td><input type="checkbox" name="ids"  data-toggle="icheck" value="{{$item->id}}"></td>
+                <td  >{{$item->id}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->type}}</td>
                 <td>{{$item->display_name}}</td>
                 <td>{{$item->description}}</td>
 
                 <td>
-
+                        <a href="{{route('backend.permission.edit',['id'=>$item->id])}}" class="btn btn-green"
+                          data-toggle="dialog" data-id="editadmin"  data-width="590"   data-title="给- {{$item->name}} -授权">授权</a>
                         <a href="{{route('backend.permission.edit',['id'=>$item->id])}}" class="btn btn-green"
                            data-toggle="dialog" data-id="editadmin"  data-width="590"   data-title="编辑- {{$item->name}} -权限">编辑</a>
                         <a href="{{URL::to('backend/permission/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"

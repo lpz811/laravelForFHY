@@ -40,7 +40,7 @@
             <th data-order-field="name">角色标识</th>
             <th data-order-field="display_name">角色名称</th>
             <th data-order-field="description">角色描述</th>
-            <th width="100">操作</th>
+            <th >操作</th>
         </tr>
         </thead>
 

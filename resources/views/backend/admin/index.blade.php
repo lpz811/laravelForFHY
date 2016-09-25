@@ -36,7 +36,7 @@
             <th data-order-field="id">ID</th>
             <th data-order-field="name">姓名</th>
             <th data-order-field="email">邮箱</th>
-            <th width="100">操作</th>
+            <th >操作</th>
         </tr>
         </thead>
 

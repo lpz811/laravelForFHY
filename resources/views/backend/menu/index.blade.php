@@ -51,7 +51,7 @@
             <th data-order-field="data_fresh">页面打开时是否刷新</th>
             <th data-order-field="sort">排序</th>
             <th data-order-field="hide">是否显示</th>
-            <th width="100">操作</th>
+            <th >操作</th>
         </tr>
         </thead>
 
