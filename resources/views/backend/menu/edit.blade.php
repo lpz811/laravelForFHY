@@ -38,6 +38,10 @@
                 <td><input type="text" class="input-nm"   data-rule="required;digits"  name="data_id" id="data_id" value="{{$data->data_id}}" placeholder="DADA_ID" size="20"></td>
             </tr>
             <tr>
+                <th>DADA_PID:</th>
+                <td><input type="text" class="input-nm"   data-rule="required;digits"  name="data_pid" id="data_pid" value="{{$data->data_pid}}" placeholder="DADA_PID" size="20"></td>
+            </tr>
+            <tr>
                 <th>TAB_ID:</th>
                 <td><input type="text" class="input-nm"   data-rule="required"  name="tab_id" id="tab_id" value="{{$data->tab_id}}" placeholder="TAB_ID" size="20"></td>
             </tr>

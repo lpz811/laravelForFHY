@@ -9,8 +9,8 @@
             <input type="text" id="menuname" value="{{isset($search['name'])?$search['name']:''}}" name="search[name]"   class="form-control" size="10">&nbsp;
             <label>菜单路由：</label>
             <input type="text" id="menuroute" value="{{isset($search['route'])?$search['route']:''}}" name="search[route]"     class="form-control" size="10">&nbsp;
-           {{-- <label>是否显示：</label>
-            <input type="text" id="menuhide" value="{{isset($search['hide'])?$search['hide']:''}}" name="search[hide]"     class="form-control" size="10">&nbsp; --}}
+            <label>DATA_PID</label>
+            <input type="text" id="menudatapid" value="{{isset($search['data_pid'])?$search['data_pid']:''}}" name="search[data_pid]"     class="form-control" size="5">&nbsp;
             <label>权限描述：</label>
             <input type="text" id="menudesc" value="{{isset($search['description'])?$search['description']:''}}" name="search[description]"    class="form-control" size="10">&nbsp;
 
@@ -19,7 +19,7 @@
             <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('permissionslist', true);"
                data-icon="undo">清空查询</a>
 
-            <button type="button" class="btn-blue btn" data-width="600" data-height="480" data-icon="fa-plus" data-width='530' data-toggle="dialog" data-id="addmenu"  data-fresh="true" data-url="{{route('backend.menu.create')}}" data-title="添加新菜单">添加新菜单</button>
+            <button type="button" class="btn-blue btn" data-width="600" data-height="510" data-icon="fa-plus" data-width='530' data-toggle="dialog" data-id="addmenu"  data-fresh="true" data-url="{{route('backend.menu.create')}}" data-title="添加新菜单">添加新菜单</button>
 
             <div class="pull-right">
                 <div class="btn-group">
@@ -45,6 +45,7 @@
             <th data-order-field="description">菜单描述</th>
             <th data-order-field="route">菜单路由</th>
             <th data-order-field="data_id">DATA_ID</th>
+            <th data-order-field="data_pid">DATA_PID</th>
             <th data-order-field="tab_id">TAB_ID</th>
             <th data-order-field="icon">菜单打开时图标</th>
             <th data-order-field="icon_close">菜单关闭时图标</th>
@@ -66,6 +67,7 @@
                     <td>{{$item->description}}</td>
                     <td>{{$item->route}}</td>
                     <td>{{$item->data_id}}</td>
+                    <td>{{$item->data_pid}}</td>
                     <td>{{$item->tab_id}}</td>
                     <td>{{$item->icon}}</td>
                     <td>{{$item->icon_close}}</td>
@@ -76,7 +78,7 @@
                     <td>
                         @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
                             <a href="{{route('backend.menu.edit',['id'=>$item->id])}}" class="btn btn-green"
-                               data-toggle="dialog" data-id="editadmin"  data-width="600" data-height="480"  data-title="编辑- {{$item->description}} -菜单">编辑</a>
+                               data-toggle="dialog" data-id="editadmin"  data-width="600" data-height="510"  data-title="编辑- {{$item->description}} -菜单">编辑</a>
                             <a href="{{URL::to('backend/menu/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
                                data-confirm-msg="确定要删除{{$item->email}}菜单？"  data-type="delete">删除</a>
                         @endif
