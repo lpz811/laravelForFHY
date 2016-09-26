@@ -12,7 +12,7 @@ return [
         'list'      => '日志列表',
         'dashboard' => '日志统计',
     ],
-    'user'       => [
+    'admin'       => [
         'group'  => '用户管理',
         'list'   => '用户列表',
         'create' => '新增用户',

@@ -16,6 +16,7 @@ class CreateMenusTable extends Migration
             $table->increments('id');
             $table->smallInteger('parent_id')->default(0)->comment('父级菜单ID');
             $table->smallInteger('data_id')->default(0)->comment('下级分类ID');
+            $table->smallInteger('data_pid')->default(0)->comment('DATA_PID');
             $table->string('icon', 50)->comment('菜单图标');
             $table->string('icon_close', 50)->comment('菜单关闭时图标');
             $table->string('name', 50)->comment('菜单名称');
