@@ -58,10 +58,10 @@
                 <td>{{$item->description}}</td>
 
                 <td>
+                        <a href="{{route('backend.permission.associate',['id'=>$item->id])}}" class="btn btn-green"
+                          data-toggle="dialog" data-id="peimissionsociate"  data-width="350"  data-height="550" data-title="给- {{$item->display_name}} -授权">授权</a>
                         <a href="{{route('backend.permission.edit',['id'=>$item->id])}}" class="btn btn-green"
-                          data-toggle="dialog" data-id="editadmin"  data-width="590"   data-title="给- {{$item->name}} -授权">授权</a>
-                        <a href="{{route('backend.permission.edit',['id'=>$item->id])}}" class="btn btn-green"
-                           data-toggle="dialog" data-id="editadmin"  data-width="590"   data-title="编辑- {{$item->name}} -权限">编辑</a>
+                           data-toggle="dialog" data-id="editapermission"  data-width="590"   data-title="编辑- {{$item->name}} -权限">编辑</a>
                         <a href="{{URL::to('backend/permission/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
                            data-confirm-msg="确定要删除{{$item->email}}用户？"  data-type="delete">删除</a>
 

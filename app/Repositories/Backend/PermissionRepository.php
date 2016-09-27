@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Backend;
 
-use App\Facades\MenuRepository as MenuFacades;
-use App\Facades\ActionRepository as ActionFacades;
+use App\Facades\Backend\MenuRepository as MenuFacades;
+use App\Facades\Backend\ActionRepository as ActionFacades;
 
 /**
  * Permission Model Repository
@@ -19,10 +19,11 @@ class PermissionRepository extends CommonRepository
      */
     public function getAllMenusTreeByPermissionModel($permission)
     {
-      /*  $data = [];
+        $data = [];
         $menus = MenuFacades::getAllMenusLists();
-        $permissions = $permission->menus()->lists('id')->toArray();
 
+        $permissions = $permission->menus()->lists('id')->toArray();
+        //dd($permissions);
         foreach ($menus as $key => $menu) {
             $data[$key]['id'] = $menu['id'];
             $data[$key]['pId'] = $menu['parent_id'];
@@ -33,8 +34,7 @@ class PermissionRepository extends CommonRepository
                 $data[$key]['checked'] = true;
             }
         }
-
-        return $data;*/
+        return $data;
     }
 
     /**
@@ -46,7 +46,7 @@ class PermissionRepository extends CommonRepository
      */
     public function getAllActionsByPermissionModel($permission)
     {
-       /* $data = [];
+         $data = [];
         $actions = ActionFacades::all()->toArray();
         $permissions = $permission->actions()->lists('id')->toArray();
 
@@ -61,7 +61,7 @@ class PermissionRepository extends CommonRepository
             }
         }
 
-        foreach (config('cowcat.action-group') as $key => $value) {
+        foreach (config('ui.action-group') as $key => $value) {
             $group['id'] = $key;
             $group['pId'] = 0;
             $group['name'] = $value;
@@ -70,6 +70,6 @@ class PermissionRepository extends CommonRepository
             array_push($data, $group);
         }
 
-        return $data;*/
+        return $data;
     }
 }

@@ -119,4 +119,34 @@ class PermissionController extends Controller
     {
 
     }
+
+
+    /**
+     * 关联权限页面
+     *
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function associate($id)
+    {
+
+        $permission = PermissionRepository::find($id);
+
+        switch ($permission->type) {
+            case 'menu':
+                $data = PermissionRepository::getAllMenusTreeByPermissionModel($permission);
+                foreach ($data as $key => $item) {
+                    $data[$key]['name'] = trans($item['name']);
+                }
+                $data = json_encode($data);
+                break;
+            case 'action':
+                $data = json_encode(PermissionRepository::getAllActionsByPermissionModel($permission));
+                break;
+
+        }
+
+        return view('backend.permission.' . $permission->type, compact('data', 'id'));
+    }
 }

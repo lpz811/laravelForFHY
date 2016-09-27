@@ -23,7 +23,7 @@ return [
     /* 操作管理类型 */
     'action-group'                 => [
         'menu'       => '菜单管理',
-        'user'       => '用户管理',
+        'admin'       => '用户管理',
         'role'       => '角色管理',
         'permission' => '权限管理',
         'action'     => '操作管理',
