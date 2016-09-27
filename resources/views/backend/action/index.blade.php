@@ -20,7 +20,7 @@
             <a class="btn btn-orange" href="javascript:;" onclick="$(this).navtab('actionslist', true);"
                data-icon="undo">清空查询</a>
 
-            <button type="button" class="btn-blue btn"   data-icon="fa-plus" data-width='530' data-toggle="dialog" data-id="addaction"  data-fresh="true" data-url="{{route('backend.action.create')}}" data-title="添加新菜单">添加新菜单</button>
+            <button type="button" class="btn-blue btn"   data-icon="fa-plus" data-width='610' data-toggle="dialog" data-id="addaction"  data-fresh="true" data-url="{{route('backend.action.create')}}" data-title="添加新操作">添加新操作</button>
 
             <div class="pull-right">
                 <div class="btn-group">
@@ -65,10 +65,10 @@
                 <td>{{$item->sort}}</td>
                 <td>
 
-                        <a href="{{route('backend.menu.edit',['id'=>$item->id])}}" class="btn btn-green"
-                           data-toggle="dialog" data-id="editadmin"  data-width="600" data-height="480"  data-title="编辑- {{$item->description}} -菜单">编辑</a>
-                        <a href="{{URL::to('backend/menu/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
-                           data-confirm-msg="确定要删除{{$item->email}}菜单？"  data-type="delete">删除</a>
+                        <a href="{{route('backend.action.edit',['id'=>$item->id])}}" class="btn btn-green"
+                           data-toggle="dialog" data-id="editadmin"  data-width="610"    data-title="编辑- {{$item->description}} -操作">编辑</a>
+                        <a href="{{URL::to('backend/action/'.'d')}}" class="btn btn-red" data-toggle="doajax"
+                           data-confirm-msg="确定要删除{{$item->email}}操作？"  data-type="delete">删除</a>
 
                 </td>
             </tr>

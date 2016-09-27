@@ -18,7 +18,7 @@ class ActionRepository extends CommonRepository
 
         foreach ($routes as $route) {
             /* 排除无须验证操作 */
-            if (in_array($route->getActionName(), config('cowcat.without-verification-actions'))) {
+            if (in_array($route->getActionName(), config('ui.without-verification-actions'))) {
                 continue;
             }
 

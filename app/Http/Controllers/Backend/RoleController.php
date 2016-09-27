@@ -120,6 +120,8 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
+
+
          try {
             if (RoleRepository::destroy($id)) {
                 $this->ajaxReturn(['message'=>'删除角色成功','statusCode'=>200,'tabid'=>'roleslist']);
