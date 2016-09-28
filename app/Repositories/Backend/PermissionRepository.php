@@ -21,9 +21,7 @@ class PermissionRepository extends CommonRepository
     {
         $data = [];
         $menus = MenuFacades::getAllMenusLists();
-
         $permissions = $permission->menus()->lists('id')->toArray();
-        //dd($permissions);
         foreach ($menus as $key => $menu) {
             $data[$key]['id'] = $menu['id'];
             $data[$key]['pId'] = $menu['parent_id'];

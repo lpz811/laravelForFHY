@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Events\Cache\ClearUserPermissionCacheEvent;
 use App\Http\Requests\Backend\PermissionUpdateForm;
 use App\Http\Requests\Backend\PermissionCreateForm;
 use App\Facades\Backend\PermissionRepository;
@@ -144,9 +145,69 @@ class PermissionController extends Controller
             case 'action':
                 $data = json_encode(PermissionRepository::getAllActionsByPermissionModel($permission));
                 break;
-
         }
-
+        //dd($data);
         return view('backend.permission.' . $permission->type, compact('data', 'id'));
+    }
+
+
+
+    /**
+     * 关联菜单权限操作
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function associateMenus(Request $request)
+    {
+       //
+        $id = $request['id'];
+        $menus = $request['menus'];
+
+        try {
+            $permission = PermissionRepository::find($id);
+
+            if ($permission->menus()->sync($menus ? $menus : [])) {
+                event(new ClearUserPermissionCacheEvent());
+                $this->ajaxReturn(['message'=>'关联菜单权限成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'permissionslist']);
+                return $this->responseJson(['status' => 1, 'message' => '']);
+            } else {
+                $this->ajaxReturn(['message'=>'关联菜单权限失败','statusCode'=>300,'closeCurrent'=>true,'tabid'=>'permissionslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
+    }
+
+    /**
+     * 关联操作权限操作
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function associateActions(Request $request)
+    {
+
+
+        $id = $request['id'];
+        $actions = $request['actions'];
+        try {
+            $permission = PermissionRepository::find($id);
+
+            if ($permission->actions()->sync($actions)) {
+                event(new ClearUserPermissionCacheEvent());
+                $this->ajaxReturn(['message'=>'关联操作权限成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'permissionslist']);
+
+            } else {
+                $this->ajaxReturn(['message'=>'关联操作权限失败','statusCode'=>300,'closeCurrent'=>true,'tabid'=>'permissionslist']);
+
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
     }
 }

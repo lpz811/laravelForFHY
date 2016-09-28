@@ -1,13 +1,17 @@
 
 <div class="bjui-pageContent">
     <div class="box-body">
+        <button id="check-all-true" type="button" class="btn btn-sm btn-flat btn-info">全部选择</button>
+        <button id="check-all-false" type="button" class="btn btn-sm btn-flat btn-warning">取消选择</button>
+    </div>
+    <div class="box-body">
         <ul id="tree" class="ztree"></ul>
     </div>
 </div>
 <div class="bjui-pageFooter">
     <ul>
         <li><button type="button" class="btn-close" data-icon="">取消</button></li>
-        <li><button type="submit" class="btn-default">保存</button></li>
+        <li><button type="submit" id='savemenupermission'  class="btn-default">保存</button></li>
     </ul>
 </div>
 <script type="text/javascript">
@@ -37,7 +41,7 @@
             zTree.checkAllNodes(false);
         });
 
-        $('#save-menu-permission').click(function () {
+        $('#savemenupermission').click(function () {
             var tree = zTree.getCheckedNodes(true);
 
             var actions = [];
@@ -48,10 +52,11 @@
                 actions.push(tree[i].id);
             }
 
-            Backend.ajax.request({
-                data: {id: id, actions: actions},
-                href: "{{route('backend.permission.associate.actions')}}"
-            });
+            $(this).bjuiajax('doAjax',{
+                url:"{{route('backend.permission.associate.actions')}}",
+                data:{id:id,actions:actions},
+                loadingmask:true
+            })
         });
     });
 </script>

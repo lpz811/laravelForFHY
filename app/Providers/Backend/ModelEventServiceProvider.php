@@ -2,8 +2,9 @@
 
 namespace App\Providers\Backend;
 
+use App\Events\Cache\ClearMenuCacheEvent;
 use Illuminate\Support\ServiceProvider;
-
+use App\Models\Backend\Menu;
 class ModelEventServiceProvider extends ServiceProvider
 {
     /**
@@ -16,6 +17,20 @@ class ModelEventServiceProvider extends ServiceProvider
         //
     }
 
+
+    /**
+     * 监听菜单模型事件
+     */
+    public function listenMenuModelEvents()
+    {
+        Menu::saved(function () {
+            event(new ClearMenuCacheEvent());
+        });
+
+        Menu::deleted(function () {
+            event(new ClearMenuCacheEvent());
+        });
+    }
     /**
      * Register the application services.
      *
