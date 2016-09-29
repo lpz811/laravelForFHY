@@ -53,6 +53,9 @@
                 <td>{{$item->display_name}}</td>
                 <td>{{$item->description}}</td>
                 <td>
+
+                    <a href="{{route('backend.role.permission',['id'=>$item->id])}}" class="btn btn-blue"
+                       data-toggle="dialog" data-id="peimissionsociate"  data-width="550"    data-title="给- {{$item->display_name}} -角色授权">授权</a>
                         <a href="{{route('backend.role.edit',['id'=>$item->id])}}" class="btn btn-green"
                            data-toggle="dialog" data-width='550' data-id="editrole" data-fresh="true"  data-title="编辑-{{$item->display_name}}角色">编辑</a>
 

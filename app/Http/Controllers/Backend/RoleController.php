@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Events\Cache\ClearAdminPermissionCacheEvent;
 use App\Facades\Backend\RoleRepository;
 use App\Http\Requests\Backend\RoleCreateForm;
 use App\Http\Requests\Backend\RoleUpdateForm;
@@ -63,7 +64,7 @@ class RoleController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'closeCurrent'=>true,'statusCode'=>300]);
         }
     }
 
@@ -107,7 +108,7 @@ class RoleController extends Controller
                $this->ajaxReturn(['message'=>'角色编辑成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'roleslist']);
             }
         }catch (\Exception $e){
-            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'closeCurrent'=>true,'statusCode'=>300]);
         }
     }
 
@@ -128,7 +129,7 @@ class RoleController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>200]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'closeCurrent'=>true,'statusCode'=>200]);
         }
     }
 
@@ -142,7 +143,62 @@ class RoleController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>'所选用户删除失败','statusCode'=>200]);
+            $this->ajaxReturn(['message'=>'所选用户删除失败','closeCurrent'=>true,'statusCode'=>200]);
         }*/
+    }
+
+    /**
+     * 角色赋权页面
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function permission($id)
+    {
+        $role = RoleRepository::find($id);
+        $data = json_encode(RoleRepository::getTypeGroupPermissionsByRoleModel($role));
+
+        return view('backend.role.permission', compact('id', 'data', 'role'));
+    }
+
+
+    /**
+     * 角色赋权操作
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function associatePermission(Request $request)
+    {
+        $id = $request['id'];
+        $permissions = $request['permissions'];
+
+        $data = [];
+        foreach ($permissions as $permission) {
+            if ( ! $permission) {
+                continue;
+            }
+
+            if (array_key_exists($permission, config('ui.permission-type'))) {
+                continue;
+            }
+
+            $data[] = $permission;
+        }
+
+        try {
+            $role = RoleRepository::find($id);
+            if ($role->perms()->sync($data)) {
+                event(new ClearAdminPermissionCacheEvent());
+                $this->ajaxReturn(['message'=>'角色赋权成功','statusCode'=>200,'closeCurrent'=>true,'tabid'=>'roleslist']);
+            } else {
+                $this->ajaxReturn(['message'=>'角色赋权失败','closeCurrent'=>true,'statusCode'=>300,]);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'closeCurrent'=>true,'statusCode'=>300]);
+        }
     }
 }

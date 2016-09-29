@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Repositories\Backend;
-
+use App\Facades\Backend\PermissionRepository;
 
 
 /**
@@ -18,7 +18,7 @@ class RoleRepository extends CommonRepository
      */
     public function getTypeGroupPermissionsByRoleModel($role)
     {
-       /* $data = [];
+       $data = [];
         $permissions = PermissionRepository::all()->toArray();
         $rolePermission = $role->perms()->lists('id')->toArray();
 
@@ -30,7 +30,7 @@ class RoleRepository extends CommonRepository
             in_array($permission['id'], $rolePermission) && $data[$key]['checked'] = true;
         }
 
-        foreach (config('cowcat.permission-type') as $key => $item) {
+        foreach (config('ui.permission-type') as $key => $item) {
             $arr = [];
             $arr['id'] = $key;
             $arr['pId'] = 0;
@@ -45,7 +45,6 @@ class RoleRepository extends CommonRepository
         $arr['name'] = "全部权限";
         $arr['open'] = true;
         array_push($data, $arr);
-
-        return $data;*/
+        return $data;
     }
 }
