@@ -40,6 +40,7 @@ class MenuController extends Controller
      */
     public function create()
     {
+
         $tree = create_level_tree(MenuRepository::getAllDisplayMenus());
         return view('backend.menu.create', compact('tree'));
     }

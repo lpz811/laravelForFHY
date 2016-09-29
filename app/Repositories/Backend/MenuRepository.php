@@ -37,7 +37,6 @@ class MenuRepository extends CommonRepository
         if (empty($menus)) {
             $menus = $this->model->all();
             Cache::forever(self::ALL_MENUS_CACHE, $menus);
-
             return $menus;
         } else {
             return $menus;
