@@ -49,12 +49,12 @@
                         <td>{{$item->email}}</td>
                       {{--  <td>{{$item->roles}}</td>--}}
                         <td>
-                            @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
+
                                 <a href="{{route('backend.admin.edit',['id'=>$item->id])}}" class="btn btn-green"
                                    data-toggle="dialog" data-id="editadmin"     data-title="编辑-{{$item->name}} 用户">编辑</a>
                                 <a href="{{URL::to('backend/admin/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
                                    data-confirm-msg="确定要删除{{$item->email}}用户？"  data-type="delete">删除</a>
-                            @endif
+
                         </td>
                     </tr>
                 @endforeach

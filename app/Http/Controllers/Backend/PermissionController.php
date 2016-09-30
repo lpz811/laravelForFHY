@@ -121,7 +121,9 @@ class PermissionController extends Controller
 
     }
 
+   public function selectdelete($id){
 
+   }
     /**
      * 关联权限页面
      *

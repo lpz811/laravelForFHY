@@ -33,20 +33,22 @@ class MainPresenter extends CommonPresenter
     {
         $user = Auth::user();
         if( ! $user){
-            return redirect()->to('/auth/logout');
+            return redirect()->to('/backend/logout');
         }
 
         $routes = AdminRepository::getAdminMenusPermissionsByAdminModel($user);
         if( ! $routes){
             return "";
         }
-        if($user['is_super_admin'] ==0){
-            foreach ($menus as $key => $menu) {
-                if( ! in_array($menu['route'], $routes)){
-                    unset($menus[ $key ]);
-                }
-            }
+         if($user['is_super_admin']==0){
+             foreach ($menus as $key => $menu) {
+                 if( ! in_array($menu['route'], $routes)){
+                     unset($menus[ $key ]);
+                 }
+             }
         }
+
+
         $sidebar= $this->makeSidebar(list_to_tree($menus));
 
         return $sidebar;
