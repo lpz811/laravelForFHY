@@ -36,7 +36,7 @@ class MainPresenter extends CommonPresenter
             return redirect()->to('/auth/logout');
         }
 
-        $routes = AdminRepository::getAdminMenusPermissionsByUserModel($user);
+        $routes = AdminRepository::getAdminMenusPermissionsByAdminModel($user);
         if( ! $routes){
             return "";
         }
@@ -47,13 +47,11 @@ class MainPresenter extends CommonPresenter
                 }
             }
         }
-        $trees = list_to_tree($menus);
-        $sidebar = '<ul id="bjui-hnav-navbar">';
-        $sidebar .= $this->makeSidebar($trees);
-        $sidebar .= '</ul>';
-dd($sidebar);
+        $sidebar= $this->makeSidebar(list_to_tree($menus));
+
         return $sidebar;
     }
+
 
     /**
      * 生成左侧栏
@@ -63,94 +61,29 @@ dd($sidebar);
      *
      * @return string
      */
-    protected static function makeSidebar(array $menus)
+    protected   function makeSidebar(array $menus)
     {
 
-        $sidebar = "";
-        foreach ($menus as $item) {
-            $sidebar.='<li><a href="javascript:;" data-toggle="slidebar"><i class="'.$item->icon.'"></i>'.$item->description.'</a>
-            <div class="items hide" data-noinit="true">';
+
+        $sidebar = '<ul id="bjui-hnav-navbar">';
+        foreach ($menus as $key=>$item) {
+            $active=$key==0?'class="active"':'';
+                $sidebar.='<li '.$active.'><a href="javascript:;" data-toggle="slidebar"><i class="'.$item['icon'].'"></i>'.$item['description'].'</a><div class="items hide" data-noinit="true">';
+                $sidebar.='<ul id="bjui-doc-tree-base" class="ztree ztree_main" data-toggle="ztree"
+                            data-on-click="MainMenuClick" data-expand-all="true" data-faicon="'.$item['icon'].'"
+                            data-tit="'.$item['description'].'">';
                 foreach ($item['child'] as $ite){
-                    $sidebar.='<ul id="bjui-doc-tree-base" class="ztree ztree_main" data-toggle="ztree"
-                            data-on-click="MainMenuClick" data-expand-all="'.$ite->data_fresh.'" data-faicon="'.$ite->icon.'"
-                            data-tit="'.$ite->description.'">';
-
+                        $sidebar.='<li data-id="'.$ite['data_id'].'" data-pid="'.$ite['data_pid'].'" data-faicon="'.$ite['icon'].'" data-faicon-close="'.$ite['icon_close'].'">'.$ite['description'].'</li>';
                     foreach ($ite['child'] as $it){
-                        $sidebar.='<li data-id="'.$it->data_id.'" data-pid="'.$it->data_pid.'" data-faicon="'.$it->icon.'" data-url="{{url('.$it->route.')}}" data-fresh="'.$it->data_fresh.'" data-tabid="'.$it->tab_id.'"data-faicon-close="'.$it->icon_close.'">
-                                菜单管理
-                            </li>';
-
+                        $sidebar.='<li data-id="'.$it['data_id'].'" data-pid="'.$it['data_pid'].'" data-faicon="'.$it['icon'].'" data-url="'.route($it['route']).'" data-fresh="'.$it['data_fresh'].'" data-tabid="'.$it['tab_id'].'"data-faicon-close="'.$it['icon_close'].'">
+                               '.$it['description'].'</li>';
                     }
-                    $sidebar.='</ul>';
                 }
-
-                $sidebar.='</div></li>';
-
+                $sidebar.='</ul></div></li>';
         }
-
+        $sidebar .= '</ul>';
         return $sidebar;
     }
 
-    /**
-     * 渲染面包屑导航条视图
-     *
-     * @param  array  $menus
-     * @param  string $route
-     *
-     * @return mixed
-     */
-    public function renderBreadcrumbs(array $menus, $route)
-    {
-        $breadcrumbs = Cache::get(self::BREADCRUMBS_MENUS_CACHE . $route);
-        if($breadcrumbs){
-            return $breadcrumbs;
-        } else {
-            $array = self::buildBreadcrumbsArray($menus, $route);
-            $breadcrumbs = self::makeBreadcrumbs($array);
-            Cache::forever(self::BREADCRUMBS_MENUS_CACHE . $route, $breadcrumbs);
 
-            return $breadcrumbs;
-        }
-    }
-
-    /**
-     * 生成面包屑
-     *
-     * @param array $array
-     *
-     * @return string
-     */
-    protected static function makeBreadcrumbs(array $array)
-    {
-        $array = two_dimensional_array_sort($array, 'sort', SORT_ASC);
-        $breadcrumbs = '<ol class="breadcrumb">';
-        foreach ($array as $key => $value) {
-
-            if(count($array) == $key + 1){
-                $breadcrumbs .= '<li class="active">';
-            } else {
-                $breadcrumbs .= '<li>';
-            }
-
-            if($value['route']){
-                if(Route::has($value['route'])){
-                    $breadcrumbs .= '<a href="' . route($value['route']) . '">';
-                } else {
-                    $breadcrumbs .= '<a href="#">';
-                }
-            } else {
-                $breadcrumbs .= '<a href="#">';
-            }
-
-            if($value['icon']){
-                $breadcrumbs .= '<i class="fa ' . trans($value['icon']) . '"></i> ';
-            }
-            $breadcrumbs .= trans($value['name']);
-            $breadcrumbs .= '</a>';
-            $breadcrumbs .= '</li>';
-        }
-        $breadcrumbs .= '</ol>';
-
-        return $breadcrumbs;
-    }
 }

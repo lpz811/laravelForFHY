@@ -119,6 +119,8 @@ if( ! function_exists('create_level_tree')){
     }
 }
 
+
+
 if( ! function_exists('create_node_tree')){
 
     /**
@@ -138,6 +140,31 @@ if( ! function_exists('create_node_tree')){
             if($item['parent_id'] == $parent_id){
                 $item[ $name ] = create_node_tree($data, $item['id']);
                 $tree[] = $item;
+            }
+        }
+
+        return $tree;
+    }
+}
+
+if( ! function_exists('getChildByPid')){
+
+    /**
+     * 生成二维数组节点树
+     *
+     * @param        $data
+     * @param int    $parent_id
+     * @param string $name
+     *
+     * @return array
+     */
+    function getChildByPid($data, $parent_id = 0)
+    {
+        $tree = [];
+
+        foreach ($data as $key=>$item) {
+            if($item['parent_id'] == $parent_id){
+                $tree[]= $item;
             }
         }
 

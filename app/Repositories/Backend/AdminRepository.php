@@ -26,7 +26,7 @@ class AdminRepository extends CommonRepository
      *
      * @return array|mixed
      */
-    public function getAdminMenusPermissionsByUserModel($user)
+    public function getAdminMenusPermissionsByAdminModel($user)
     {
         $routes = Cache::get(self::ADMIN_MENU_PERMISSIONS_CACHE . $user->id);
 
@@ -72,7 +72,7 @@ class AdminRepository extends CommonRepository
      *
      * @return array|mixed
      */
-    public function getAdminActionPermissionsByUserModel($user)
+    public function getAdminActionPermissionsByAdminModel($user)
     {
         $actions = Cache::get(self::ADMIN_ACTION_PERMISSIONS_CACHE . $user->id);
 
