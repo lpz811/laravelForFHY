@@ -79,6 +79,7 @@ class MainPresenter extends CommonPresenter
                                '.$it['description'].'</li>';
                     }
                 }
+
                 $sidebar.='</ul></div></li>';
         }
         $sidebar .= '</ul>';
