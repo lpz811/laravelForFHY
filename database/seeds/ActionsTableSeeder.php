@@ -19,7 +19,7 @@ class ActionsTableSeeder extends Seeder
         \DB::table('actions')->insert(array (
             0 =>
                 array (
-                    'id' => 1,
+                    'id' => 200,
                     'group' => 'menu',
                     'name' => '添加新菜单',
                     'action' => 'App\\Http\\Controllers\\Backend\\MenuController@create',
@@ -30,7 +30,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             1 =>
                 array (
-                    'id' => 2,
+                    'id' => 201,
                     'group' => 'menu',
                     'name' => '添加新菜单时保存菜单',
                     'action' => 'App\\Http\\Controllers\\Backend\\MenuController@store',
@@ -41,7 +41,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             2 =>
                 array (
-                    'id' => 3,
+                    'id' => 202,
                     'group' => 'menu',
                     'name' => '编辑菜单',
                     'action' => 'App\\Http\\Controllers\\Backend\\MenuController@edit',
@@ -53,7 +53,7 @@ class ActionsTableSeeder extends Seeder
 
             3 =>
                 array (
-                    'id' => 4,
+                    'id' => 203,
                     'group' => 'menu',
                     'name' => '编辑菜单时保存',
                     'action' => 'App\\Http\\Controllers\\Backend\\MenuController@update',
@@ -64,7 +64,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             4 =>
                 array (
-                    'id' => 5,
+                    'id' => 204,
                     'group' => 'menu',
                     'name' => '删除菜单',
                     'action' => 'App\\Http\\Controllers\\Backend\\MenuController@destroy',
@@ -75,7 +75,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             5 =>
                 array (
-                    'id' => 6,
+                    'id' =>205,
                     'group' => 'menu',
                     'name' => '删除所选菜单',
                     'action' => 'App\\Http\\Controllers\\Backend\\MenuController@selectdelete',
@@ -86,7 +86,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             6 =>
                 array (
-                    'id' => 7,
+                    'id' => 206,
                     'group' => 'menu',
                     'name' => '菜单的模糊查询',
                     'action' => 'App\\Http\\Controllers\\Backend\\MenuController@search',
@@ -97,7 +97,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             7 =>
                 array (
-                    'id' => 8,
+                    'id' => 207,
                     'group' => 'admin',
                     'name' => '添加新用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@create',
@@ -108,7 +108,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             8 =>
                 array (
-                    'id' => 9,
+                    'id' => 208,
                     'group' => 'admin',
                     'name' => '添加时保存用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@store',
@@ -119,7 +119,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             9 =>
                 array (
-                    'id' => 10,
+                    'id' => 209,
                     'group' => 'admin',
                     'name' => '编辑用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@edit',
@@ -130,7 +130,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             10 =>
                 array (
-                    'id' => 11,
+                    'id' => 210,
                     'group' => 'admin',
                     'name' => '编辑时保存用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@update',
@@ -141,7 +141,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             11 =>
                 array (
-                    'id' => 12,
+                    'id' => 211,
                     'group' => 'admin',
                     'name' => '删除用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@destroy',
@@ -152,7 +152,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             12 =>
                 array (
-                    'id' => 13,
+                    'id' => 212,
                     'group' => 'admin',
                     'name' => '删除所选用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@selectdelete',
@@ -163,7 +163,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             13 =>
                 array (
-                    'id' => 14,
+                    'id' => 213,
                     'group' => 'admin',
                     'name' => '用户模糊查询',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@search',
@@ -178,7 +178,7 @@ class ActionsTableSeeder extends Seeder
 
             14 =>
                 array (
-                    'id' => 15,
+                    'id' => 214,
                     'group' => 'role',
                     'name' => '角色授权',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@permission',
@@ -189,7 +189,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             15 =>
                 array (
-                    'id' => 16,
+                    'id' => 215,
                     'group' => 'role',
                     'name' => '角色授权时保存',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@associatePermission',
@@ -200,7 +200,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             16 =>
                 array (
-                    'id' => 17,
+                    'id' => 216,
                     'group' => 'role',
                     'name' => '添加新角色',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@create',
@@ -211,7 +211,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             17 =>
                 array (
-                    'id' => 18,
+                    'id' => 217,
                     'group' => 'role',
                     'name' => '添加时保存角色',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@store',
@@ -222,7 +222,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             18 =>
                 array (
-                    'id' => 19,
+                    'id' => 218,
                     'group' => 'role',
                     'name' => '编辑角色',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@edit',
@@ -233,7 +233,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             19 =>
                 array (
-                    'id' => 20,
+                    'id' => 219,
                     'group' => 'role',
                     'name' => '编辑时保存角色',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@update',
@@ -244,7 +244,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             20 =>
                 array (
-                    'id' => 21,
+                    'id' => 220,
                     'group' => 'role',
                     'name' => '删除角色',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@destroy',
@@ -255,7 +255,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             21 =>
                 array (
-                    'id' => 22,
+                    'id' => 221,
                     'group' => 'role',
                     'name' => '删除所选角色',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@selectdelete',
@@ -266,7 +266,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             22 =>
                 array (
-                    'id' => 23,
+                    'id' => 222,
                     'group' => 'role',
                     'name' => '角色的迷糊查询',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@search',
@@ -279,7 +279,7 @@ class ActionsTableSeeder extends Seeder
 
             23 =>
                 array (
-                    'id' => 24,
+                    'id' => 223,
                     'group' => 'permission',
                     'name' => '权限授权',
                     'action' => 'App\\Http\\Controllers\\Backend\\PermissionController@associate',
@@ -290,7 +290,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             24 =>
                 array (
-                    'id' => 25,
+                    'id' => 224,
                     'group' => 'permission',
                     'name' => '权限授权菜单',
                     'action' => 'App\\Http\\Controllers\\Backend\\PermissionController@associateMenus',
@@ -301,7 +301,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             25 =>
                 array (
-                    'id' => 26,
+                    'id' => 225,
                     'group' => 'permission',
                     'name' => '权限授权操作',
                     'action' => 'App\\Http\\Controllers\\Backend\\PermissionController@associateActions',
@@ -312,7 +312,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             26 =>
                 array (
-                    'id' => 27,
+                    'id' => 226,
                     'group' => 'permission',
                     'name' => '添加新权限',
                     'action' => 'App\\Http\\Controllers\\Backend\\PermissionController@create',
@@ -323,7 +323,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             27 =>
                 array (
-                    'id' => 28,
+                    'id' => 227,
                     'group' => 'permission',
                     'name' => '添加时保存权限',
                     'action' => 'App\\Http\\Controllers\\Backend\\PermissionController@store',
@@ -334,7 +334,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             28 =>
                 array (
-                    'id' => 29,
+                    'id' => 228,
                     'group' => 'permission',
                     'name' => '编辑权限',
                     'action' => 'App\\Http\\Controllers\\Backend\\PermissionController@edit',
@@ -345,7 +345,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             29 =>
                 array (
-                    'id' => 30,
+                    'id' => 229,
                     'group' => 'permission',
                     'name' => '编辑时修改权限',
                     'action' => 'App\\Http\\Controllers\\Backend\\PermissionController@update',
@@ -356,7 +356,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             30 =>
                 array (
-                    'id' => 31,
+                    'id' => 230,
                     'group' => 'permission',
                     'name' => '删除权限',
                     'action' => 'App\\Http\\Controllers\\Backend\\PermissionController@destroy',
@@ -367,7 +367,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             31 =>
                 array (
-                    'id' => 32,
+                    'id' => 231,
                     'group' => 'permission',
                     'name' => '删除所选权限',
                     'action' => 'App\\Http\\Controllers\\Backend\\PermissionController@selectdelete',
@@ -378,7 +378,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             32 =>
                 array (
-                    'id' => 33,
+                    'id' => 232,
                     'group' => 'permission',
                     'name' => '权限的模糊查询',
                     'action' => 'App\\Http\\Controllers\\Backend\\PermissionController@search',
@@ -392,7 +392,7 @@ class ActionsTableSeeder extends Seeder
 
             33 =>
                 array (
-                    'id' => 34,
+                    'id' => 233,
                     'group' => 'action',
                     'name' => '添加新操作',
                     'action' => 'App\\Http\\Controllers\\Backend\\ActionController@create',
@@ -403,7 +403,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             34 =>
                 array (
-                    'id' => 35,
+                    'id' =>234,
                     'group' => 'action',
                     'name' => '添加时保存操作',
                     'action' => 'App\\Http\\Controllers\\Backend\\ActionController@store',
@@ -414,7 +414,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             35 =>
                 array (
-                    'id' => 36,
+                    'id' => 235,
                     'group' => 'action',
                     'name' => '编辑操作',
                     'action' => 'App\\Http\\Controllers\\Backend\\ActionController@edit',
@@ -425,7 +425,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             36 =>
                 array (
-                    'id' => 37,
+                    'id' => 236,
                     'group' => 'action',
                     'name' => '编辑时保存操作',
                     'action' => 'App\\Http\\Controllers\\Backend\\ActionController@update',
@@ -437,7 +437,7 @@ class ActionsTableSeeder extends Seeder
 
             37 =>
                 array (
-                    'id' => 38,
+                    'id' => 237,
                     'group' => 'action',
                     'name' => '删除操作',
                     'action' => 'App\\Http\\Controllers\\Backend\\ActionController@destroy',
@@ -449,7 +449,7 @@ class ActionsTableSeeder extends Seeder
 
             38 =>
                 array (
-                    'id' => 39,
+                    'id' => 238,
                     'group' => 'action',
                     'name' => '删除所选操作',
                     'action' => 'App\\Http\\Controllers\\Backend\\ActionController@selectdelete',
@@ -460,7 +460,7 @@ class ActionsTableSeeder extends Seeder
                 ),
             39 =>
                 array (
-                    'id' => 40,
+                    'id' => 239,
                     'group' => 'action',
                     'name' => '操作的模糊查询',
                     'action' => 'App\\Http\\Controllers\\Backend\\ActionController@search',

@@ -19,7 +19,7 @@ class MenusTableSeeder extends Seeder
         \DB::table('menus')->insert(array (
             0 =>
                 array (
-                    'id'             => 1,
+                    'id'             => 200,
                     'parent_id'      => 0,
                     'icon'           =>'fa fa-desktop',
                     'name'           => '系统配置',
@@ -34,8 +34,8 @@ class MenusTableSeeder extends Seeder
                 ),
             1 =>
                 array (
-                    'id'             => 2,
-                    'parent_id'       => 1,
+                    'id'             => 201,
+                    'parent_id'       => 200,
                     'icon'           =>'fa fa-list-alt',
                     'name'           => '菜单管理',
                     'route'          => 'backend.menu',
@@ -49,8 +49,8 @@ class MenusTableSeeder extends Seeder
                 ),
             2 =>
                 array (
-                    'id'             => 3,
-                    'parent_id'      => 2 ,
+                    'id'             => 202,
+                    'parent_id'      => 201 ,
                     'icon'           =>'fa fa-list',
                     'name'           => '菜单列表',
                     'route'          => 'backend.menu.index',
@@ -64,8 +64,8 @@ class MenusTableSeeder extends Seeder
                 ),
             3 =>
                 array (
-                    'id'             => 4,
-                    'parent_id'      => 1,
+                    'id'             => 203,
+                    'parent_id'      => 200,
                     'icon'           =>'fa fa-user',
                     'name'           => '用户管理',
                     'route'          => 'backend.admin',
@@ -79,8 +79,8 @@ class MenusTableSeeder extends Seeder
                 ),
             4 =>
                 array (
-                    'id'             => 5,
-                    'parent_id'      => 4,
+                    'id'             => 204,
+                    'parent_id'      => 203,
                     'icon'           =>'fa fa-list',
                     'name'           => '用户列表',
                     'route'          => 'backend.admin.index',
@@ -94,8 +94,8 @@ class MenusTableSeeder extends Seeder
                 ),
             5 =>
                 array (
-                    'id'             => 6,
-                    'parent_id'      => 1,
+                    'id'             => 205,
+                    'parent_id'      => 200,
                     'icon'           =>'fa fa-users',
                     'name'           => '角色管理',
                     'route'          => 'backend.role',
@@ -109,8 +109,8 @@ class MenusTableSeeder extends Seeder
                 ),
             6 =>
                 array (
-                    'id'             => 7,
-                    'parent_id'      => 6,
+                    'id'             => 206,
+                    'parent_id'      => 205,
                     'icon'           =>'fa fa-list',
                     'name'           => '角色列表',
                     'route'          => 'backend.role.index',
@@ -124,8 +124,8 @@ class MenusTableSeeder extends Seeder
                 ),
             7 =>
                 array (
-                    'id'             => 8,
-                    'parent_id'      => 1,
+                    'id'             => 207,
+                    'parent_id'      => 200,
                     'icon'           =>'fa fa-check',
                     'name'           => '权限管理',
                     'route'          => 'backend.permission',
@@ -139,8 +139,8 @@ class MenusTableSeeder extends Seeder
                 ),
             8 =>
                 array (
-                    'id'             => 9,
-                    'parent_id'      => 8,
+                    'id'             => 208,
+                    'parent_id'      => 207,
                     'icon'           =>'fa fa-list',
                     'name'           => '权限列表',
                     'route'          => 'backend.permission.index',
@@ -154,8 +154,8 @@ class MenusTableSeeder extends Seeder
                 ),
             9 =>
                 array (
-                    'id'             => 10,
-                    'parent_id'      => 1,
+                    'id'             => 209,
+                    'parent_id'      => 200,
                     'icon'           =>'fa fa-keyboard-o',
                     'name'           => '操作管理',
                     'route'          => 'backend.action',
@@ -169,8 +169,8 @@ class MenusTableSeeder extends Seeder
                 ),
             10 =>
                 array (
-                    'id'             => 11,
-                    'parent_id'      => 10,
+                    'id'             => 210,
+                    'parent_id'      => 209,
                     'icon'           =>'fa fa-list',
                     'name'           => '操作列表',
                     'route'          => 'backend.action.index',
