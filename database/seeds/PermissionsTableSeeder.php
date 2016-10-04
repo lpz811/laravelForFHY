@@ -38,9 +38,29 @@ class PermissionsTableSeeder extends Seeder
                 [
                     'id'           => 3,
                     'type'         => 'menu',
+                    'name'         => 'tourist.menu.visible',
+                    'display_name' => '游客--仅见所有菜单页面',
+                    'description'  => '游客--仅见所有菜单页面',
+                    'created_at'   => '2016-06-20 14:07:13',
+                    'updated_at'   => '2016-06-20 14:07:13',
+                ],
+            3 =>
+                [
+                    'id'           => 4,
+                    'type'         => 'menu',
                     'name'         => 'management.menu.visible',
-                    'display_name' => '菜单管理页面可见',
-                    'description'  => '菜单管理页面可见',
+                    'display_name' => '普通管理员管理的菜单页面',
+                    'description'  => '普通管理员管理的菜单页面',
+                    'created_at'   => '2016-06-20 14:07:13',
+                    'updated_at'   => '2016-06-20 14:07:13',
+                ],
+            4 =>
+                [
+                    'id'           => 5,
+                    'type'         => 'action',
+                    'name'         => 'management.action.visible',
+                    'display_name' => '普通管理员管理的操作权限',
+                    'description'  => '普通管理员管理的操作权限',
                     'created_at'   => '2016-06-20 14:07:13',
                     'updated_at'   => '2016-06-20 14:07:13',
                 ]

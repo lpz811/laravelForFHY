@@ -35,35 +35,19 @@ class Authorize
         $action = Route::current()->getActionName();
 
 
+        $actions = AdminRepository::getAdminActionPermissionsByAdminModel($user);
 
+        $menus = AdminRepository::getAdminMenusPermissionsByAdminModel($user);
 
-            if ($request->getMethod() == 'GET') {
+        $actions=array_merge($actions,config('ui.without-verification-route'));
 
-                $menus = AdminRepository::getAdminMenusPermissionsByAdminModel($user);
+        if ( ! $actions && !$menus) {
+            ajax_return(['message'=>'您没有权限操作！！','statusCode'=>300]);
+        }
 
-                if ( ! $menus) {
-                    ajax_return(['message'=>'您没有权限操作！！','statusCode'=>300]);
-
-                }
-                $menus=array_merge($menus,config('ui.without-verification-route'));
-                if ( ! in_array($route, $menus)) {
-                    ajax_return(['message'=>'您没有权限操作！！','statusCode'=>300]);
-                }
-            } else {
-                $actions = AdminRepository::getAdminActionPermissionsByAdminModel($user);
-
-                if ( ! $actions) {
-                    ajax_return(['message'=>'您没有权限操作！！','statusCode'=>300]);
-                }
-
-                if ( ! in_array($action, $actions)) {
-                    ajax_return(['message'=>'您没有权限操作！！','statusCode'=>300]);
-                }
-            }
-
-
-
-
+        if ( ! in_array($action, $actions) && ! in_array($route, $menus)) {
+            ajax_return(['message'=>'您没有权限操作！！','statusCode'=>300]);
+        }
         return $next($request);
     }
 }

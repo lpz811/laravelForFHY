@@ -34,7 +34,7 @@ class ActionsTableSeeder extends Seeder
                     'group' => 'menu',
                     'name' => '添加新菜单时保存菜单',
                     'action' => 'App\\Http\\Controllers\\Backend\\MenuController@store',
-                    'description' => '添加时保存菜单',
+                    'description' => '添加新菜单时保存菜单',
                     'state' => 1,
                     'created_at' => '2016-06-24 17:10:59',
                     'updated_at' => '2016-06-24 17:10:59',
@@ -57,7 +57,7 @@ class ActionsTableSeeder extends Seeder
                     'group' => 'menu',
                     'name' => '编辑菜单时保存',
                     'action' => 'App\\Http\\Controllers\\Backend\\MenuController@update',
-                    'description' => '编辑时保存菜单',
+                    'description' => '编辑菜单时保存',
                     'state' => 1,
                     'created_at' => '2016-06-24 17:11:28',
                     'updated_at' => '2016-06-24 17:11:28',
@@ -90,7 +90,7 @@ class ActionsTableSeeder extends Seeder
                     'group' => 'menu',
                     'name' => '菜单的模糊查询',
                     'action' => 'App\\Http\\Controllers\\Backend\\MenuController@search',
-                    'description' => '搜索菜单',
+                    'description' => '菜单的模糊查询',
                     'state' => 1,
                     'created_at' => '2016-06-24 17:11:39',
                     'updated_at' => '2016-06-24 17:11:39',
@@ -98,7 +98,7 @@ class ActionsTableSeeder extends Seeder
             7 =>
                 array (
                     'id' => 8,
-                    'group' => 'user',
+                    'group' => 'admin',
                     'name' => '添加新用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@create',
                     'description' => '添加新用户',
@@ -109,7 +109,7 @@ class ActionsTableSeeder extends Seeder
             8 =>
                 array (
                     'id' => 9,
-                    'group' => 'user',
+                    'group' => 'admin',
                     'name' => '添加时保存用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@store',
                     'description' => '添加时保存用户',
@@ -120,7 +120,7 @@ class ActionsTableSeeder extends Seeder
             9 =>
                 array (
                     'id' => 10,
-                    'group' => 'user',
+                    'group' => 'admin',
                     'name' => '编辑用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@edit',
                     'description' => '编辑用户',
@@ -131,7 +131,7 @@ class ActionsTableSeeder extends Seeder
             10 =>
                 array (
                     'id' => 11,
-                    'group' => 'user',
+                    'group' => 'admin',
                     'name' => '编辑时保存用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@update',
                     'description' => '编辑时保存用户',
@@ -142,7 +142,7 @@ class ActionsTableSeeder extends Seeder
             11 =>
                 array (
                     'id' => 12,
-                    'group' => 'user',
+                    'group' => 'admin',
                     'name' => '删除用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@destroy',
                     'description' => '删除用户',
@@ -153,7 +153,7 @@ class ActionsTableSeeder extends Seeder
             12 =>
                 array (
                     'id' => 13,
-                    'group' => 'user',
+                    'group' => 'admin',
                     'name' => '删除所选用户',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@selectdelete',
                     'description' => '删除所选用户',
@@ -164,7 +164,7 @@ class ActionsTableSeeder extends Seeder
             13 =>
                 array (
                     'id' => 14,
-                    'group' => 'user',
+                    'group' => 'admin',
                     'name' => '用户模糊查询',
                     'action' => 'App\\Http\\Controllers\\Backend\\UserController@search',
                     'description' => '用户模糊查询',
@@ -191,7 +191,7 @@ class ActionsTableSeeder extends Seeder
                 array (
                     'id' => 16,
                     'group' => 'role',
-                    'name' => '角色授权保存',
+                    'name' => '角色授权时保存',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@associatePermission',
                     'description' => '角色授权时保存',
                     'state' => 1,
@@ -213,9 +213,9 @@ class ActionsTableSeeder extends Seeder
                 array (
                     'id' => 18,
                     'group' => 'role',
-                    'name' => '保存时保存菜单',
+                    'name' => '添加时保存角色',
                     'action' => 'App\\Http\\Controllers\\Backend\\RoleController@store',
-                    'description' => '保存时保存菜单',
+                    'description' => '添加时保存角色',
                     'state' => 1,
                     'created_at' => '2016-06-24 17:23:06',
                     'updated_at' => '2016-06-24 17:23:06',

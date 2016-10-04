@@ -20,15 +20,15 @@ class RoleAdminTableSeeder extends Seeder
                     'admin_id' => 1,
                     'role_id' => 1,
                 ],
-            1 =>
-                [
-                    'admin_id' => 1,
-                    'role_id' => 2,
-                ],
             2 =>
                 [
                     'admin_id' => 2,
                     'role_id' => 3,
+                ],
+            2 =>
+                [
+                    'admin_id' => 3,
+                    'role_id' => 2,
                 ],
         ]);
     }

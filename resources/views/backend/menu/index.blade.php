@@ -76,12 +76,12 @@
                     <td>{{$menuPresenter->showDisplayFormat($item->hide)}}</td>
 
                     <td>
-                        @if(Auth::user()->id == $item->id || Auth::user()->is_super_admin==1)
+
                             <a href="{{route('backend.menu.edit',['id'=>$item->id])}}" class="btn btn-green"
                                data-toggle="dialog" data-id="editadmin"  data-width="600" data-height="510"  data-title="编辑- {{$item->description}} -菜单">编辑</a>
                             <a href="{{URL::to('backend/menu/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
                                data-confirm-msg="确定要删除{{$item->email}}菜单？"  data-type="delete">删除</a>
-                        @endif
+
                     </td>
                 </tr>
             @endforeach
@@ -99,9 +99,9 @@
     function checkSearch() {
         var menuname = $('#menuname').val();
         var menuroute = $('#menuroute').val();
-        var menuhide = $('#menuhide').val();
+        var menudatapid = $('#menudatapid').val();
         var menudesc = $('#menudesc').val();
-        if (menuname==''&&menuroute==''&&menuhide==''&&menudesc=='') {
+        if (menuname=='' &&menuroute==''&& menudatapid==''&& menudesc=='') {
             $(this).alertmsg('error', '搜索字段不能为空')
             return false;
         }

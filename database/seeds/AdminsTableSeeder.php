@@ -36,6 +36,17 @@ class AdminsTableSeeder extends Seeder
                     'updated_at'     => '2016-06-27 09:07:09',
                     'is_super_admin' => 0,
                 ],
+            2 =>
+                [
+                    'id'             => 3,
+                    'name'           => 'demo',
+                    'email'          => 'demo@qq.com',
+                    'password'       => '$2y$10$THzCWaxn/DPlwFGNX6o8/uEy5kK/0AFBa8z5GBG6ApyOgEvBwxwUG',
+                    'remember_token' => 'BayXDcNkKpQkkbmaWaYA9ktn0eOybLCHeH2jTVZngiAJIQx3iy0agNvbDi35',
+                    'created_at'     => '2016-06-14 17:18:09',
+                    'updated_at'     => '2016-06-27 09:07:09',
+                    'is_super_admin' => 0,
+                ],
         ]);
     }
 }

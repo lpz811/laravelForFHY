@@ -47,6 +47,7 @@ class MainPresenter extends CommonPresenter
                  }
              }
         }
+        //$menus=array_merge($actions,config('ui.without-verification-route'));
 
 
         $sidebar= $this->makeSidebar(list_to_tree($menus));

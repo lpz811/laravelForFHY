@@ -7,9 +7,9 @@ return [
         'action' => '操作权限',
     ],
     /* 操作管理类型 */
-    'action-group'                 => [
+     'action-group'                 => [
         'menu'       => '菜单管理',
-        'admin'       => '用户管理',
+        'admin'       =>'用户管理',
         'role'       => '角色管理',
         'permission' => '权限管理',
         'action'     => '操作管理',
@@ -29,7 +29,7 @@ return [
         'Barryvdh\Debugbar\Controllers\AssetController@js',
     ],
     'without-verification-route' => [
-        'backend.index.index',
+        'App\Http\Controllers\Backend\IndexController@index'
     ],
     /* 上传文件配置 */
     'uploads'                      => [

@@ -10,7 +10,7 @@
                         <option selected="selected" value="0">顶级分类</option>
                         @foreach($tree as $item)
                             <option   value="{{$item['id']}}">
-                                {{ $item['html'] }}{{ trans($item['name']) }}
+                                {{ $item['html'] }}{{ $item['description'] }}
                             </option>
                         @endforeach
                     </select>

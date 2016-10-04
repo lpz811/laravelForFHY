@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ActionPermissionTableSeeder' => $baseDir . '/database/seeds/ActionPermissionTableSeeder.php',
     'ActionsTableSeeder' => $baseDir . '/database/seeds/ActionsTableSeeder.php',
     'AdminsTableSeeder' => $baseDir . '/database/seeds/AdminsTableSeeder.php',
     'CreateActionPermissionTable' => $baseDir . '/database/migrations/2016_09_18_081733_create_action_permission_table.php',
@@ -486,6 +487,7 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'PermissionRoleTableSeeder' => $baseDir . '/database/seeds/PermissionRoleTableSeeder.php',
     'PermissionsTableSeeder' => $baseDir . '/database/seeds/PermissionsTableSeeder.php',
     'RoleAdminTableSeeder' => $baseDir . '/database/seeds/RoleAdminTableSeeder.php',
     'RolesTableSeeder' => $baseDir . '/database/seeds/RolesTableSeeder.php',

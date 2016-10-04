@@ -344,6 +344,7 @@ class ComposerStaticInitf5caf9df7a8b09ab04a65dfdd6b56327
     );
 
     public static $classMap = array (
+        'ActionPermissionTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ActionPermissionTableSeeder.php',
         'ActionsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ActionsTableSeeder.php',
         'AdminsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminsTableSeeder.php',
         'CreateActionPermissionTable' => __DIR__ . '/../..' . '/database/migrations/2016_09_18_081733_create_action_permission_table.php',
@@ -824,6 +825,7 @@ class ComposerStaticInitf5caf9df7a8b09ab04a65dfdd6b56327
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PermissionRoleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PermissionRoleTableSeeder.php',
         'PermissionsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PermissionsTableSeeder.php',
         'RoleAdminTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RoleAdminTableSeeder.php',
         'RolesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RolesTableSeeder.php',
