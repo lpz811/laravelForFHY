@@ -185,7 +185,7 @@
             <button type="button" class="bjui-navbar-toggle btn-default" data-toggle="collapse" data-target="#bjui-navbar-collapse">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="bjui-navbar-logo" href="#"><img src="images/logo.png"></a>
+            <a class="bjui-navbar-logo" href="#"><img src="{{ asset('/styles/images/logo.png') }}"></a>
         </div>
         <nav id="bjui-navbar-collapse">
             <ul class="bjui-navbar-right">

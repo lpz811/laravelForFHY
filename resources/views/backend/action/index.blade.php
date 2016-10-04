@@ -68,7 +68,7 @@
                         <a href="{{route('backend.action.edit',['id'=>$item->id])}}" class="btn btn-green"
                            data-toggle="dialog" data-id="editadmin"  data-width="610"    data-title="编辑- {{$item->description}} -操作">编辑</a>
                         <a href="{{URL::to('backend/action/'.'d')}}" class="btn btn-red" data-toggle="doajax"
-                           data-confirm-msg="确定要删除{{$item->email}}操作？"  data-type="delete">删除</a>
+                           data-confirm-msg="确定要删除- {{$item->email}} -操作？"  data-type="delete">删除</a>
 
                 </td>
             </tr>

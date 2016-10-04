@@ -20,7 +20,7 @@
             <div class="pull-right">
                 <div class="btn-group">
                     <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">
-                        复选框-批量操作<span class="caret"></span></button>
+                         批量操作<span class="caret"></span></button>
                     <ul class="dropdown-menu right" role="menu">
 
                         <li><a href="ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？"
@@ -57,10 +57,10 @@
                     <a href="{{route('backend.role.permission',['id'=>$item->id])}}" class="btn btn-blue"
                        data-toggle="dialog" data-id="peimissionsociate"  data-width="550"    data-title="给- {{$item->display_name}} -角色授权">授权</a>
                         <a href="{{route('backend.role.edit',['id'=>$item->id])}}" class="btn btn-green"
-                           data-toggle="dialog" data-width='550' data-id="editrole" data-fresh="true"  data-title="编辑-{{$item->display_name}}角色">编辑</a>
+                           data-toggle="dialog" data-width='550' data-id="editrole" data-fresh="true"  data-title="编辑- {{$item->display_name}} -角色">编辑</a>
 
                         <a href="{{URL::to('backend/role/'.$item->id)}}" class="btn btn-red" data-toggle="doajax"
-                           data-confirm-msg="确定要删除{{$item->name}}用户？"  data-type="delete">删除</a>
+                           data-confirm-msg="确定要删除- {{$item->name}} -用户？"  data-type="delete">删除</a>
                 </td>
             </tr>
         @endforeach
