@@ -1,5 +1,5 @@
 <?php
-Route::get('/index', [
+Route::get('/', [
     'as'   => 'backend.index.index',
     'uses' => 'IndexController@index',
 ]);

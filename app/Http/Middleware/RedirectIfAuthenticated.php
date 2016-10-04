@@ -36,7 +36,7 @@ class RedirectIfAuthenticated
     {
 
         if ($this->auth->check()) {
-            return redirect('backend/index');
+            return redirect('backend/');
         }
 
         return $next($request);

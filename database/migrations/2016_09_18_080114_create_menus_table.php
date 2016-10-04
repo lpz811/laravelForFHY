@@ -24,6 +24,7 @@ class CreateMenusTable extends Migration
             $table->string('description', 50)->comment('菜单描述');
             $table->string('tab_id', 50)->comment('打开的Navtab的ID');
             $table->boolean('data_fresh')->comment('点击Navtab时是否重载');
+            //$table->boolean('expand_all')->comment('菜单是否展开');
             $table->tinyInteger('sort')->default(0)->comment('菜单排序');
             $table->tinyInteger('hide')->default(0)->comment('是否隐藏');
             $table->timestamps();

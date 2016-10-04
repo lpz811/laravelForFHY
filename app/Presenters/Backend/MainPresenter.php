@@ -73,12 +73,12 @@ class MainPresenter extends CommonPresenter
             $active=$key==0?'class="active"':'';
                 $sidebar.='<li '.$active.'><a href="javascript:;" data-toggle="slidebar"><i class="'.$item['icon'].'"></i>'.$item['description'].'</a><div class="items hide" data-noinit="true">';
                 $sidebar.='<ul id="bjui-doc-tree-base" class="ztree ztree_main" data-toggle="ztree"
-                            data-on-click="MainMenuClick" data-expand-all="true" data-faicon="'.$item['icon'].'"
+                            data-on-click="MainMenuClick" data-expand-all="false" data-faicon="'.$item['icon'].'"
                             data-tit="'.$item['description'].'">';
                 foreach ($item['child'] as $ite){
-                        $sidebar.='<li data-id="'.$ite['data_id'].'" data-pid="'.$ite['data_pid'].'" data-faicon="'.$ite['icon'].'" data-faicon-close="'.$ite['icon_close'].'">'.$ite['description'].'</li>';
+                        $sidebar.='<li data-id="'.$ite['data_id'].'"  data-pid="'.$ite['data_pid'].'" data-faicon="'.$ite['icon'].'" data-faicon-close="'.$ite['icon_close'].'">'.$ite['description'].'</li>';
                     foreach ($ite['child'] as $it){
-                        $sidebar.='<li data-id="'.$it['data_id'].'" data-pid="'.$it['data_pid'].'" data-faicon="'.$it['icon'].'" data-url="'.route($it['route']).'" data-fresh="'.$it['data_fresh'].'" data-tabid="'.$it['tab_id'].'"data-faicon-close="'.$it['icon_close'].'">
+                        $sidebar.='<li data-id="'.$it['data_id'].'"  data-pid="'.$it['data_pid'].'" data-faicon="'.$it['icon'].'" data-url="'.route($it['route']).'" data-fresh="'.$it['data_fresh'].'" data-tabid="'.$it['tab_id'].'"data-faicon-close="'.$it['icon_close'].'">
                                '.$it['description'].'</li>';
                     }
                 }
