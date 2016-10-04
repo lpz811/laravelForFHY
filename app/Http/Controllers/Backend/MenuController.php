@@ -65,16 +65,7 @@ class MenuController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -121,6 +112,28 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            if (MenuRepository::destroy($id)) {
+                $this->ajaxReturn(['message'=>'删除菜单成功','statusCode'=>200,'tabid'=>'menuslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
+    }
+
+
+    /**删除所选菜单
+     * @param Request $request
+     */
+    public function selectdelete(Request $request){
+        try {
+            if (ActionRepository::destroy($request->input('ids'))) {
+                $this->ajaxReturn(['message'=>'所选菜单删除成功','statusCode'=>200,'tabid'=>'menuslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
     }
 }

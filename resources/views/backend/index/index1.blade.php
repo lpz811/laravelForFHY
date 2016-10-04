@@ -177,56 +177,79 @@
 </head>
 <body>
 <!--[if lte IE 7]>
-<div id="errorie"><div>您还在使用老掉牙的IE，正常使用系统前请升级您的浏览器到 IE8以上版本 <a target="_blank" href="http://windows.microsoft.com/zh-cn/internet-explorer/ie-8-worldwide-languages">点击升级</a>&nbsp;&nbsp;强烈建议您更改换浏览器：<a href="http://down.tech.sina.com.cn/content/40975.html" target="_blank">谷歌 Chrome</a></div></div>
+<div id="errorie">
+    <div>您还在使用老掉牙的IE，正常使用系统前请升级您的浏览器到 IE8以上版本 <a target="_blank"
+                                                 href="http://windows.microsoft.com/zh-cn/internet-explorer/ie-8-worldwide-languages">点击升级</a>&nbsp;&nbsp;强烈建议您更改换浏览器：<a
+            href="http://down.tech.sina.com.cn/content/40975.html" target="_blank">谷歌 Chrome</a></div>
+</div>
 <![endif]-->
 <div id="bjui-window">
     <header id="bjui-header">
         <div class="bjui-navbar-header">
-            <button type="button" class="bjui-navbar-toggle btn-default" data-toggle="collapse" data-target="#bjui-navbar-collapse">
+            <button type="button" class="bjui-navbar-toggle btn-default" data-toggle="collapse"
+                    data-target="#bjui-navbar-collapse">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="bjui-navbar-logo" href="#"><img src="images/logo.png"></a>
+            <a class="bjui-navbar-logo" href="#"><img src="{{ asset('/styles/images/logo.png') }}"></a>
         </div>
         <nav id="bjui-navbar-collapse">
             <ul class="bjui-navbar-right">
-                <li class="datetime"><div><span id="bjui-date"></span> <span id="bjui-clock"></span></div></li>
+                <li class="datetime">
+                    <div><span id="bjui-date"></span> <span id="bjui-clock"></span></div>
+                </li>
                 <li><a href="#">消息 <span class="badge">4</span></a></li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的账户 <span class="caret"></span></a>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的账户 <span
+                                class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="changepwd.html" data-toggle="dialog" data-id="changepwd_page" data-mask="true" data-width="400" data-height="260">&nbsp;<span class="glyphicon glyphicon-lock"></span> 修改密码&nbsp;</a></li>
+                        <li><a href="changepwd.html" data-toggle="dialog" data-id="changepwd_page" data-mask="true"
+                               data-width="400" data-height="260">&nbsp;<span class="glyphicon glyphicon-lock"></span>
+                                修改密码&nbsp;</a></li>
                         <li><a href="#">&nbsp;<span class="glyphicon glyphicon-user"></span> 我的资料</a></li>
                         <li class="divider"></li>
-                        <li><a href="login.html" class="red">&nbsp;<span class="glyphicon glyphicon-off"></span> 注销登陆</a></li>
+                        <li><a href="{{url('backend/logout')}}" class="red">&nbsp;<span class="glyphicon glyphicon-off"></span>
+                                注销登陆</a></li>
                     </ul>
                 </li>
-                <li><a href="index_tree.html" title="切换为树状导航(宽版)" style="background-color:#ff7b61;">树状导航栏(宽版)</a></li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle theme blue" data-toggle="dropdown" title="切换皮肤"><i class="fa fa-tree"></i></a>
+                <li></li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle theme blue" data-toggle="dropdown" title="切换皮肤"><i
+                                class="fa fa-tree"></i></a>
                     <ul class="dropdown-menu" role="menu" id="bjui-themes">
-                        <li><a href="javascript:;" class="theme_default" data-toggle="theme" data-theme="default">&nbsp;<i class="fa fa-tree"></i> 黑白分明&nbsp;&nbsp;</a></li>
-                        <li><a href="javascript:;" class="theme_orange" data-toggle="theme" data-theme="orange">&nbsp;<i class="fa fa-tree"></i> 橘子红了</a></li>
-                        <li><a href="javascript:;" class="theme_purple" data-toggle="theme" data-theme="purple">&nbsp;<i class="fa fa-tree"></i> 紫罗兰</a></li>
-                        <li class="active"><a href="javascript:;" class="theme_blue" data-toggle="theme" data-theme="blue">&nbsp;<i class="fa fa-tree"></i> 天空蓝</a></li>
-                        <li><a href="javascript:;" class="theme_green" data-toggle="theme" data-theme="green">&nbsp;<i class="fa fa-tree"></i> 绿草如茵</a></li>
+                        <li><a href="javascript:;" class="theme_default" data-toggle="theme" data-theme="default">&nbsp;<i
+                                        class="fa fa-tree"></i> 黑白分明&nbsp;&nbsp;</a></li>
+                        <li><a href="javascript:;" class="theme_orange" data-toggle="theme" data-theme="orange">&nbsp;<i
+                                        class="fa fa-tree"></i> 橘子红了</a></li>
+                        <li><a href="javascript:;" class="theme_purple" data-toggle="theme" data-theme="purple">&nbsp;<i
+                                        class="fa fa-tree"></i> 紫罗兰</a></li>
+                        <li class="active"><a href="javascript:;" class="theme_blue" data-toggle="theme"
+                                              data-theme="blue">&nbsp;<i class="fa fa-tree"></i> 天空蓝</a></li>
+                        <li><a href="javascript:;" class="theme_green" data-toggle="theme" data-theme="green">&nbsp;<i
+                                        class="fa fa-tree"></i> 绿草如茵</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
         <div id="bjui-hnav">
-            <button type="button" class="btn-default bjui-hnav-more-left" title="导航菜单左移"><i class="fa fa-angle-double-left"></i></button>
+            <button type="button" class="btn-default bjui-hnav-more-left" title="导航菜单左移"><i
+                        class="fa fa-angle-double-left"></i></button>
             <div id="bjui-hnav-navbar-box">
+
                 @include('backend.common.sildermenu')
+
             </div>
-            <button type="button" class="btn-default bjui-hnav-more-right" title="导航菜单右移"><i class="fa fa-angle-double-right"></i></button>
+            <button type="button" class="btn-default bjui-hnav-more-right" title="导航菜单右移"><i
+                        class="fa fa-angle-double-right"></i></button>
         </div>
     </header>
-    <div id="bjui-container" class="clearfix">
+    <div id="bjui-container">
         <div id="bjui-leftside">
             <div id="bjui-sidebar-s">
                 <div class="collapse"></div>
             </div>
             <div id="bjui-sidebar">
-                <div class="toggleCollapse"><h2><i class="fa fa-bars"></i> 导航栏 <i class="fa fa-bars"></i></h2><a href="javascript:;" class="lock"><i class="fa fa-lock"></i></a></div>
-                <div class="panel-group panel-main" data-toggle="accordion" id="bjui-accordionmenu">
+                <div class="toggleCollapse"><h2><i class="fa fa-bars"></i> 导航栏 <i class="fa fa-bars"></i></h2><a
+                            href="javascript:;" class="lock"><i class="fa fa-lock"></i></a></div>
+                <div class="panel-group panel-main" data-toggle="accordion" id="bjui-accordionmenu"
+                     data-heightbox="#bjui-sidebar" data-offsety="26">
                 </div>
             </div>
         </div>
@@ -234,7 +257,8 @@
             <div class="tabsPageHeader">
                 <div class="tabsPageHeaderContent">
                     <ul class="navtab-tab nav nav-tabs">
-                        <li data-url="index_layout.html" data-faicon="home"><a href="javascript:;"><span><i class="fa fa-home"></i> #maintab#</span></a></li>
+                        <li data-url="layout"><a href="javascript:;"><span><i class="fa fa-home"></i> #maintab#</span></a>
+                        </li>
                     </ul>
                 </div>
                 <div class="tabsLeft"><i class="fa fa-angle-double-left"></i></div>

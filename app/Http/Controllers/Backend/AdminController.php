@@ -17,6 +17,7 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
+         
         $pageSize = config('repository.pageSize');
         $data['info'] = AdminRepository::paginate($pageSize);
         $data['total'] = $data['info']->total();
@@ -79,16 +80,6 @@ class AdminController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -161,7 +152,7 @@ class AdminController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>200]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
     }
 
@@ -175,7 +166,7 @@ class AdminController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>200]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
     }
 }

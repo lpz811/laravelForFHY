@@ -110,20 +110,7 @@ class PermissionController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
 
-    }
-
-   public function selectdelete($id){
-
-   }
     /**
      * 关联权限页面
      *
@@ -206,6 +193,39 @@ class PermissionController extends Controller
             } else {
                 $this->ajaxReturn(['message'=>'关联操作权限失败','statusCode'=>300,'closeCurrent'=>true,'tabid'=>'permissionslist']);
 
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            if (PermissionRepository::destroy($id)) {
+                $this->ajaxReturn(['message'=>'删除权限成功','statusCode'=>200,'tabid'=>'permissionslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
+    }
+
+
+    /**删除所选菜单
+     * @param Request $request
+     */
+    public function selectdelete(Request $request){
+        try {
+            if (PermissionRepository::destroy($request->input('ids'))) {
+                $this->ajaxReturn(['message'=>'所选权限删除成功','statusCode'=>200,'tabid'=>'permissionslist']);
             }
         }
         catch (\Exception $e) {

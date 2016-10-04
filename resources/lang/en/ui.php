@@ -1,6 +1,5 @@
 <?php
-
-return [
+/*return [
     'menu'       => [
         'group'  => '菜单管理',
         'list'   => '菜单列表',
@@ -48,4 +47,4 @@ return [
     'index'      => [
         'index' => '首页管理',
     ],
-];
+];*/

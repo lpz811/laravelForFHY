@@ -69,16 +69,6 @@ class ActionController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -129,7 +119,21 @@ class ActionController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>200]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
+        }
+    }
+
+    /**删除所选操作
+     * @param Request $request
+     */
+    public function selectdelete(Request $request){
+        try {
+            if (ActionRepository::destroy($request->input('ids'))) {
+                $this->ajaxReturn(['message'=>'所选操作删除成功','statusCode'=>200,'tabid'=>'actionslist']);
+            }
+        }
+        catch (\Exception $e) {
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
     }
 }

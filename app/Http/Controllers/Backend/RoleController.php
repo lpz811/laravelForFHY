@@ -129,22 +129,22 @@ class RoleController extends Controller
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>$e->getMessage(),'closeCurrent'=>true,'statusCode'=>200]);
+            $this->ajaxReturn(['message'=>$e->getMessage(),'statusCode'=>300]);
         }
     }
 
-    /**删除所选用户
+    /**删除所选角色
      * @param Request $request
      */
     public function selectdelete(Request $request){
-     /*   try {
+        try {
             if (RoleRepository::destroy($request->input('ids'))) {
-                $this->ajaxReturn(['message'=>'所选删除成功','statusCode'=>200,'tabid'=>'adminslist']);
+                $this->ajaxReturn(['message'=>'所选角色删除成功','statusCode'=>200,'tabid'=>'roleslist']);
             }
         }
         catch (\Exception $e) {
-            $this->ajaxReturn(['message'=>'所选用户删除失败','closeCurrent'=>true,'statusCode'=>200]);
-        }*/
+            $this->ajaxReturn(['message'=>'所选角色删除失败','statusCode'=>300]);
+        }
     }
 
     /**

@@ -13,6 +13,10 @@ Route::post('menu/search', [
     'as'         => 'backend.menu.search',
     'uses'       => 'MenuController@search',
 ]);
+Route::post("menu/selectdelete", [
+    'as'=>'backend.menu.selectdelete',
+    'uses'=>'MenuController@selectdelete'
+]);
 
 
 
@@ -59,6 +63,10 @@ Route::post('role/associatePermission', [
     'as'   => 'backend.role.associate.permission',
     'uses' => 'RoleController@associatePermission',
 ]);
+Route::post("role/selectdelete", [
+    'as'=>'backend.role.selectdelete',
+    'uses'=>'RoleController@selectdelete'
+]);
 
 
 
@@ -84,6 +92,10 @@ Route::post('permission/associateActions', [
     'as'   => 'backend.permission.associate.actions',
     'uses' => 'PermissionController@associateActions',
 ]);
+Route::post("permission/selectdelete", [
+    'as'=>'backend.permission.selectdelete',
+    'uses'=>'PermissionController@selectdelete'
+]);
 
 
 /* 操作管理模块 */
@@ -91,4 +103,22 @@ Route::resource('action', 'ActionController');
 Route::post("action/search", [
     'as'=>'backend.action.search',
     'uses'=>'ActionController@search'
+]);
+Route::post("action/selectdelete", [
+    'as'=>'backend.action.selectdelete',
+    'uses'=>'ActionController@selectdelete'
+]);
+
+
+
+
+
+Route::resource('employ', 'EmployController');
+Route::post("employ/search", [
+    'as'=>'backend.employ.search',
+    'uses'=>'EmployController@search'
+]);
+Route::post("employ/selectdelete", [
+    'as'=>'backend.employ.selectdelete',
+    'uses'=>'EmployController@selectdelete'
 ]);

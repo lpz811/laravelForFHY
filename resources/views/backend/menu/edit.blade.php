@@ -13,7 +13,7 @@
                         <option   selected="selected"   value="0">顶级分类</option>
                         @foreach($tree as $item)
                             <option value="{{$item['id']}}" @if($data['parent_id'] == $item['id']) selected="selected" @endif>
-                                {{ $item['html'] }}{{ trans($item['name']) }}
+                                {{ $item['html'] }}{{ $item['description'] }}
                             </option>
                         @endforeach
                     </select>
@@ -34,14 +34,6 @@
             </tr>
 
             <tr>
-                <th>DADA_ID:</th>
-                <td><input type="text" class="input-nm"   data-rule="required;digits"  name="data_id" id="data_id" value="{{$data->data_id}}" placeholder="DADA_ID" size="20"></td>
-            </tr>
-            <tr>
-                <th>DADA_PID:</th>
-                <td><input type="text" class="input-nm"   data-rule="required;digits"  name="data_pid" id="data_pid" value="{{$data->data_pid}}" placeholder="DADA_PID" size="20"></td>
-            </tr>
-            <tr>
                 <th>TAB_ID:</th>
                 <td><input type="text" class="input-nm"   data-rule="required"  name="tab_id" id="tab_id" value="{{$data->tab_id}}" placeholder="TAB_ID" size="20"></td>
             </tr>
@@ -49,10 +41,7 @@
                 <th>菜单打开时图标:</th>
                 <td><input type="text" class="input-nm"   data-rule="打开时图标:required"  name="icon" id="icon" value="{{$data->icon}}" placeholder="菜单打开时图标" size="20"></td>
             </tr>
-            <tr>
-                <th>菜单关闭时图标:</th>
-                <td><input type="text" class="input-nm"   data-rule="关闭时图标:required"  name="icon_close" id="icon_close" value="{{$data->icon_close}}" placeholder="菜单关闭时图标" size="20"></td>
-            </tr>
+
             <tr>
                 <th>页面打开是否刷新:</th>
                 <td>

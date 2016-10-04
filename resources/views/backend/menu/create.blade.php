@@ -31,23 +31,12 @@
             </tr>
 
             <tr>
-                <th>DADA_ID:</th>
-                <td><input type="text" class="input-nm"   data-rule="required;digits"  name="data_id" id="data_id" value="" placeholder="DADA_ID" size="20"></td>
-            </tr>
-            <tr>
-                <th>DADA_PID:</th>
-                <td><input type="text" class="input-nm"   data-rule="required;digits"  name="data_pid" id="data_pid" value="" placeholder="DADA_PID" size="20"></td>
-            <tr>
                 <th>TAB_ID:</th>
                 <td><input type="text" class="input-nm"   data-rule="required"  name="tab_id" id="tab_id" value="" placeholder="TAB_ID" size="20"></td>
             </tr>
             <tr>
                 <th>菜单打开时图标:</th>
                 <td><input type="text" class="input-nm"   data-rule="打开时图标:required"  name="icon" id="icon" value="" placeholder="菜单打开时图标" size="20"></td>
-            </tr>
-            <tr>
-                <th>菜单关闭时图标:</th>
-                <td><input type="text" class="input-nm"   data-rule="关闭时图标:required"  name="icon_close" id="icon_close" value="" placeholder="菜单关闭时图标" size="20"></td>
             </tr>
             <tr>
                 <th>页面打开是否刷新:</th>
