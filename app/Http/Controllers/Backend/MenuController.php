@@ -8,6 +8,7 @@ use App\Http\Requests\Backend\MenuUpdateForm;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use nilsenj\Toastr\Facades\Toastr;
 
 class MenuController extends Controller
 {
@@ -18,6 +19,7 @@ class MenuController extends Controller
      */
     public function index()
     {
+
         $pageSize = config('repository.pageSize');
         $data['info']= MenuRepository::paginate($pageSize);
         $data['total'] = $data['info']->total();

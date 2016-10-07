@@ -129,14 +129,20 @@ class MainPresenter extends CommonPresenter
             $active=$key==0?'class="active"':'';
             $sidebar.='<li '.$active.'><a href="javascript:;" data-toggle="slidebar"><i class="'.$item['icon'].'"></i> &nbsp;'.$item['description'].'</a>';
             $sidebar.='<div class="items hide" data-noinit="true">';
-            foreach ($item['child'] as $ite){
-                $sidebar.='<ul class="menu-items" data-faicon="'.$ite['icon'].'" data-tit="&nbsp;'.$ite['description'].'">';
-                foreach ($ite['child'] as  $it){
 
-                    $sidebar.=' <li><a href="'.route($it['route']).'" data-options="{id:\''.$it['tab_id'].'\', fresh:\''.$it['data_fresh'].'\',tabid:\''.$it['tab_id'].'\', faicon:\''.$it['icon'].'\'}">&nbsp;'.$it['description'].'</a></li>';
+            if(isset($item['child'])&&$item['child']){
+                foreach ($item['child'] as $ite){
+                    $sidebar.='<ul class="menu-items" data-faicon="'.$ite['icon'].'" data-tit="&nbsp;'.$ite['description'].'">';
+                    if(isset($ite['child'])&&$ite['child']){
+                        foreach ($ite['child'] as  $it){
+                            $sidebar.=' <li><a href="'.route($it['route']).'" data-options="{id:\''.$it['tab_id'].'\', fresh:\''.$it['data_fresh'].'\',tabid:\''.$it['tab_id'].'\', faicon:\''.$it['icon'].'\'}">&nbsp;'.$it['description'].'</a></li>';
+                        }
+                    }
+
+                    $sidebar.='</ul>';
                 }
-                $sidebar.='</ul>';
             }
+
             $sidebar.='<div></li>';
 
         }

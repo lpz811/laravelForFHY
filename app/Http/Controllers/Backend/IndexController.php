@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Admin;
 
+
+use Rry\Reminder\Reminder;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +21,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 class IndexController extends Controller
 {
    public function index(){
-       return view('backend.index.index');
+     return view('backend.index.index');
    }
 
 }

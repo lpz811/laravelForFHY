@@ -147,12 +147,17 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
         /**
          * Backend  Service Providers...
          */
         App\Providers\Backend\RepositoryServiceProvider::class,
         App\Providers\Backend\ModelEventServiceProvider::class,
         App\Providers\Backend\ComposerServiceProvider::class,
+
+
+
+
 
     ],
 
@@ -203,6 +208,9 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+
+
+
     ],
 
 ];

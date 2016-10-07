@@ -1,4 +1,5 @@
 <meta name="_token" content="{!! csrf_token() !!}"/>
+
 @inject('menuPresenter','App\Presenters\Backend\MenuPresenter')
 
 <div class="bjui-pageHeader">
