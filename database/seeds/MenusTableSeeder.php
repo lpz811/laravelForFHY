@@ -181,7 +181,8 @@ class MenusTableSeeder extends Seeder
                     'hide'           => 0,
                     'created_at'     => '2016-05-03 19:55:02',
                     'updated_at'     => '2016-06-22 17:17:01',
-                )
+                ),
+
         ));
 
 

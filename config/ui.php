@@ -16,17 +16,13 @@ return [
     ],
     /* 无需验证的操作 */
     'without-verification-actions' => [
-        'Closure',
+       // 'Closure',
         'App\Http\Controllers\Backend\IndexController@index',
         'App\Http\Controllers\Backend\AuthController@getLogin',
         'App\Http\Controllers\Backend\AuthController@postLogin',
         'App\Http\Controllers\Backend\AuthController@getLogout',
         'App\Http\Controllers\Backend\AuthController@getRegister',
         'App\Http\Controllers\Backend\AuthController@postRegister',
-        'Barryvdh\Debugbar\Controllers\OpenHandlerController@handle',
-        'Barryvdh\Debugbar\Controllers\OpenHandlerController@clockwork',
-        'Barryvdh\Debugbar\Controllers\AssetController@css',
-        'Barryvdh\Debugbar\Controllers\AssetController@js',
     ],
     'without-verification-route' => [
         'App\Http\Controllers\Backend\IndexController@index'

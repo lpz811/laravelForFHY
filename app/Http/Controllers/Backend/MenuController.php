@@ -114,7 +114,15 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
+        $childMenus = MenuRepository::getChildMenusById($id);
+
+        if( ! empty($childMenus)){
+
+            $this->ajaxReturn(['message'=>'请先删除其下级分类','statusCode'=>300]);
+
+        }
         try {
+
             if (MenuRepository::destroy($id)) {
                 $this->ajaxReturn(['message'=>'删除菜单成功','statusCode'=>200,'tabid'=>'menuslist']);
             }
@@ -129,6 +137,7 @@ class MenuController extends Controller
      * @param Request $request
      */
     public function selectdelete(Request $request){
+        $this->ajaxReturn(['message'=>'暂无法删除','statusCode'=>300]);
         try {
             if (ActionRepository::destroy($request->input('ids'))) {
                 $this->ajaxReturn(['message'=>'所选菜单删除成功','statusCode'=>200,'tabid'=>'menuslist']);
