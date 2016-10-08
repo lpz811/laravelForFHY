@@ -51,7 +51,6 @@ class MenuRepository extends CommonRepository
     public function getAllDisplayMenus()
     {
         $menus = Cache::get(self::ALL_DISPLAY_MENUS_CACHE);
-
         if (empty($menus)) {
             $menus = $this->model->whereHide(0)->orderBy('sort', 'asc')->get()->toArray();
             Cache::forever(self::ALL_DISPLAY_MENUS_CACHE, $menus);

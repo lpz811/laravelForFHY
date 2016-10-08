@@ -45,6 +45,7 @@ class CacheEventSubscribe
      */
     public function clearMenuCache()
     {
-        MenuPresenter::clearCache();
+
+        \App\Facades\Backend\MenuRepository::clearCache();
     }
 }

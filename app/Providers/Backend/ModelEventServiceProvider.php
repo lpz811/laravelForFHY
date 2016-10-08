@@ -14,7 +14,7 @@ class ModelEventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->listenMenuModelEvents();
     }
 
 
@@ -28,7 +28,8 @@ class ModelEventServiceProvider extends ServiceProvider
         });
 
         Menu::deleted(function () {
-            event(new ClearMenuCacheEvent());
+
+           event(new ClearMenuCacheEvent());
         });
     }
     /**
